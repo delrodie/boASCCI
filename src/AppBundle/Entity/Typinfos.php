@@ -46,6 +46,11 @@ class Typinfos
     private $statut;
 
     /**
+    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Information", mappedBy="typinfo")
+    */
+    private $informations;
+
+    /**
      * @var string
      *
      * @Gedmo\Slug(fields={"libelle"})
