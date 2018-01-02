@@ -1,6 +1,6 @@
 {% extends 'backoffice.html.twig' %}
 
-{% block title %}Enregistrement des chefs{% endblock %}
+{% block title %}Enregistrement des departements{% endblock %}
 
 {% block stylesheets %}
 {{ parent() }}
@@ -11,12 +11,12 @@
 
 {% block body %}
 <div class="pageheader">
-  <h3><i class="fa fa-home"></i>  Gestion des chefs</h3>
+  <h3><i class="fa fa-home"></i>  Gestion des departements</h3>
   <div class="breadcrumb-wrapper">
     <span class="label"></span>
     <ol class="breadcrumb">
       <li><a href="#">Accueil</a></li>
-      <li class="active">chef</li>
+      <li class="active">departement</li>
     </ol>
   </div>
 </div>
@@ -62,7 +62,7 @@
                     <div class="row">
                       <div class="col-xs-7 col-xs-offset-1">
                         <div class="form-group">
-                          <label class="control-label">Nom du chef</label>
+                          <label class="control-label">Nom du departement</label>
                           {{ form_widget(edit_form.libelle) }}
                           {{ form_errors(edit_form.libelle) }}
                         </div>
@@ -71,7 +71,7 @@
                     <div class="row">
                       <div class="col-xs-7 col-xs-offset-1">
                         <div class="form-group">
-                          <label class="control-label">Couleur du chef</label>
+                          <label class="control-label">Couleur du departement</label>
                           {{ form_widget(edit_form.couleur) }}
                           {{ form_errors(edit_form.couleur) }}
                         </div>
@@ -81,7 +81,7 @@
                       <div class="col-xs-10 col-xs-offset-1">
                         <div class="form-group">
                           <label class="control-label">Activez</label>
-                          {{ form_widget(foredit_formm.statut) }}
+                          {{ form_widget(edit_form.statut) }}
                           {{ form_errors(edit_form.statut) }}
                         </div>
                       </div>
@@ -90,7 +90,7 @@
                   <div class="panel-footer">
                     <div class="row">
                       <div class="col-sm-7 col-sm-offset-3 text-right">
-                        <a href="{{ path('admin_chef_index', {'slug': chef.slug})}}" class="btn btn-default">Annuler</a>
+                        <a href="{{ path('admin_departement_index', {'slug': departement.slug})}}" class="btn btn-default">Annuler</a>
                         <button class="btn btn-primary" type="submit">Modifier</button>
                       </div>
                     </div>
