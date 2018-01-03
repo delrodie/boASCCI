@@ -46,6 +46,11 @@ class Departement
     private $statut;
 
     /**
+    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Actualite", mappedBy="departement")
+    */
+    private $actualites;
+
+    /**
      * @var string
      *
      * @Gedmo\Slug(fields={"libelle"})
@@ -286,5 +291,50 @@ class Departement
     public function getModifieLe()
     {
         return $this->modifieLe;
+    }
+
+    public function __toString() {
+        return $this->getLibelle();
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->actualites = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add actualite
+     *
+     * @param \AppBundle\Entity\Actualite $actualite
+     *
+     * @return Departement
+     */
+    public function addActualite(\AppBundle\Entity\Actualite $actualite)
+    {
+        $this->actualites[] = $actualite;
+
+        return $this;
+    }
+
+    /**
+     * Remove actualite
+     *
+     * @param \AppBundle\Entity\Actualite $actualite
+     */
+    public function removeActualite(\AppBundle\Entity\Actualite $actualite)
+    {
+        $this->actualites->removeElement($actualite);
+    }
+
+    /**
+     * Get actualites
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActualites()
+    {
+        return $this->actualites;
     }
 }
