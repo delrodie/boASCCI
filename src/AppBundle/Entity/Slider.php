@@ -12,6 +12,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *
  * @ORM\Table(name="slider")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SliderRepository")
+ * @Vich\Uploadable
  */
 class Slider
 {
@@ -69,7 +70,7 @@ class Slider
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="actualite_image", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="slider_image", fileNameProperty="imageName", size="imageSize")
      *
      * @var File
      */
