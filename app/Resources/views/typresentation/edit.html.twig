@@ -1,6 +1,6 @@
 {% extends 'backoffice.html.twig' %}
 
-{% block title %}Enregistrement des types d'informationss{% endblock %}
+{% block title %}Modification des rubriques de qui sommes-nous ?{% endblock %}
 
 {% block stylesheets %}
 {{ parent() }}
@@ -11,12 +11,12 @@
 
 {% block body %}
 <div class="pageheader">
-  <h3><i class="fa fa-home"></i>  Gestion des types d'informationss</h3>
+  <h3><i class="fa fa-home"></i>  Gestion des rubriques de qui sommes-nous ?</h3>
   <div class="breadcrumb-wrapper">
     <span class="label"></span>
     <ol class="breadcrumb">
       <li><a href="#">Accueil</a></li>
-      <li class="active">type d'informationss</li>
+      <li class="active">rubrique de qui sommes-nous ?</li>
     </ol>
   </div>
 </div>
@@ -55,34 +55,34 @@
             <div class="col-sm-12 col-sm-offset-0">
               <div class="panel">
                 <div class="panel-heading">
-                  <h3 class="panel-title">Enregistrement</h3>
+                  <h3 class="panel-title">Modification</h3>
                 </div>
-                {{ form_start(form, { 'attr': {'class': 'form-vertical' }}) }}
+                {{ form_start(edit_form, { 'attr': {'class': 'form-vertical' }}) }}
                   <div class="panel-body">
                     <div class="row">
                       <div class="col-xs-7 col-xs-offset-1">
                         <div class="form-group">
-                          <label class="control-label">Nom du type d'informations</label>
-                          {{ form_widget(form.libelle) }}
-                          {{ form_errors(form.libelle) }}
+                          <label class="control-label">Nom de la rubrique de qui sommes-nous ?</label>
+                          {{ form_widget(edit_form.libelle) }}
+                          {{ form_errors(edit_form.libelle) }}
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-xs-7 col-xs-offset-1">
                         <div class="form-group">
-                          <label class="control-label">Couleur du type d'informations</label>
-                          {{ form_widget(form.couleur) }}
-                          {{ form_errors(form.couleur) }}
+                          <label class="control-label">Couleur de la rubrique de qui sommes-nous ?</label>
+                          {{ form_widget(edit_form.couleur) }}
+                          {{ form_errors(edit_form.couleur) }}
                         </div>
                       </div>
-                    </div>                    
+                    </div>
                     <div class="row">
                       <div class="col-xs-10 col-xs-offset-1">
                         <div class="form-group">
                           <label class="control-label">Activez</label>
-                          {{ form_widget(form.statut) }}
-                          {{ form_errors(form.statut) }}
+                          {{ form_widget(edit_form.statut) }}
+                          {{ form_errors(edit_form.statut) }}
                         </div>
                       </div>
                     </div>
@@ -90,12 +90,12 @@
                   <div class="panel-footer">
                     <div class="row">
                       <div class="col-sm-7 col-sm-offset-3 text-right">
-                        <button class="btn btn-default" type="reset">Annuler</button>
-                        <button class="btn btn-primary" type="submit">Enregistrer</button>
+                        <a href="{{ path('admin_typresentation_index', {'slug': typresentation.slug})}}" class="btn btn-default">Annuler</a>
+                        <button class="btn btn-primary" type="submit">Modifier</button>
                       </div>
                     </div>
                   </div>
-                {{ form_end(form)}}
+                {{ form_end(edit_form)}}
               </div>
             </div>
           </div>

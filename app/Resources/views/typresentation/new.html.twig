@@ -1,6 +1,6 @@
 {% extends 'backoffice.html.twig' %}
 
-{% block title %}Enregistrement des types d'informationss{% endblock %}
+{% block title %}Enregistrement des nouvelles rubriques de qui sommes-nous?{% endblock %}
 
 {% block stylesheets %}
 {{ parent() }}
@@ -11,12 +11,12 @@
 
 {% block body %}
 <div class="pageheader">
-  <h3><i class="fa fa-home"></i>  Gestion des types d'informationss</h3>
+  <h3><i class="fa fa-home"></i>  Gestion des rubriques de qui sommes-nous</h3>
   <div class="breadcrumb-wrapper">
     <span class="label"></span>
     <ol class="breadcrumb">
       <li><a href="#">Accueil</a></li>
-      <li class="active">type d'informationss</li>
+      <li class="active">Rubriques de qui sommes-nous?</li>
     </ol>
   </div>
 </div>
@@ -62,7 +62,7 @@
                     <div class="row">
                       <div class="col-xs-7 col-xs-offset-1">
                         <div class="form-group">
-                          <label class="control-label">Nom du type d'informations</label>
+                          <label class="control-label">Nom de la rubrique de qui sommes-nous?</label>
                           {{ form_widget(form.libelle) }}
                           {{ form_errors(form.libelle) }}
                         </div>
@@ -71,7 +71,7 @@
                     <div class="row">
                       <div class="col-xs-7 col-xs-offset-1">
                         <div class="form-group">
-                          <label class="control-label">Couleur du type d'informations</label>
+                          <label class="control-label">Couleur de la rubrique de qui sommes-nous?</label>
                           {{ form_widget(form.couleur) }}
                           {{ form_errors(form.couleur) }}
                         </div>
