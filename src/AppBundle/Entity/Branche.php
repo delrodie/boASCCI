@@ -39,6 +39,11 @@ class Branche
     private $couleur;
 
     /**
+    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Pedagogie", mappedBy="branche")
+    */
+    private $pedagogies;
+
+    /**
      * @var string
      *
      * @Gedmo\Slug(fields={"libelle"})
@@ -255,5 +260,50 @@ class Branche
     public function getModifieLe()
     {
         return $this->modifieLe;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->pedagogies = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add pedagogy
+     *
+     * @param \AppBundle\Entity\Pedagogie $pedagogy
+     *
+     * @return Branche
+     */
+    public function addPedagogy(\AppBundle\Entity\Pedagogie $pedagogy)
+    {
+        $this->pedagogies[] = $pedagogy;
+
+        return $this;
+    }
+
+    /**
+     * Remove pedagogy
+     *
+     * @param \AppBundle\Entity\Pedagogie $pedagogy
+     */
+    public function removePedagogy(\AppBundle\Entity\Pedagogie $pedagogy)
+    {
+        $this->pedagogies->removeElement($pedagogy);
+    }
+
+    /**
+     * Get pedagogies
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPedagogies()
+    {
+        return $this->pedagogies;
+    }
+
+    public function __toString() {
+        return $this->getLibelle();
     }
 }
