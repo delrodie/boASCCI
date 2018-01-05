@@ -44,6 +44,11 @@ class Typresentation
     private $statut;
 
     /**
+    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Presentation", mappedBy="typresentation")
+    */
+    private $presentations;
+
+    /**
      * @var string
      *
      * @Gedmo\Slug(fields={"libelle"})
@@ -284,5 +289,50 @@ class Typresentation
     public function getModifieLe()
     {
         return $this->modifieLe;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->presentations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add presentation
+     *
+     * @param \AppBundle\Entity\Presentation $presentation
+     *
+     * @return Typresentation
+     */
+    public function addPresentation(\AppBundle\Entity\Presentation $presentation)
+    {
+        $this->presentations[] = $presentation;
+
+        return $this;
+    }
+
+    /**
+     * Remove presentation
+     *
+     * @param \AppBundle\Entity\Presentation $presentation
+     */
+    public function removePresentation(\AppBundle\Entity\Presentation $presentation)
+    {
+        $this->presentations->removeElement($presentation);
+    }
+
+    /**
+     * Get presentations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPresentations()
+    {
+        return $this->presentations;
+    }
+
+    public function __toString() {
+        return $this->getLibelle();
     }
 }
