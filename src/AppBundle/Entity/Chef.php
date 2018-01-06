@@ -43,7 +43,12 @@ class Chef
      *
      * @ORM\Column(name="statut", type="boolean", nullable=true)
      */
-    private $statut;
+    private $statut; 
+
+    /**
+    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Adulte", mappedBy="chef")
+    */
+    private $adultes;
 
     /**
      * @var string
@@ -286,5 +291,50 @@ class Chef
     public function getModifieLe()
     {
         return $this->modifieLe;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->adultes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add adulte
+     *
+     * @param \AppBundle\Entity\Adulte $adulte
+     *
+     * @return Chef
+     */
+    public function addAdulte(\AppBundle\Entity\Adulte $adulte)
+    {
+        $this->adultes[] = $adulte;
+
+        return $this;
+    }
+
+    /**
+     * Remove adulte
+     *
+     * @param \AppBundle\Entity\Adulte $adulte
+     */
+    public function removeAdulte(\AppBundle\Entity\Adulte $adulte)
+    {
+        $this->adultes->removeElement($adulte);
+    }
+
+    /**
+     * Get adultes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAdultes()
+    {
+        return $this->adultes;
+    }
+
+    public function __toString() {
+        return $this->getLibelle();
     }
 }
