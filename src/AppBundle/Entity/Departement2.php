@@ -8,13 +8,13 @@ use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * Actualite
+ * Departement2
  *
- * @ORM\Table(name="actualite")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ActualiteRepository")
+ * @ORM\Table(name="departement2")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Departement2Repository")
  * @Vich\Uploadable
  */
-class Actualite
+class Departement2
 {
     /**
      * @var int
@@ -61,10 +61,10 @@ class Actualite
     private $statut;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Typactualite", inversedBy="actualites")
-     * @ORM\JoinColumn(name="typactualite_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Departement", inversedBy="departements")
+     * @ORM\JoinColumn(name="departement_id", referencedColumnName="id")
      */
-     private $typactualite;
+     private $typedepartement;
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
@@ -152,7 +152,7 @@ class Actualite
      *
      * @param string $titre
      *
-     * @return Actualite
+     * @return Departement2
      */
     public function setTitre($titre)
     {
@@ -176,7 +176,7 @@ class Actualite
      *
      * @param string $resume
      *
-     * @return Actualite
+     * @return Departement2
      */
     public function setResume($resume)
     {
@@ -200,7 +200,7 @@ class Actualite
      *
      * @param string $contenu
      *
-     * @return Actualite
+     * @return Departement2
      */
     public function setContenu($contenu)
     {
@@ -224,7 +224,7 @@ class Actualite
      *
      * @param string $tag
      *
-     * @return Actualite
+     * @return Departement2
      */
     public function setTag($tag)
     {
@@ -248,7 +248,7 @@ class Actualite
      *
      * @param boolean $statut
      *
-     * @return Actualite
+     * @return Departement2
      */
     public function setStatut($statut)
     {
@@ -260,7 +260,7 @@ class Actualite
     /**
      * Get statut
      *
-     * @return bool
+     * @return boolean
      */
     public function getStatut()
     {
@@ -272,7 +272,7 @@ class Actualite
      *
      * @param string $imageName
      *
-     * @return Actualite
+     * @return Departement2
      */
     public function setImageName($imageName)
     {
@@ -296,7 +296,7 @@ class Actualite
      *
      * @param integer $imageSize
      *
-     * @return Actualite
+     * @return Departement2
      */
     public function setImageSize($imageSize)
     {
@@ -320,7 +320,7 @@ class Actualite
      *
      * @param \DateTime $updatedAt
      *
-     * @return Actualite
+     * @return Departement2
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -340,43 +340,11 @@ class Actualite
     }
 
     /**
-     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
-     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
-     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
-     * must be able to accept an instance of 'File' as the bundle will inject one here
-     * during Doctrine hydration.
-     *
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-     *
-     * @return Post
-     */
-    public function setImageFile(File $image = null)
-    {
-        $this->imageFile = $image;
-
-        if ($image) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTimeImmutable();
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return File|null
-     */
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
-    /**
      * Set slug
      *
      * @param string $slug
      *
-     * @return Actualite
+     * @return Departement2
      */
     public function setSlug($slug)
     {
@@ -400,7 +368,7 @@ class Actualite
      *
      * @param string $publiePar
      *
-     * @return Actualite
+     * @return Departement2
      */
     public function setPubliePar($publiePar)
     {
@@ -424,7 +392,7 @@ class Actualite
      *
      * @param string $modifiePar
      *
-     * @return Actualite
+     * @return Departement2
      */
     public function setModifiePar($modifiePar)
     {
@@ -448,7 +416,7 @@ class Actualite
      *
      * @param \DateTime $publieLe
      *
-     * @return Actualite
+     * @return Departement2
      */
     public function setPublieLe($publieLe)
     {
@@ -472,7 +440,7 @@ class Actualite
      *
      * @param \DateTime $modifieLe
      *
-     * @return Actualite
+     * @return Departement2
      */
     public function setModifieLe($modifieLe)
     {
@@ -496,7 +464,7 @@ class Actualite
      *
      * @param \AppBundle\Entity\Departement $departement
      *
-     * @return Actualite
+     * @return Departement2
      */
     public function setDepartement(\AppBundle\Entity\Departement $departement = null)
     {
@@ -516,26 +484,26 @@ class Actualite
     }
 
     /**
-     * Set typactualite
+     * Set typedepartement
      *
-     * @param \AppBundle\Entity\Typactualite $typactualite
+     * @param \AppBundle\Entity\Departement $typedepartement
      *
-     * @return Actualite
+     * @return Departement2
      */
-    public function setTypactualite(\AppBundle\Entity\Typactualite $typactualite = null)
+    public function setTypedepartement(\AppBundle\Entity\Departement $typedepartement = null)
     {
-        $this->typactualite = $typactualite;
+        $this->typedepartement = $typedepartement;
 
         return $this;
     }
 
     /**
-     * Get typactualite
+     * Get typedepartement
      *
-     * @return \AppBundle\Entity\Typactualite
+     * @return \AppBundle\Entity\Departement
      */
-    public function getTypactualite()
+    public function getTypedepartement()
     {
-        return $this->typactualite;
+        return $this->typedepartement;
     }
 }

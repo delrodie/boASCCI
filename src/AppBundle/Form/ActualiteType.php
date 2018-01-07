@@ -48,7 +48,7 @@ class ActualiteType extends AbstractType
                   'allow_delete' => true,
               ))
             //->add('imageName')->add('imageSize')->add('updatedAt')->add('slug')->add('publiePar')->add('modifiePar')->add('publieLe')->add('modifieLe')
-            ->add('departement', null, array(
+            ->add('typactualite', null, array(
                 'attr'  => array(
                     'class' => 'form-control',
                 )
