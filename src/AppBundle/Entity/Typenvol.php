@@ -44,6 +44,11 @@ class Typenvol
     private $statut;
 
     /**
+    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Typenvol", mappedBy="typenvol")
+    */
+    private $envols;
+
+    /**
      * @var string
      *
      * @Gedmo\Slug(fields={"libelle"})
@@ -284,5 +289,46 @@ class Typenvol
     public function getModifieLe()
     {
         return $this->modifieLe;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->envols = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add envol
+     *
+     * @param \AppBundle\Entity\Typenvol $envol
+     *
+     * @return typenvol
+     */
+    public function addEnvol(\AppBundle\Entity\Typenvol $envol)
+    {
+        $this->envols[] = $envol;
+
+        return $this;
+    }
+
+    /**
+     * Remove envol
+     *
+     * @param \AppBundle\Entity\Typenvol $envol
+     */
+    public function removeEnvol(\AppBundle\Entity\Typenvol $envol)
+    {
+        $this->envols->removeElement($envol);
+    }
+
+    /**
+     * Get envols
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEnvols()
+    {
+        return $this->envols;
     }
 }
