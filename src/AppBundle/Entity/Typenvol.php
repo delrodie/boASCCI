@@ -331,4 +331,8 @@ class Typenvol
     {
         return $this->envols;
     }
+
+    public function __toString() {
+        return $this->getLibelle();
+    }
 }
