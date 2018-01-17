@@ -46,6 +46,11 @@ class Region
     private $statut;
 
     /**
+    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Regionale", mappedBy="region")
+    */
+    private $regionales;
+
+    /**
      * @var string
      *
      * @Gedmo\Slug(fields={"libelle"})
@@ -84,6 +89,7 @@ class Region
      * @ORM\Column(name="modifie_le", type="datetimetz", nullable=true)
      */
     private $modifieLe;
+
 
 
     /**
@@ -286,5 +292,50 @@ class Region
     public function getModifieLe()
     {
         return $this->modifieLe;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->regionales = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add regionale
+     *
+     * @param \AppBundle\Entity\Regionale $regionale
+     *
+     * @return Region
+     */
+    public function addRegionale(\AppBundle\Entity\Regionale $regionale)
+    {
+        $this->regionales[] = $regionale;
+
+        return $this;
+    }
+
+    /**
+     * Remove regionale
+     *
+     * @param \AppBundle\Entity\Regionale $regionale
+     */
+    public function removeRegionale(\AppBundle\Entity\Regionale $regionale)
+    {
+        $this->regionales->removeElement($regionale);
+    }
+
+    /**
+     * Get regionales
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRegionales()
+    {
+        return $this->regionales;
+    }
+
+    public function __toString() {
+        return $this->getLibelle();
     }
 }
