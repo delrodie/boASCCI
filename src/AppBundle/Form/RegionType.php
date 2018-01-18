@@ -26,6 +26,7 @@ class RegionType extends AbstractType
                   'attr'  => array(
                       'class' => 'form-control',
                       'autocomplete'  => 'off',
+                      'value'   => 'c9bd9b'
                   )
             ))
             ->add('statut')

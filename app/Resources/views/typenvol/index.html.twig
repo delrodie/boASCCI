@@ -74,7 +74,7 @@
                     <tr>
                       <td>{{ loop.index }}.</td>
                       <td>{{ typenvol.libelle|title }}</td>
-                      <td class="text-center"><span style="color:{{ typenvol.couleur }}"><i class="fa fa-file-picture-o"></i></span></td>
+                      <td class="text-center"><span style="color:#{{ typenvol.couleur }}"><i class="fa fa-file-picture-o"></i></span></td>
                       <td class="text-center">
                         <a href="{{ path('admin_typenvol_edit', {'slug': typenvol.slug})}}" title="Modifier la rubrique"><i class="fa fa-edit"></i></a>
                       </td>

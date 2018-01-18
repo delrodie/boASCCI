@@ -26,6 +26,7 @@ class BrancheType extends AbstractType
                   'attr'  => array(
                       'class' => 'form-control',
                       'autocomplete'  => 'off',
+                      'value'   => 'c9bd9b'
                   )
             ))
             //->add('slug')->add('publiePar')->add('modifiePar')->add('publieLe')->add('modifieLe')
