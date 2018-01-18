@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ColorType;
 
 class DepartementType extends AbstractType
 {
@@ -22,7 +23,7 @@ class DepartementType extends AbstractType
                       'autocomplete'  => 'off',
                   )
             ))
-            ->add('couleur', TextType::class, array(
+            ->add('couleur', ColorType::class, array(
                   'attr'  => array(
                       'class' => 'form-control',
                       'autocomplete'  => 'off',
