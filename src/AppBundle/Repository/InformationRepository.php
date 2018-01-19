@@ -10,4 +10,49 @@ namespace AppBundle\Repository;
  */
 class InformationRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Liste des trois dernières informations 
+     * 
+     * Author: Delrodie AMOIKON 
+     * Date: 19/01/2018 01:40
+     */
+    public function findThreeLastInfos($offset, $limit)
+    {
+        $em = $this->getEntityManager();
+        $qb = $em->createQuery('
+                    SELECT i, t
+                    FROM AppBundle:Information i
+                    LEFT JOIN i.typinfo t
+                    WHERE i.statut = :actif
+                    AND (i.datedeb >= :date OR i.datefin >= :date )
+                    ORDER BY i.datedeb ASC
+                    ')
+                    ->setFirstResult($offset)
+                    ->setMaxresults($limit)
+                    ->setParameters(array(
+                        'actif' => 1,
+                        'date'  =>  date('Y-m-d', time())
+                    ))
+                    ->getResult()
+                    ;
+        return $qb;
+    }
+
+    /**
+     * Recherche de l'information concernée par le slug
+     * 
+     * author: Delrodie AMOIKON
+     * date: 19/01/2018 02:37
+     */
+    public function findInformationBySlug($slug)
+    {
+        $qb = $this->createQueryBuilder('i')
+                    ->join('i.typinfo', 't')
+                    ->Where('i.slug = :slug')
+                    ->setMaxResults(1)
+                    ->setParameter('slug', $slug)
+                    ->getQuery()->getSingleResult();
+
+        return $qb;
+    }
 }

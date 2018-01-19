@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ info.titre }}{% endblock %}
+
+{% block media %}{% endblock %}
+
+{% block body %}
+<article class="post">
+
+
+						<div class="ariane_wrapper">
+
+							<div class="ariane">
+								<span><i class="fa fa-home"></i> <a href="{{ path('homepage')}}">Accueil</a></span>&nbsp; / 
+								<a href="#">Informations</a> /
+								<a href="#">{{ info.typinfo.libelle }}</a>
+							</div>
+						</div>
+
+						<div class="entry_media">
+							<a href="{{ asset('uploads/informations/'~ info.imageName) | imagine_filter('page') }}" class="popup_link">
+                                <img src="{{ asset('uploads/informations/'~ info.imageName) | imagine_filter('page') }}" alt="{{ info.titre }}" title="{{ info.titre }}">
+                            </a>
+						</div>
+
+						<div class="full_meta clearfix">
+							<span class="meta_format"><i class="fa fa-file-text"></i></span>
+							<span class="meta_date">{{ info.typinfo.libelle }}  {{ info.datedeb|date('d-m-Y') }} </span>
+							
+						</div>
+
+						<div class="entry_content">
+							 <h1 class="entry_title">{{ info.titre }}</h1>
+								<p class="dropcap alignJustify">{{ info.contenu|raw }}</p>
+								
+						</div>
+
+						<div class="bottom_wrapper">
+
+							<div class="entry_tags">
+								<span><i class="fa fa-tags"></i> Mots clés</span>
+                                {% for tag in info.tag|split(',') %}
+                                <a href="#">{{ tag }}</a>
+                                {% endfor %}
+							</div>
+						</div>
+
+					</article>
+
+					<div class="panel_title">
+						<div>
+						<h4><a href="blog.html">Autres informations</a></h4>
+						</div>
+					</div>
+					<div class="row">
+						{% for similaire in similaires %}
+                            <div class="col col_4_of_12">
+
+							<div class="layout_post_1">
+								<div class="item_thumb">
+									<div class="thumb_icon">
+										<a href="{{ path('fo_information_breve', {'slug': similaire.slug})}}" style="background-color: #F89406"><i class="fa fa-copy"></i></a>
+									</div>
+									<div class="thumb_hover">
+										<a href="{{ path('fo_information_breve', {'slug': similaire.slug})}}"><img src="{{ asset('uploads/informations/'~ similaire.imageName) | imagine_filter('similaire') }}" alt="{{ similaire.titre}}" class="visible animated"></a>
+									</div>
+									<div class="thumb_meta">
+									<span class="category" style="background-color: #{{ similaire.typinfo.couleur }}"><a href="#">{{ info.typinfo.libelle }}</a></span>
+									</div>
+								</div>
+								<div class="item_content">
+									<h4><a href="{{ path('fo_information_breve', {'slug': similaire.slug})}}">{{ similaire.titre }}</a></h4>
+									<div class="item_meta clearfix">
+										<span class="meta_date">{{ similaire.datedeb }}</span>
+									</div>
+									<p>{{ similaire.resume|raw }} [...]</p>
+								</div>
+							</div>
+						</div>
+                        {% endfor %}
+					</div>
+
+					<div id="comments">
+						<div class="panel_title">
+							<div>
+								<h4><a href="blog.html">Commentaires</a></h4>
+							</div>
+						</div>
+					</div>
+{% endblock %}
+
+{% block accueil %}{% endblock %}

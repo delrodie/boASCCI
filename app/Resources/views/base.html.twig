@@ -166,7 +166,7 @@
 
 		<div class="site_brand">
 
-			<a href="#">
+			<a href="{{ path('homepage')}}">
 			<img src="{{ asset('ressources/images/logo2.png')}}" alt="Logo">
 			</a>
 		</div>
@@ -174,7 +174,7 @@
 		<nav class="site_navigation" role="navigation">
 			<span class="site_navigation_toggle"><i class="fa fa-reorder"></i></span>
 			<ul class="menu">
-				<li><a href="#">Accueil<div class="subtitle">Actualités</div></a></li>
+				<li><a href="{{ path('homepage')}}">Accueil<div class="subtitle">Actualités</div></a></li>
 				<li class="menu-item-has-children"><a href="#">Qui sommes-nous?<div class="subtitle">Présentation</div></a>
 					<span class="site_sub_menu_toggle"></span>
 					<ul class="sub-menu" style="border-top-color: #F89406">
@@ -340,38 +340,11 @@
 			<div class="col col_3_of_12">
 
 				<div class="widget">
-					<div class="widget_title"><h3>Actualités</h3></div>
+					<div class="widget_title"><h3>Brèves</h3></div>
 					<div class="tb_widget_posts_big clearfix">
 
-						<div class="item clearfix">
-							<div class="item_content">
-								<h4><a href="post_single.html"><span class="format" style="background-color: #D2527F">Finances</span>Recouvrement des cotisations</a></h4>
-								<p>Aenean eu convallis elit. Quisque non felis vel tortor pellentesque consectetur vitae [...]</p>
-								<div class="item_meta clearfix">
-									<span class="meta_date">26 décembre 2017</span>
-								</div>
-							</div>
-						</div>
+						{{ render(url('fo_information'))}}
 
-						<div class="item clearfix">
-							<div class="item_content">
-								<h4><a href="post_single.html"><span class="format" style="background-color: #F89406">Necrologie</span>Obsèques du chef Gonzalès </a></h4>
-								<p>Aenean eu convallis elit. Quisque non felis vel tortor pellentesque consectetur vitae [...]</p>
-								<div class="item_meta clearfix">
-									<span class="meta_date">11 décembre 2017</span>
-								</div>
-							</div>
-						</div>
-
-						<div class="item clearfix">
-							<div class="item_content">
-								<h4><a href="post_single.html"><span class="format" style="background-color: #26A65B">Lancement</span>Lancement national à yamoussoukro</a></h4>
-								<p>Aenean eu convallis elit. Quisque non felis vel tortor pellentesque consectetur vitae [...]</p>
-								<div class="item_meta clearfix">
-									<span class="meta_date">10 octobre 2017</span>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 
@@ -498,7 +471,7 @@
 							<a href="#"><i class="fa fa-copy"></i></a>
 						</div>
 						<div class="thumb_hover">
-							<a href="#"><img src="images/branche/05.png" alt="Post"></a>
+							<a href="#"><img src="{{ asset('ressources/images/branche/05.png')}}" alt="Post"></a>
 						</div>
 					</div>
 					<div class="item_content">
@@ -512,7 +485,7 @@
 							<a href="#"><i class="fa fa-copy"></i></a>
 						</div>
 						<div class="thumb_hover">
-							<a href="#"><img src="images/branche/01.png" alt="Post"></a>
+							<a href="#"><img src="{{ asset('ressources/images/branche/01.png')}}" alt="Post"></a>
 						</div>
 					</div>
 					<div class="item_content">
@@ -529,7 +502,7 @@
 							<a href="#"><i class="fa fa-copy"></i></a>
 						</div>
 						<div class="thumb_hover">
-							<a href="#"><img src="images/branche/02.png" alt="Post"></a>
+							<a href="#"><img src="{{ asset('ressources/images/branche/02.png')}}" alt="Post"></a>
 						</div>
 					</div>
 					<div class="item_content">
@@ -546,7 +519,7 @@
 							<a href="#"><i class="fa fa-copy"></i></a>
 						</div>
 						<div class="thumb_hover">
-							<a href="#"><img src="images/branche/03.png" alt="Post"></a>
+							<a href="#"><img src="{{ asset('ressources/images/branche/03.png')}}" alt="Post"></a>
 						</div>
 					</div>
 					<div class="item_content">
@@ -563,7 +536,7 @@
 							<a href="#"><i class="fa fa-copy"></i></a>
 						</div>
 						<div class="thumb_hover">
-							<a href="#"><img src="images/branche/04.png" alt="Post"></a>
+							<a href="#"><img src="{{ asset('ressources/images/branche/04.png')}}" alt="Post"></a>
 						</div>
 					</div>
 					<div class="item_content">

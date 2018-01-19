@@ -1,58 +1,5 @@
 /*------------------------------------------------------------------------------
-[Table of contents]
-
-1. Body
-2. Typography
-3. Forms
-4. Wrapper
-5. Columns
-6. Wide slider
-7. Content slider
-8. Panel title
-9. Page title
-10. Shop
-11 Shop single
-12. Pagination
-13. Page 404
-14. Blog
-    14.1 Post layout 1
-    14.2 Post layout 2
-    14.3 Single layout
-    14.4 Multipack
-    14.5 List posts
-    14.6 List posts 1
-    14.7 List posts
-15. Top reviews
-16. Shortcodes
-    16.1 Google map
-    16.2 Popup
-    16.3 Slider
-    16.4 Head title
-    16.5 Dropcaps
-    16.6 Accordions
-    16.7 Tabs
-    16.8 Alerts
-    16.9 Buttons
-17. Header
-18. Navigation
-19. Main content
-20. General style
-21. Widgets
-    22.1 Widget authors
-    22.2 Widgets (Wordpress)
-    22.3 Widget categories (custom)
-    22.4 Widget posts big
-    22.5 Widget timeline
-    22.6 Widget tags
-    22.7 Widget socialize
-    22.8 Widget recent list
-    22.9 Widget banner 125
-23. Footer
-24. Copyright
-------------------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------------------
-    1. Body
+    ASCCI - Association des Scouts Catholiques de Côte d'Ivoire
 ------------------------------------------------------------------------------*/
 html {
     font-family: sans-serif
@@ -3503,7 +3450,7 @@ span.format {
     width: 75px;
     position: relative;
     overflow: hidden;
-    background-color: #fff;
+    background-color: transparent;
     float: left;
     margin: 0 10px 0 0
 }
