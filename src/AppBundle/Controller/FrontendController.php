@@ -39,4 +39,18 @@ class FrontendController extends Controller
             'similaires' => $similaires,
         ]);
     }
+
+    /**
+     * @Route("/partenaires", name="fo_partenaires")
+     */
+    public function listePartenairesAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $partenaires = $em->getRepository('AppBundle:Partenaire')->findBy(array('statut' => 1)); dump($partenaires);//die();
+
+        return $this->render('frontend/partenaire.html.twig',[
+            'partenaires'   => $partenaires
+        ]);
+    }
 }

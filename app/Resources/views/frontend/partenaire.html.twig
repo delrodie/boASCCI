@@ -1,0 +1,9 @@
+{% for partenaire in partenaires %}
+    
+					<div class="logo-partenaire">
+						<a href="#" target="_blank">
+						<img src="{{ vich_uploader_asset(partenaire, 'imageFile') }}" alt="{{ partenaire.nom }}">
+						</a>
+					</div>
+				
+{% endfor %}

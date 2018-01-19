@@ -2,7 +2,6 @@
 
 {% block title %}{{ info.titre }}{% endblock %}
 
-{% block media %}{% endblock %}
 
 {% block body %}
 <article class="post">
@@ -80,13 +79,74 @@
                         {% endfor %}
 					</div>
 
-					<div id="comments">
+					<!--<div id="comments">
 						<div class="panel_title">
 							<div>
 								<h4><a href="blog.html">Commentaires</a></h4>
 							</div>
 						</div>
-					</div>
+					</div>-->
 {% endblock %}
 
 {% block accueil %}{% endblock %}
+
+{% block meta %}
+        <meta name="keywords" content="{{ info.tag|raw }}"  />
+        <meta name="description" content="{{ info.resume|raw }}" />
+  	    <meta name="revisit" content="7 days" />
+  	    <meta name="revisit-after" content="7 days">
+  	    <meta name="Author" content="ASCCI-CENACOM, {{ info.publiePar|title }}">
+  	    <meta name="Copyright" content="www.scoutascci.org">
+  	    <meta name="Content-Language" content="FR">
+  	    <meta name="distribution" content="global" />
+  	    <meta name="Audience" content="All" />
+  	    <meta name="Robots" content="full">
+
+        <link rel="canonical" href="{http://scoutascci.org{{ path('fo_information_breve', {'slug': info.slug})}}" />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:type" content="Item" />
+        <meta property="og:title" content="{{ info.titre }}" />
+        <meta property="og:description" content="{{ info.resume|raw }} " />
+        <meta property="og:url" content="http://scoutascci.org{{ path('fo_information_breve', {'slug': info.slug})}}" />
+        <meta property="og:site_name" content="ASCCI" />
+        <meta property="article:section" content="Item" />
+        <meta property="article:published_time" content="{{ info.publieLe|date('Y-m-d')}}T{{ info.publieLe|date('H:i:s')}}+00:00" />
+        <meta property="article:modified_time" content="{{ info.modifieLe|date('Y-m-d')}}T{{ info.modifieLe|date('H:i:s')}}+00:00" />
+        <meta property="og:updated_time" content="{{ info.modifieLe|date('Y-m-d')}}T{{ info.modifieLe|date('H:i:s')}}+00:00" />
+        <meta property="og:image" content="http://scoutascci.org{{ vich_uploader_asset(info, 'imageFile') }}" />
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:description" content="{{ info.resume|raw }}"/>
+        <meta name="twitter:title" content="{{ info.titre }}"/>
+        <meta name="twitter:domain" content="ASCCI"/>
+        <meta name="twitter:image:src" content="http://scoutascci.org{{ vich_uploader_asset(info, 'imageFile') }}"/>
+        <script type="application/ld+json">
+    		{
+    		  "@context": "http://schema.org",
+    		  "@type": "NewsArticle",
+    		  "mainEntityOfPage": {
+    		    "@type": "WebPage",
+    		    "@id": "https://scoutascci.org"
+    		  },
+    		  "headline": "{{ info.titre }}",
+    		  "image": [
+    		    "http://scoutascci.org{{ vich_uploader_asset(info, 'imageFile') }}",
+    		    "http://scoutascci.org/ressources/images/logo2.png"
+    		   ],
+    		  "datePublished": "{{ info.publieLe|date('Y-m-d')}}T{{ info.publieLe|date('H:i:s')}}+00:00",
+    		  "dateModified": "{{ info.modifieLe|date('Y-m-d')}}T{{ info.modifieLe|date('H:i:s')}}+00:00",
+    		  "author": {
+    		    "@type": "Person",
+    		    "name": "Delrodie AMOIKON"
+    		  },
+    		   "publisher": {
+    		    "@type": "Organization",
+    		    "name": "{{ info.titre }}",
+    		    "logo": {
+    		      "@type": "ImageObject",
+    		      "url": "http://scoutascci.org{{ vich_uploader_asset(info, 'imageFile') }}"
+    		    }
+    		  },
+    		  "description": "{{ info.resume|raw }}"
+    		}
+    		</script>
+        {% endblock %}
