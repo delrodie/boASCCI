@@ -5,80 +5,31 @@
 <div class="content_slider">
 					<ul>
 
+						{% for slider in sliders %}
 						<li>
-							<a href="#"><img src="images/slider/01.jpg" alt="Slider"></a>
+							<a href="#"><img src="{{ vich_uploader_asset(slider, 'imageFile') }}" alt="{{ slider.legende }}"></a>
 							<div class="slider_caption">
 								<div class="thumb_meta">
-									<span class="category" style="background-color: #2ECC71"><a href="#">Formation </a></span>
-									<span class="category"><a href="#">Programme des Jeunes</a></span>
+									<span class="category" style="background-color: #2ECC71"><a href="#">{{ slider.type1 }} </a></span>
+									<span class="category"><a href="#">{{ slider.type2 }}</a></span>
 								</div>
 								<div class="thumb_link">
-									<h3><a href="#">Bien se former pour éduquer, et donner la chance à chaque enfant et chanque jeune</a></h3>
+									<h3><a href="#">{{ slider.legende }}</a></h3>
 								</div>
 							</div>
 						</li>
+						{% endfor %}
+
 
 						<li>
-							<a href="#"><img src="images/slider/02.jpg" alt="Slider"></a>
-							<div class="slider_caption">
-								 <div class="thumb_meta">
-								 	<span class="category" style="background-color: #D2527F"><a href="#">International </a></span>
-									<span class="category"><a href="#">Grand Évenements</a></span>
-								</div>
-								<div class="thumb_link">
-									<h3><a href="#">La patrouille du monde</a></h3>
-								</div>
-							</div>
-						</li>
-
-						<li>
-							<a href="#"><img src="images/slider/03.jpg" alt="Slider"></a>
+							<a href="#"><img src="{{ vich_uploader_asset(slideUnique, 'imageFile') }}" alt="{{ slideUnique.legende }}"></a>
 							<div class="slider_caption">
 								<div class="thumb_meta">
-									<span class="category" style="background-color: #2574A9"><a href="#">Animation Territoriale</a></span>
-									<span class="category"><a href="#">Développement Communaitaire</a></span>
+									<span class="category" style="background-color: #2574A9"><a href="#">{{ slideUnique.type1 }}</a></span>
+									<span class="category"><a href="#">{{ slideUnique.type2}}</a></span>
 								</div>
 								<div class="thumb_link">
-									<h3><a href="#">Assurer notre développement</a></h3>
-								</div>
-							</div>
-						</li>
-
-						<li>
-							<a href="#"><img src="images/slider/04.jpg" alt="Slider"></a>
-							<div class="slider_caption">
-								<div class="thumb_meta">
-									<span class="category" style="background-color: #2574A9"><a href="#">Finances </a></span>
-									<span class="category"><a href="#">Finances </a></span>
-								</div>
-								<div class="thumb_link">
-									<h3><a href="#">Assurer notre développement</a></h3>
-								</div>
-							</div>
-						</li>
-
-						<li>
-							<a href="#"><img src="images/slider/05.jpg" alt="Slider"></a>
-							<div class="slider_caption">
-								<div class="thumb_meta">
-									<span class="category" style="background-color: #2574A9"><a href="#">CENACOM </a></span>
-									<span class="category"><a href="#">Administration & Qualité</a></span>
-								</div>
-								<div class="thumb_link">
-									<h3><a href="#">Se voir de tous et se faire entendre par tous</a></h3>
-								</div>
-							</div>
-						</li>
-
-						<li>
-							<a href="#"><img src="images/slider/06.jpg" alt="Slider"></a>
-							<div class="slider_caption">
-								<div class="thumb_meta">
-									<span class="category" style="background-color: #2574A9"><a href="#">Animation Territoriale</a></span>
-									<span class="category"><a href="#">Développement Communaitaire</a></span>
-								</div>
-								<div class="thumb_link">
-									<h3><a href="#">Assurer notre développement</a></h3>
+									<h3><a href="#">{{ slideUnique.legende }}</a></h3>
 								</div>
 							</div>
 						</li>
@@ -101,124 +52,35 @@
 										<a href="#" style="background-color: #446CB3"><i class="fa fa-copy"></i></a>
 									</div>
 									<div class="thumb_hover">
-										<a href="#"><img src="images/croire/01.jpg" alt="Post"></a>
+										<a href="#"><img src="{{ asset('uploads/envols/'~ envolIntro.imageName) | imagine_filter('envolIntro') }}" alt="{{ envolIntro.titre }}"></a>
 									</div>
 								</div>
 								<div class="item_content">
 									<h4><a href="#">Y croire avec Tardy</a></h4>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-									tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-									quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-									consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-									cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-									proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+									<p>{{ envolIntro.resume|raw }}</p>
 								 </div>
 							</div>
 
 							<div class="list_posts">
 
+								{% for envol in envols %}
 								<div class="post clearfix">
 									<div class="item_thumb">
 										<div class="thumb_icon">
 											<a href="#" style="background-color: #4183D7"><i class="fa fa-copy"></i></a>
 										</div>
 										<div class="thumb_hover">
-											<a href="#"><img src="images/croire/01.jpg" alt="Post"></a>
+											<a href="#"><img src="{{ asset('uploads/envols/'~ envol.imageName) | imagine_filter('envol') }}" alt="{{ envol.titre }}"></a>
 										</div>
 									</div>
 									<div class="item_content">
-										<h4><a href="#">Bien se faire former pour éduquer</a></h4>
+										<h4><a href="#">{{ envol.titre }}</a></h4>
 										<div class="item_meta clearfix">
-											<span class="">Formation</span>
+											<span class="">{{ envol.typenvol.libelle }}</span>
 										</div>
 									</div>
-								</div>
-
-								<div class="post clearfix">
-									<div class="item_thumb">
-										<div class="thumb_icon">
-											<a href="#"><i class="fa fa-copy"></i></a>
-										</div>
-										<div class="thumb_hover">
-											<a href="#"><img src="images/croire/01.jpg" alt="Post"></a>
-										</div>
-									</div>
-									<div class="item_content">
-										<h4><a href="#">Donnerla chance à chaque enfant et à chaque jeune</a></h4>
-										<div class="item_meta clearfix">
-											<span class="">Programme éducatif</span>
-										</div>
-									</div>
-								</div>
-
-								<div class="post clearfix">
-									<div class="item_thumb">
-										<div class="thumb_icon">
-											<a href="#" style="background-color: #4183D7"><i class="fa fa-copy"></i></a>
-										</div>
-										<div class="thumb_hover">
-											<a href="#"><img src="images/croire/02.jpg" alt="Post"></a>
-										</div>
-									</div>
-									<div class="item_content">
-										 <h4><a href="#">La patrouille du monde</a></h4>
-										<div class="item_meta clearfix">
-											<span class="">Internationnal</span>
-										</div>
-									</div>
-								</div>
-
-								<div class="post clearfix">
-									<div class="item_thumb">
-										<div class="thumb_icon">
-											<a href="" style="background-color: #2ECC71"><i class="fa fa-copy"></i></a>
-										</div>
-										<div class="thumb_hover">
-											<a href=""><img src="images/croire/02.jpg" alt="Post"></a>
-										</div>
-									</div>
-									<div class="item_content">
-										<h4><a href="post_single.html">Assurer notre développement</a></h4>
-										<div class="item_meta clearfix">
-											<span class="">Annimation territoriale</span>
-										</div>
-									</div>
-								</div>
-
-								<div class="post clearfix">
-									<div class="item_thumb">
-										<div class="thumb_icon">
-											<a href="#" style="background-color: #4183D7"><i class="fa fa-copy"></i></a>
-										</div>
-										<div class="thumb_hover">
-											<a href="#"><img src="images/croire/02.jpg" alt="Post"></a>
-										</div>
-									</div>
-									<div class="item_content">
-										<h4><a href="post_single.html">Se faire voir de tous et se faire entendre par tous</a></h4>
-										<div class="item_meta clearfix">
-											<span class="">Communication et Marketing</span>
-										</div>
-									</div>
-								</div>
-
-								<div class="post clearfix">
-									<div class="item_thumb">
-										<div class="thumb_icon">
-											<a href="#" style="background-color: #4183D7"><i class="fa fa-copy"></i></a>
-										</div>
-										<div class="thumb_hover">
-											<a href="#"><img src="images/croire/02.jpg" alt="Post"></a>
-										</div>
-									</div>
-									<div class="item_content">
-										<h4><a href="post_single.html">Être un partenaire utile pour la société</a></h4>
-										<div class="item_meta clearfix">
-											<span class="">Développement communautaire et partenariat public privé</span>
-										</div>
-									</div>
-								</div>
-
+								</div>	
+								{% endfor %}
 							</div>
 						</div>
 					</div>
@@ -227,78 +89,34 @@
 				<div class="row">
 					<div class="panel_title" style="padding: 0 15px">
 						<div>
-							<h4><a href="#">Infos Nations</a></h4>
+							<h4><a href="#">La Nationale</a></h4>
 						</div>
 					</div>
+					{% for nationale in nationales %}
 					<div class="col col_4_of_12">
 
 						<div class="layout_post_1">
 							<div class="item_thumb">
 								<div class="thumb_icon">
-									<a href="#" style="background-color: #F89406"><i class="fa fa-copy"></i></a>
+									<a href="{{  path('fo_nationale', {'slug': nationale.slug}) }}" style="background-color: #{{ nationale.typactualite.couleur }}"><i class="fa fa-copy"></i></a>
 								</div>
 								<div class="thumb_hover">
-									<a href="#"><img src="images/croire/01.jpg" alt="Post"></a>
+									<a href="{{  path('fo_nationale', {'slug': nationale.slug}) }}"><img src="{{ asset('uploads/actualites/'~ nationale.imageName) | imagine_filter('actualite') }}" alt="{{ nationale.titre }}"></a>
 								</div>
 								<div class="thumb_meta">
-									<span class="category" style="background-color: #F89406"><a href="#">Louveteaux</a></span>
+									<span class="category" style="background-color: #{{ nationale.typactualite.couleur }}"><a href="#">{{ nationale.typactualite.libelle }}</a></span>
 								</div>
 							</div>
 							<div class="item_content">
-								<h4><a href="post_single.html">Lancement branche louveteau</a></h4>
+								<h4><a href="{{  path('fo_nationale', {'slug': nationale.slug}) }}">{{ nationale.titre }}</a></h4>
 								<div class="item_meta clearfix">
-									<span class="meta_date">25 octrobre 2017</span>
+									<span class="meta_date">{{ nationale.publieLe|date('d-m-Y')}}</span>
 								</div>
-								<p>In et consequat nisi, at arcu. In hac habitasse platea dictumst. Fusce vestibulum tincidunt magna vitae scelerisque. Pellentesque venenatis velit ut feugia [...]</p>
+								<p>{{ nationale.resume|raw }}[...]</p>
 							</div>
 						</div>
-					</div>
-					<div class="col col_4_of_12">
-
-					<div class="layout_post_1">
-						<div class="item_thumb">
-							<div class="thumb_icon">
-								<a href="#" style="background-color: #87D37C"><i class="fa fa-copy"></i></a>
-							</div>
-							<div class="thumb_hover">
-								<a href="#"><img src="images/croire/01.jpg" alt="Post"></a>
-							</div>
-							<div class="thumb_meta">
-								<span class="category" style="background-color: #87D37C"><a href="#">Eclaireurs</a></span>
-							</div>
-						</div>
-						<div class="item_content">
-							<h4><a href="#">Lancement branche eclaireur</a></h4>
-							<div class="item_meta clearfix">
-							<span class="meta_date">27 novembre 2017</span>
-							</div>
-							<p>In et consequat nisi, at arcu. In hac habitasse platea dictumst. Fusce vestibulum tincidunt magna vitae scelerisque. Pellentesque venenatis velit ut feugia [...]</p>
-						</div>
-					</div>
-					</div>
-					<div class="col col_4_of_12">
-
-					<div class="layout_post_1">
-						<div class="item_thumb">
-							<div class="thumb_icon">
-								<a href="#" style="background-color: #D2527F"><i class="fa fa-copy"></i></a>
-							</div>
-							<div class="thumb_hover">
-								<a href="#"><img src="images/croire/01.jpg" alt="Post"></a>
-							</div>
-							<div class="thumb_meta">
-								<span class="category" style="background-color: #D2527F"><a href="#">Annimation territoriale</a></span>
-							</div>
-						</div>
-						<div class="item_content">
-							<h4><a href="#">Visite dans la région de Bouake</a></h4>
-							<div class="item_meta clearfix">
-								<span class="meta_date">27 décembre 2017</span>
-							</div>
-							<p>In et consequat nisi, at arcu. In hac habitasse platea dictumst. Fusce vestibulum tincidunt magna vitae scelerisque. Pellentesque venenatis velit ut feugia [...]</p>
-						</div>
-					</div>
-					</div>
+					</div>	
+					{% endfor %}
 
 				</div>
 {% endblock %}
@@ -310,98 +128,31 @@
 			</div>
 		</div>
 		<div class="row">
+			{% for regionale in regionales %}
 			<div class="col col_3_of_12">
-
 				<div class="layout_post_1">
 					<div class="item_thumb">
 						<div class="thumb_icon">
-							<a href="#" style="background-color: #F89406"><i class="fa fa-copy"></i></a>
+							<a href="{{  path('fo_regionale', {'slug': regionale.slug}) }}" style="background-color: #{{ regionale.region.couleur}}"><i class="fa fa-copy"></i></a>
 						</div>
 						<div class="thumb_hover">
-							<a href="#"><img src="images/croire/01.jpg" alt="Post"></a>
+							<a href="{{  path('fo_regionale', {'slug': regionale.slug}) }}"><img src="{{ asset('uploads/regionales/'~ regionale.imageName) | imagine_filter('actualite') }}" alt="{{ regionale.titre}}"></a>
 						</div>
 						<div class="thumb_meta">
-							<span class="category" style="background-color: #F89406"><a href="#">Abidjan</a></span>
+							<span class="category" style="background-color: #{{regionale.region.couleur}}"><a href="#">{{ regionale.region.libelle }}</a></span>
 						</div>
 					</div>
 					<div class="item_content">
-						<h4><a href="post_single.html">Lancement Abidjan</a></h4>
+						<h4><a href="{{  path('fo_regionale', {'slug': regionale.slug}) }}">{{ regionale.titre }}</a></h4>
 						<div class="item_meta clearfix">
-							<span class="meta_date">25 octrobre 2017</span>
+							<span class="meta_date">{{ regionale.publieLe|date('d-m-Y')}}</span>
 						</div>
-						<p>In et consequat nisi, at arcu. In hac habitasse platea dictumst. Fusce vestibulum tincidunt magna vitae scelerisque. Pellentesque venenatis velit ut feugia [...]</p>
+						<p>{{ regionale.resume|raw }} [...]</p>
 					</div>
 				</div>
-			</div>
-			<div class="col col_3_of_12">
-
-			<div class="layout_post_1">
-				<div class="item_thumb">
-					<div class="thumb_icon">
-						<a href="#" style="background-color: #87D37C"><i class="fa fa-copy"></i></a>
-					</div>
-					<div class="thumb_hover">
-						<a href="#"><img src="images/croire/01.jpg" alt="Post"></a>
-					</div>
-					<div class="thumb_meta">
-						<span class="category" style="background-color: #87D37C"><a href="#">Yamoussoukro</a></span>
-					</div>
-				</div>
-				<div class="item_content">
-					<h4><a href="#">Investiture</a></h4>
-					<div class="item_meta clearfix">
-					<span class="meta_date">27 novembre 2017</span>
-					</div>
-					<p>In et consequat nisi, at arcu. In hac habitasse platea dictumst. Fusce vestibulum tincidunt magna vitae scelerisque. Pellentesque venenatis velit ut feugia [...]</p>
-				</div>
-			</div>
-			</div>
-			<div class="col col_3_of_12">
-
-			<div class="layout_post_1">
-				<div class="item_thumb">
-					<div class="thumb_icon">
-						<a href="#" style="background-color: #D2527F"><i class="fa fa-copy"></i></a>
-					</div>
-					<div class="thumb_hover">
-						<a href="#"><img src="images/croire/01.jpg" alt="Post"></a>
-					</div>
-					<div class="thumb_meta">
-						<span class="category" style="background-color: #D2527F"><a href="#">Korhogo</a></span>
-					</div>
-				</div>
-				<div class="item_content">
-					<h4><a href="#">Conseil régional</a></h4>
-					<div class="item_meta clearfix">
-						<span class="meta_date">27 décembre 2017</span>
-					</div>
-					<p>In et consequat nisi, at arcu. In hac habitasse platea dictumst. Fusce vestibulum tincidunt magna vitae scelerisque. Pellentesque venenatis velit ut feugia [...]</p>
-				</div>
-			</div>
-			</div>
-			<div class="col col_3_of_12">
-
-			<div class="layout_post_1">
-				<div class="item_thumb">
-					<div class="thumb_icon">
-						<a href="#" style="background-color: #D2527F"><i class="fa fa-copy"></i></a>
-					</div>
-					<div class="thumb_hover">
-						<a href="#"><img src="images/croire/01.jpg" alt="Post"></a>
-					</div>
-					<div class="thumb_meta">
-						<span class="category" style="background-color: #D2527F"><a href="#">Bondoukou</a></span>
-					</div>
-				</div>
-				<div class="item_content">
-					<h4><a href="#">Titularisation</a></h4>
-					<div class="item_meta clearfix">
-						<span class="meta_date">27 décembre 2017</span>
-					</div>
-					<p>In et consequat nisi, at arcu. In hac habitasse platea dictumst. Fusce vestibulum tincidunt magna vitae scelerisque. Pellentesque venenatis velit ut feugia [...]</p>
-				</div>
-			</div>
-			</div>
+			</div>	
+			{% endfor %}
+			
 		</div>
 
 
@@ -412,74 +163,29 @@
 			</div>
 		</div>
 		<div class="row">
+			{% for internationale in internationales %}
 			<div class="col col_4_of_12">
-
 				<div class="layout_post_1">
 					<div class="item_thumb">
 						<div class="thumb_icon">
-							<a href="#" style="background-color: #F89406"><i class="fa fa-copy"></i></a>
+							<a href="{{ path('fo_internationale', {'slug': internationale.slug}) }}" style="background-color: #F89406"><i class="fa fa-copy"></i></a>
 						</div>
 						<div class="thumb_hover">
-							<a href="#"><img src="images/croire/01.jpg" alt="Post"></a>
+							<a href="{{ path('fo_internationale', {'slug': internationale.slug}) }}"><img src="{{ asset('uploads/internationales/'~ internationale.imageName) | imagine_filter('actualite') }}" alt="{{ internationale.titre}}"></a>
 						</div>
 						<div class="thumb_meta">
-							<span class="category" style="background-color: #F89406"><a href="#">Abidjan</a></span>
+							<span class="category" style="background-color: #F89406"><a href="#">{{ internationale.domaine }}</a></span>
 						</div>
 					</div>
 					<div class="item_content">
-						<h4><a href="post_single.html">Lancement Abidjan</a></h4>
+						<h4><a href="{{ path('fo_internationale', {'slug': internationale.slug}) }}">{{ internationale.titre }}</a></h4>
 						<div class="item_meta clearfix">
-							<span class="meta_date">25 octrobre 2017</span>
+							<span class="meta_date">{{ internationale.publieLe|date('d-m-Y')}}</span>
 						</div>
-						<p>In et consequat nisi, at arcu. In hac habitasse platea dictumst. Fusce vestibulum tincidunt magna vitae scelerisque. Pellentesque venenatis velit ut feugia [...]</p>
+						<p>{{ internationale.resume|raw }} [...]</p>
 					</div>
 				</div>
-			</div>
-			<div class="col col_4_of_12">
-
-			<div class="layout_post_1">
-				<div class="item_thumb">
-					<div class="thumb_icon">
-						<a href="#" style="background-color: #87D37C"><i class="fa fa-copy"></i></a>
-					</div>
-					<div class="thumb_hover">
-						<a href="#"><img src="images/croire/01.jpg" alt="Post"></a>
-					</div>
-					<div class="thumb_meta">
-						<span class="category" style="background-color: #87D37C"><a href="#">Yamoussoukro</a></span>
-					</div>
-				</div>
-				<div class="item_content">
-					<h4><a href="#">Investiture</a></h4>
-					<div class="item_meta clearfix">
-					<span class="meta_date">27 novembre 2017</span>
-					</div>
-					<p>In et consequat nisi, at arcu. In hac habitasse platea dictumst. Fusce vestibulum tincidunt magna vitae scelerisque. Pellentesque venenatis velit ut feugia [...]</p>
-				</div>
-			</div>
-			</div>
-			<div class="col col_4_of_12">
-
-				<div class="layout_post_1">
-				<div class="item_thumb">
-					<div class="thumb_icon">
-						<a href="#" style="background-color: #D2527F"><i class="fa fa-copy"></i></a>
-					</div>
-					<div class="thumb_hover">
-						<a href="#"><img src="images/croire/01.jpg" alt="Post"></a>
-					</div>
-					<div class="thumb_meta">
-						<span class="category" style="background-color: #D2527F"><a href="#">Korhogo</a></span>
-					</div>
-				</div>
-				<div class="item_content">
-					<h4><a href="#">Conseil régional</a></h4>
-					<div class="item_meta clearfix">
-						<span class="meta_date">27 décembre 2017</span>
-					</div>
-					<p>In et consequat nisi, at arcu. In hac habitasse platea dictumst. Fusce vestibulum tincidunt magna vitae scelerisque. Pellentesque venenatis velit ut feugia [...]</p>
-				</div>
-				</div>
-			</div>
+			</div>	
+			{% endfor %}
 		</div>
 {% endblock %}

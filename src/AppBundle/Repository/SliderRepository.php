@@ -10,4 +10,49 @@ namespace AppBundle\Repository;
  */
 class SliderRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Liste des cinq premiers slides 
+     * 
+     * author: Delrodie AMOIKON 
+     * date: 19/01/2018 17:40
+     */
+    public function findSlideStandard($offset, $limit)
+    {
+        $em = $this->getEntityManager();
+        $qb = $em->createQuery('
+                    SELECT s
+                    FROM AppBundle:Slider s
+                    WHERE s.statut = :actif
+                    ORDER BY s.id ASC
+                ')
+                ->setFirstResult($offset)
+                ->setMaxResults($limit)
+                ->setParameter('actif', 1)
+                ->getResult();
+                ;
+        return $qb;
+    }
+
+    /**
+     * Le dernier slide actif 
+     * 
+     * author: Delrodie AMOIKON
+     * date: 19/01/2018 17:51
+     */
+    public function findOneSlide($offset, $limit)
+    {
+        $qb = $this->createQueryBuilder('s')
+                    ->where('s.statut = :actif')
+                    ->andWhere('s.datedebut <= :date')
+                    ->andWhere('s.datefin >= :date')
+                    ->orderBy('s.datefin', 'ASC')
+                    ->setFirstResult($offset)
+                    ->setMaxresults($limit)
+                    ->setParameters(array(
+                        'actif' => 1,
+                        'date'  => date('Y-m-d', time())
+                    ))
+                    ->getQuery()->getSingleResult();
+        return $qb;
+    }
 }

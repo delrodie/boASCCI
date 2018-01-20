@@ -177,12 +177,7 @@
 				<li><a href="{{ path('homepage')}}">Accueil<div class="subtitle">Actualités</div></a></li>
 				<li class="menu-item-has-children"><a href="#">Qui sommes-nous?<div class="subtitle">Présentation</div></a>
 					<span class="site_sub_menu_toggle"></span>
-					<ul class="sub-menu" style="border-top-color: #F89406">
-						<li><a href="#">Notre histoire</a></li>
-						<li><a href="#">Notre identité</a></li>
-						<li><a href="#">Notre vision</a></li>
-						<li><a href="#">Notre équipe dirigeante</a></li>
-					</ul>
+					{{ render(url('menu_presentation'))}}
 				</li>
 				<li class="menu-item-has-children has_dt_mega_menu"><a href="#">Notre pédagogie<div class="subtitle">Nos jeunes</div></a>
 					<span class="site_sub_menu_toggle"></span>
@@ -294,13 +289,9 @@
 				</li>
 				<li class="menu-item-has-children"><a href="#">Ressources adultes<div class="subtitle">Nos chefs</div></a>
 					<span class="site_sub_menu_toggle"></span>
-					<ul class="sub-menu" style="border-top-color: #F89406">
-						<li><a href="#">Les bénévoles</a></li>
-						<li><a href="#">Les permanents</a></li>
-						<li><a href="#">Les animateurs occasionnels</a></li>
-					</ul>
+					{{ render(url('menu_chef'))}}
 				</li>
-				<li class="menu-item-has-children"><a href="#">Notre couverture<div class="subtitle"></div></a>
+				<li class="menu-item-has-children"><a href="#">Notre couverture<div class="subtitle">Nos régions</div></a>
 					<span class="site_sub_menu_toggle"></span>
 					<ul class="sub-menu" style="border-top-color: #F89406">
 						<li><a href="#">Cartographie</a></li>
@@ -308,15 +299,15 @@
 				</li>
 				<li><a href="#">Contact<div class="subtitle">Nous joindre</div></a></li>				
 				<li class="menu-item-has-children"><a href="#">
-					<img src="images/icon-flag.png" alt=""><div class="subtitle"></div></a>
+					<img src="{{('ressources/images/icon-flag.png')}}" alt=""><div class="subtitle"></div></a>
 					<span class="site_sub_menu_toggle"></span>
 					<div class="cart_content">
 						<div class="widget_shopping_cart_content">
 							<p class="total" style="text-align: right;">
-							<a href="#"><img src="images/icon-an.png" alt=""> Anglais</a>
+							<a href="#"><img src="{{('ressources/images/icon-an.png')}}" alt=""> Anglais</a>
 							</p>
 							<p class="total" style="text-align: right;">
-							<a href="#"><img src="images/icon-fr2.png" alt=""> Français</a>
+							<a href="#"><img src="{{('ressources/images/icon-fr2.png')}}" alt=""> Français</a>
 							</p>
 						</div>
 					</div>

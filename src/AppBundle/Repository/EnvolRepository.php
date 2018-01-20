@@ -10,4 +10,36 @@ namespace AppBundle\Repository;
  */
 class EnvolRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Recherche de l'introduction de l'envol
+     * 
+     * author: Delrodie AMOIKON
+     * date: 19/01/2018 23:14
+     */
+    public function findOneEnvol($offset, $limit)
+    {
+        $qb = $this->createQueryBuilder('e')
+                    ->orderBy('e.id', 'ASC')
+                    ->setFirstResult($offset)
+                    ->setMaxResults($limit)
+                    ->getQuery()->getSingleResult()
+                    ;
+        return $qb;
+    }
+
+    /**
+     * Liste des envols autres que 1
+     * 
+     * author: Delrodie AMOIKON
+     * date: 20/01/2018 00:24
+     */
+    public function findEnvol()
+    {
+        return $qb = $this->createQuerybuilder('e')
+                            ->where('e.id > :id')
+                            ->setParameter('id', 1)
+                            ->getQuery()
+                            ->getResult()
+        ;
+    }
 }
