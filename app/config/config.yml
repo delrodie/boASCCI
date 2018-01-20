@@ -109,6 +109,105 @@ vich_uploader:
             delete_on_update:   true
             delete_on_remove:   true
 
+        information_image:
+            uri_prefix:         /uploads/informations
+            upload_destination: '%kernel.root_dir%/../web/uploads/informations'
+            namer: vich_uploader.namer_uniqid
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        actualite_image:
+            uri_prefix:         /uploads/actualites
+            upload_destination: '%kernel.root_dir%/../web/uploads/actualites'
+            namer: vich_uploader.namer_uniqid
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        slider_image:
+            uri_prefix:         /uploads/sliders
+            upload_destination: '%kernel.root_dir%/../web/uploads/sliders'
+            namer: vich_uploader.namer_uniqid
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        presentation_image:
+            uri_prefix:         /uploads/presentations
+            upload_destination: '%kernel.root_dir%/../web/uploads/presentations'
+            namer: vich_uploader.namer_uniqid
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        pedagogie_image:
+            uri_prefix:         /uploads/pedagogies
+            upload_destination: '%kernel.root_dir%/../web/uploads/pedagogies'
+            namer: vich_uploader.namer_uniqid
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        adulte_image:
+            uri_prefix:         /uploads/adultes
+            upload_destination: '%kernel.root_dir%/../web/uploads/adultes'
+            namer: vich_uploader.namer_uniqid
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        departement_image:
+            uri_prefix:         /uploads/departements
+            upload_destination: '%kernel.root_dir%/../web/uploads/departements'
+            namer: vich_uploader.namer_uniqid
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        envol_image:
+            uri_prefix:         /uploads/envols
+            upload_destination: '%kernel.root_dir%/../web/uploads/envols'
+            namer: vich_uploader.namer_uniqid
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        regionale_image:
+            uri_prefix:         /uploads/regionales
+            upload_destination: '%kernel.root_dir%/../web/uploads/regionales'
+            namer: vich_uploader.namer_uniqid
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        internationale_image:
+            uri_prefix:         /uploads/internationales
+            upload_destination: '%kernel.root_dir%/../web/uploads/internationales'
+            namer: vich_uploader.namer_uniqid
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        partenaire_image:
+            uri_prefix:         /uploads/partenaires
+            upload_destination: '%kernel.root_dir%/../web/uploads/partenaires'
+            namer: vich_uploader.namer_uniqid
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
 liip_imagine:
     resolvers:
         default:
@@ -138,6 +237,56 @@ liip_imagine:
             filters:
                 relative_resize:
                     widen: 150
+
+        page:
+            quality: 100
+            filters:
+                # create a thumbnail: set size to 120x90 and use the "outbound" mode
+                # to crop the image when the size ratio of the input differs
+                thumbnail: { size: [850, 510], mode: outbound }
+                # create a 2px black border: center the thumbnail on a black background
+                # 4px larger to create a 2px border around the final image
+                background: { size: [850, 510], position: center, color: '#ffffff'}
+
+        similaire:
+            quality: 100
+            filters:
+                # create a thumbnail: set size to 120x90 and use the "outbound" mode
+                # to crop the image when the size ratio of the input differs
+                thumbnail: { size: [500, 300], mode: outbound }
+                # create a 2px black border: center the thumbnail on a black background
+                # 4px larger to create a 2px border around the final image
+                background: { size: [500, 300], position: center, color: '#ffffff'}
+
+        envolIntro:
+            quality: 100
+            filters:
+                # create a thumbnail: set size to 120x90 and use the "outbound" mode
+                # to crop the image when the size ratio of the input differs
+                thumbnail: { size: [500, 300], mode: inset }
+                # create a 2px black border: center the thumbnail on a black background
+                # 4px larger to create a 2px border around the final image
+                background: { size: [500, 300], position: center, color: '#ffffff'}
+
+        envol:
+            quality: 100
+            filters:
+                # create a thumbnail: set size to 120x90 and use the "outbound" mode
+                # to crop the image when the size ratio of the input differs
+                thumbnail: { size: [500, 500], mode: inset }
+                # create a 2px black border: center the thumbnail on a black background
+                # 4px larger to create a 2px border around the final image
+                background: { size: [500, 500], position: center, color: '#ffffff'}
+
+        actualite:
+            quality: 100
+            filters:
+                # create a thumbnail: set size to 120x90 and use the "outbound" mode
+                # to crop the image when the size ratio of the input differs
+                thumbnail: { size: [500, 300], mode: outbound }
+                # create a 2px black border: center the thumbnail on a black background
+                # 4px larger to create a 2px border around the final image
+                background: { size: [500, 300], position: center, color: '#ffffff'}
 
 ivory_ck_editor:
     default_config: default

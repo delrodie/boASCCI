@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Typactualite</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ typactualite.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ typactualite.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Couleur</th>
+                <td>{{ typactualite.couleur }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{% if typactualite.statut %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ typactualite.slug }}</td>
+            </tr>
+            <tr>
+                <th>Publiepar</th>
+                <td>{{ typactualite.publiePar }}</td>
+            </tr>
+            <tr>
+                <th>Modifiepar</th>
+                <td>{{ typactualite.modifiePar }}</td>
+            </tr>
+            <tr>
+                <th>Publiele</th>
+                <td>{{ typactualite.publieLe }}</td>
+            </tr>
+            <tr>
+                <th>Modifiele</th>
+                <td>{{ typactualite.modifieLe }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_typactualite_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_typactualite_edit', { 'id': typactualite.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% for info in infos %}
+                        <div class="item clearfix">
+							<div class="item_content">
+								<h4><a href="{{ path('fo_information_breve', {'slug': info.slug})}}"><span class="format" style="background-color: #{{ info.typinfo.couleur}}">{{ info.typinfo.libelle}}</span>{{ info.titre }}</a></h4>
+								<p>{{ info.resume }}[...]</p>
+								<div class="item_meta clearfix">
+									<span class="meta_date">{{ info.datedeb|date('d/m/Y') }}</span>
+								</div>
+							</div>
+						</div>
+{% endfor %}   

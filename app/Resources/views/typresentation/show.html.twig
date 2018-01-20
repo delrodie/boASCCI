@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Typresentation</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ typresentation.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ typresentation.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Couleur</th>
+                <td>{{ typresentation.couleur }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{% if typresentation.statut %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ typresentation.slug }}</td>
+            </tr>
+            <tr>
+                <th>Publiepar</th>
+                <td>{{ typresentation.publiePar }}</td>
+            </tr>
+            <tr>
+                <th>Modifiepar</th>
+                <td>{{ typresentation.modifiePar }}</td>
+            </tr>
+            <tr>
+                <th>Publiele</th>
+                <td>{{ typresentation.publieLe }}</td>
+            </tr>
+            <tr>
+                <th>Modifiele</th>
+                <td>{{ typresentation.modifieLe }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_typresentation_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_typresentation_edit', { 'id': typresentation.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

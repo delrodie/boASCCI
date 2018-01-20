@@ -1,13 +1,594 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+
+<head>
+	<title>{% block title %}ASCCI :: Association des Scouts Catholiques de Côte d'Ivoire{% endblock %}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link rel="shortcut icon" href="{{ asset('backoffice/img/favicon.ico')}}">
+
+    {% block meta %}
+        <meta name="keywords" content="SCOUT, OMMS, ASCCI, scoutisme, abidjan, cote d'ivoire, paroisse, diocese"  />
+        <meta name="description" content="L'Association des Scouts Catholiques de Côte d'Ivoire, est une organisation à but non lucratif et apolitique qui œuvre dans le domaine de l'éducation des jeunes de 05 à 21 ans depuis 1937." />
+  	    <meta name="revisit" content="7 days" />
+  	    <meta name="revisit-after" content="7 days">
+  	    <meta name="Author" content="ASCCI-CENACOM, Delrodie AMOIKON">
+  	    <meta name="Copyright" content="www.scoutascci.org">
+  	    <meta name="Content-Language" content="FR">
+  	    <meta name="distribution" content="global" />
+  	    <meta name="Audience" content="All" />
+  	    <meta name="Robots" content="full">
+
+        <link rel="canonical" href="{{ path('homepage')}}" />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:type" content="Item" />
+        <meta property="og:title" content="ASCCI :: Association des Scouts Catholiques de Côte d'Ivoire" />
+        <meta property="og:description" content="L'Association des Scouts Catholiques de Côte d'Ivoire, est une organisation à but non lucratif et apolitique qui œuvre dans le domaine de l'éducation des jeunes de 05 à 21 ans depuis 1937. " />
+        <meta property="og:url" content="http://scoutascci.org{{ path('homepage')}}" />
+        <meta property="og:site_name" content="ASCCI" />
+        <meta property="article:section" content="Item" />
+        <meta property="article:published_time" content="2018-01-20T15:25:59+00:00" />
+        <!--<meta property="article:modified_time" content="2015-08-17T15:04:43+00:00" />
+        <meta property="og:updated_time" content="2015-08-17T15:04:43+00:00" />-->
+        <meta property="og:image" content="http://scoutascci.org/ressources/images/logos/logo2.png" />
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:description" content="L'Association des Scouts Catholiques de Côte d'Ivoire, est une organisation à but non lucratif et apolitique qui œuvre dans le domaine de l'éducation des jeunes de 05 à 21 ans depuis 1937."/>
+        <meta name="twitter:title" content="ASCCI :: Association des Scouts Catholiques de Côte d'Ivoire"/>
+        <meta name="twitter:domain" content="ASCCI"/>
+        <meta name="twitter:image:src" content="http://scoutascci.org/ressources/images/logo2.png"/>
+        <script type="application/ld+json">
+    		{
+    		  "@context": "http://schema.org",
+    		  "@type": "NewsArticle",
+    		  "mainEntityOfPage": {
+    		    "@type": "WebPage",
+    		    "@id": "https://scoutascci.org"
+    		  },
+    		  "headline": "ASCCI :: Association des Scouts Catholiques de Côte d'Ivoire",
+    		  "image": [
+    		    "http://scoutascci.org/ressources/images/logo2.png",
+    		    "http://scoutascci.org/ressources/images/logo2.png"
+    		   ],
+    		  "datePublished": "2018-01-20T15:25:59+00:00",
+    		  "dateModified": "2018-01-20T15:25:59+00:00",
+    		  "author": {
+    		    "@type": "Person",
+    		    "name": "Delrodie AMOIKON"
+    		  },
+    		   "publisher": {
+    		    "@type": "Organization",
+    		    "name": "ASCCI :: Association des Scouts Catholiques de Côte d'Ivoire",
+    		    "logo": {
+    		      "@type": "ImageObject",
+    		      "url": "http://scoutascci.org/ressources/images/logo2.png"
+    		    }
+    		  },
+    		  "description": "L'Association des Scouts Catholiques de Côte d'Ivoire, est une organisation à but non lucratif et apolitique qui œuvre dans le domaine de l'éducation des jeunes de 05 à 21 ans depuis 1937."
+    		}
+    		</script>
+        {% endblock %}
+
+        <script type="application/ld+json">
+    		{
+    		  "@context": "http://schema.org",
+    		  "@type": "Organization",
+    		  "url": "http://www.scoutascci.org",
+    		  "contactPoint": [{
+    		    "@type": "ContactPoint",
+    		    "telephone": "+225 20 22 35 22",
+    		    "contactType": "Direction",
+    		    "contactOption": "TollFree",
+    		    "areaServed": "FR"
+    		  },{
+    		    "@type": "ContactPoint",
+    		    "telephone": "+225 20 22 35 22",
+    		    "contactType": "Direction",
+    		    "contactOption": "TollFree",
+    		    "areaServed": [
+    		      "CI",
+    		      "FR"
+    		    ],
+    		    "availableLanguage": [
+    		      "French"
+    		      "English",
+    		    ]
+    		  }]
+    		}
+    		</script>
+
+	<link rel="stylesheet" href="{{ asset('ressources/css/normalize.css')}}">
+	<link rel="stylesheet" href="{{ asset('ressources/css/fontawesome.css')}}">
+	<link rel="stylesheet" href="{{ asset('ressources/css/weather.css')}}">
+	<link rel="stylesheet" href="{{ asset('ressources/css/colors.css')}}">
+	<link rel="stylesheet" href="{{ asset('ressources/css/typography.css')}}">
+	<link rel="stylesheet" href="{{ asset('ressources/css/style.css')}}">
+	<link rel="stylesheet" href="{{ asset('ressources/css/ascci.css')}}">
+	<link rel="stylesheet" href="{{ asset('ressources/css/owl.carousel.min.css')}}">
+
+	<link rel="stylesheet" type="text/css" media="(max-width:768px)" href="{{ asset('ressources/css/responsive-0.css')}}">
+	<link rel="stylesheet" type="text/css" media="(min-width:769px) and (max-width:992px)" href="{{ asset('ressources/css/responsive-768.css')}}">
+	<link rel="stylesheet" type="text/css" media="(min-width:993px) and (max-width:1200px)" href="{{ asset('ressources/css/responsive-992.css')}}">
+	<link rel="stylesheet" type="text/css" media="(min-width:1201px)" href="{{ asset('ressources/css/responsive-1200.css')}}">
+	<link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,300italic,400,400italic,700,700italic" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.4";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="wrapper" class="wide">
+
+<header id="header" role="banner">
+
+	<div class="header_meta">
+		<div class="container">
+
+		<div class="weather_forecast">
+			<span class="city">Scoutisme Ecole de Civisme</span>
+			<span class="temp"></span>
+		</div>
+
+		<nav class="top_navigation" role="navigation">
+			<span class="top_navigation_toggle"><i class="fa fa-reorder"></i></span>
+			<ul class="menu">
+				<!--<li><a href="#" title="Moins de 8 ans">Oisillons</a></li>-->
+				<li>
+					<a href="#" title="8-11 ans"><img src="{{ asset('ressources/images/branche/icon01.png')}}" width="30"></a>
+				</li>
+				<li>
+					<a href="#" title="12-14 ans"><img src="{{ asset('ressources/images/branche/icon02.png')}}" width="30"></a>
+				</li>
+				<li>
+					<a href="#" title="15-17 ans"><img src="{{ asset('ressources/images/branche/icon03.png')}}" width="30"></a>
+				</li>
+				<li>
+					<a href="#" title="18-21 ans"><img src="{{ asset('ressources/images/branche/icon04.png')}}" width="30"></a>
+				</li>
+				<li>
+					<a href="#" title="plus de 21 ans"><img src="{{ asset('ressources/images/branche/icon05.png')}}" width="30"></a>
+				</li>
+			</ul>
+		</nav>
+		</div>
+	</div>
+
+<div id="header_main" class="sticky header_main">
+	<div class="container">
+
+		<div class="site_brand">
+
+			<a href="{{ path('homepage')}}">
+			<img src="{{ asset('ressources/images/logo2.png')}}" alt="Logo">
+			</a>
+		</div>
+
+		<nav class="site_navigation" role="navigation">
+			<span class="site_navigation_toggle"><i class="fa fa-reorder"></i></span>
+			<ul class="menu">
+				<li><a href="{{ path('homepage')}}">Accueil<div class="subtitle">Actualités</div></a></li>
+				<li class="menu-item-has-children"><a href="#">Qui sommes-nous?<div class="subtitle">Présentation</div></a>
+					<span class="site_sub_menu_toggle"></span>
+					{{ render(url('menu_presentation'))}}
+				</li>
+				<li class="menu-item-has-children has_dt_mega_menu"><a href="#">Notre pédagogie<div class="subtitle">Nos jeunes</div></a>
+					<span class="site_sub_menu_toggle"></span>
+					<ul class="dt_mega_menu" style="border-top-color: #22A7F0">
+						<li>							
+
+							<div class="widget">
+								<!--<div class="widget_title"><h3>Meute</h3></div>-->
+								<div class="tb_widget_recent_list clearfix">
+
+									<div class="item clearfix">
+										<div class="item_thumb">
+											<div class="thumb_icon">
+												<a href="#" style="background-color: #F89406"><i class="fa fa-copy"></i></a>
+											</div>
+											<div class="thumb_hover">
+												<a href="#"><img src="{{ asset('ressources/images/branche/icon01.png')}}" alt="Post"></a>
+											</div>
+										</div>
+										<div class="item_content">
+											<h4><a href="#">Louveteaux</a></h4>
+											 <div class="item_meta clearfix">
+												<span class="">8-11 ans</span>
+											</div>
+										</div>
+									</div>
+
+									<div class="item clearfix">
+										<div class="item_thumb">
+											<div class="thumb_icon">
+												<a href="#" style="background-color: #F89406"><i class="fa fa-copy"></i></a>
+											</div>
+											<div class="thumb_hover">
+												<a href="#"><img src="{{ asset('ressources/images/branche/icon02.png')}}" alt="Post"></a>
+											</div>
+										</div>
+										<div class="item_content">
+											<h4><a href="#">Eclaireurs</a></h4>
+											 <div class="item_meta clearfix">
+												<span class="">12-14 ans</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="widget">
+								<!--<div class="widget_title"><h3>Meute</h3></div>-->
+								<div class="tb_widget_recent_list clearfix">
+
+									<div class="item clearfix">
+										<div class="item_thumb">
+											<div class="thumb_icon">
+												<a href="#" style="background-color: #F89406"><i class="fa fa-copy"></i></a>
+											</div>
+											<div class="thumb_hover">
+												<a href="#"><img src="{{ asset('ressources/images/branche/icon03.png')}}" alt="Post"></a>
+											</div>
+										</div>
+										<div class="item_content">
+											<h4><a href="#">Cheminots</a></h4>
+											 <div class="item_meta clearfix">
+												<span class="">15-17 ans</span>
+											</div>
+										</div>
+									</div>
+
+									<div class="item clearfix">
+										<div class="item_thumb">
+											<div class="thumb_icon">
+												<a href="#" style="background-color: #F89406"><i class="fa fa-copy"></i></a>
+											</div>
+											<div class="thumb_hover">
+												<a href="#"><img src="{{ asset('ressources/images/branche/icon04.png')}}" alt="Post"></a>
+											</div>
+										</div>
+										<div class="item_content">
+											<h4><a href="#">Routiers</a></h4>
+											 <div class="item_meta clearfix">
+												<span class="">18-21 ans</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+								<div class="widget">
+									<div class="widget_title"><h3>Propositions de scoutisme</h3></div>
+									<div class="tb_widget_timeline clearfix">
+
+										<article>
+											<span class="date">Petite Enfance</span>
+											<a href="#">le scoutisme adapté aux enfants de moins de 8 ans</a>
+										</article>
+										<article>
+											<span class="date">Handi-scout</span>
+											<a href="#">le scoutisme adapté aux jeunes vivant avec un handicap</a>
+										</article>
+										<article>
+											<span class="date">Scout Ecole</span>
+											<a href="#">le scoutisme dans les écoles et les universités</a>
+										</article>
+
+									</div>
+								</div>
+
+						</li>
+					</ul>
+				</li>
+				<li class="menu-item-has-children"><a href="#">Ressources adultes<div class="subtitle">Nos chefs</div></a>
+					<span class="site_sub_menu_toggle"></span>
+					{{ render(url('menu_chef'))}}
+				</li>
+				<li class="menu-item-has-children"><a href="#">Notre couverture<div class="subtitle">Nos régions</div></a>
+					<span class="site_sub_menu_toggle"></span>
+					<ul class="sub-menu" style="border-top-color: #F89406">
+						<li><a href="#">Cartographie</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Contact<div class="subtitle">Nous joindre</div></a></li>				
+				<li class="menu-item-has-children"><a href="#">
+					<img src="{{('ressources/images/icon-flag.png')}}" alt=""><div class="subtitle"></div></a>
+					<span class="site_sub_menu_toggle"></span>
+					<div class="cart_content">
+						<div class="widget_shopping_cart_content">
+							<p class="total" style="text-align: right;">
+							<a href="#"><img src="{{('ressources/images/icon-an.png')}}" alt=""> Anglais</a>
+							</p>
+							<p class="total" style="text-align: right;">
+							<a href="#"><img src="{{('ressources/images/icon-fr2.png')}}" alt=""> Français</a>
+							</p>
+						</div>
+					</div>
+				</li>			
+			</ul>
+		</nav>
+	</div>
+</div>
+</header>
+
+<section>
+	<div class="container">
+		<div class="row">
+
+			<div class="col col_9_of_12">
+
+				{% block body %}{% endblock %}
+
+			</div>
+
+			<div class="col col_3_of_12">
+
+				<div class="widget">
+					<div class="widget_title"><h3>Brèves</h3></div>
+					<div class="tb_widget_posts_big clearfix">
+
+						{{ render(url('fo_information'))}}
+
+					</div>
+				</div>
+
+				<div class="widget">
+					<div class="widget_title"><h3></h3></div>
+					<div class="tb_widget_socialize clearfix">
+						<img src="http://via.placeholder.com/500x500" alt="Espace publicité" title="Espace publicité">
+						<!---->
+					</div>
+				</div>
+
+				<div class="widget">
+					<div class="widget_title"><h3>Actu facebook</h3></div>
+					<div class="tb_widget_top_rated clearfix">
+
+						<div class="facebook">
+
+				                <div class="fb-page" data-href="https://www.facebook.com/scoutascci/" data-height="800" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true">
+				                    <div class="fb-xfbml-parse-ignore">
+				                        <blockquote cite="https://www.facebook.com/scoutascci/">
+				                            <a href="https://www.facebook.com/scoutascci/">ASCCI</a>
+				                        </blockquote>
+				                    </div>
+				                </div>
+
+				            </div>
+
+					</div>
+				</div>
+
+
+			</div>
+
+		</div>
+
+		{% block accueil %}{% endblock %}
+
+		<div class="panel_title">
+			<div>
+				<h4><a href="#">Nos partenaires </a></h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="partenaire">
+				<div class="owl-carousel owl-theme">
+				{{ render(url('fo_partenaires'))}}
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<footer id="footer">
+	<div class="container">
+	<div class="row">
+	<div class="col col_3_of_12">
+
+		<div class="widget">
+			<div class="widget_title"><h3>ASCCI</h3></div>
+			<p class="alignjustify">L'Association des Scouts Catholiques de Côte d'Ivoire, est une organisation à but non lucratif et apolitique qui œuvre dans le domaine de l'éducation des jeunes de 05 à 21 ans depuis 1937. De par sa méthode, elle assure un véritable lien social et garanti un environnement de prise en charge des problèmes de l'heure. </p>
+		</div>
+
+		<div class="widget">
+			<div class="widget_title"><h3>Nous contacter</h3></div>
+			<div class="tb_widget_socialize clearfix">
+				Abidjan (Côte d'Ivoire) <br>
+				23 Boulevard CLOZET – CAM – PLATEAU <br>
+				+225 20 22 35 22 <br>
+				infos@scoutascci.org
+			</div>
+		</div>
+	</div>
+	<div class="col col_3_of_12">
+
+		<div class="widget">
+			<div class="widget_title"><h3>Newsletter</h3></div>
+			<p class="alignjustify">
+				Souscrire à notre newsletter pour recevoir réguilièrement des informations des Scouts
+				Catholiques de Côte d'Ivoire
+				<form>
+					<input type="text" name="" class="form-control">
+					<button class="button btn btn_blue">S'inscrire</button>
+				</form>
+			</p>
+		</div>
+
+		<div class="widget">
+			<div class="widget_title"><h3>Nous suivre</h3></div>
+			<div class="tb_widget_socialize clearfix">
+				<a href="https://www.facebook.com/scoutascci/" target="_blank" class="icon facebook">
+				<div class="symbol"><i class="fa fa-facebook"></i></div>
+				<div class="text"><p>Facebook</p></div>
+				</a>
+				<a href="https://www.twitter.com/scout_ascci/" target="_blank" class="icon twitter">
+				<div class="symbol"><i class="fa fa-twitter"></i></div>
+				<div class="text"><p>Twitter</p></div>
+				</a>
+				<a href="https://www.instagram.com/scout_ascci/" target="_blank" class="icon instagram">
+				<div class="symbol"><i class="fa fa-instagram"></i></div>
+				<div class="text"><p>Instagram</p></div>
+				</a>
+				<a href="https://www.youtube.com/channel/UC4sBe_evvjQ-5Vo6frUyyjA" target="_blank" class="icon google">
+				<div class="symbol"><i class="fa fa-youtube-square"></i></div>
+				<div class="text"><p>Youtube></div>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="col col_3_of_12">
+
+		<div class="widget">
+
+			<div class="widget_title"><h3>Grands rassemblements</h3></div>
+			<div class="tb_widget_recent_list clearfix">
+
+				<div class="item clearfix">
+					<div class="item_thumb">
+						<div class="thumb_icon">
+							<a href="#"><i class="fa fa-copy"></i></a>
+						</div>
+						<div class="thumb_hover">
+							<a href="#"><img src="{{ asset('ressources/images/branche/05.png')}}" alt="Post"></a>
+						</div>
+					</div>
+					<div class="item_content">
+						<h4><a href="#">Jamboree </a></h4>
+					</div>
+				</div>
+
+				<div class="item clearfix">
+					<div class="item_thumb">
+						<div class="thumb_icon">
+							<a href="#"><i class="fa fa-copy"></i></a>
+						</div>
+						<div class="thumb_hover">
+							<a href="#"><img src="{{ asset('ressources/images/branche/01.png')}}" alt="Post"></a>
+						</div>
+					</div>
+					<div class="item_content">
+						<h4><a href="#">Carnaloup</a></h4>
+						<div class="item_meta clearfix">
+							<span class="">8-11 ans</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="item clearfix">
+					<div class="item_thumb">
+						<div class="thumb_icon">
+							<a href="#"><i class="fa fa-copy"></i></a>
+						</div>
+						<div class="thumb_hover">
+							<a href="#"><img src="{{ asset('ressources/images/branche/02.png')}}" alt="Post"></a>
+						</div>
+					</div>
+					<div class="item_content">
+						<h4><a href="#">Eclai carnaval</a></h4>
+						<div class="item_meta clearfix">
+							<span class="">12-14 ans</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="item clearfix">
+					<div class="item_thumb">
+						<div class="thumb_icon">
+							<a href="#"><i class="fa fa-copy"></i></a>
+						</div>
+						<div class="thumb_hover">
+							<a href="#"><img src="{{ asset('ressources/images/branche/03.png')}}" alt="Post"></a>
+						</div>
+					</div>
+					<div class="item_content">
+						<h4><a href="#">Yeyawa</a></h4>
+						<div class="item_meta clearfix">
+							<span class="">15-17 ans</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="item clearfix">
+					<div class="item_thumb">
+						<div class="thumb_icon">
+							<a href="#"><i class="fa fa-copy"></i></a>
+						</div>
+						<div class="thumb_hover">
+							<a href="#"><img src="{{ asset('ressources/images/branche/04.png')}}" alt="Post"></a>
+						</div>
+					</div>
+					<div class="item_content">
+						<h4><a href="#">Rover way</a></h4>
+						<div class="item_meta clearfix">
+							<span class="">18-21 ans</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+	<div class="col col_3_of_12">
+		<div class="widget">
+			<div class="widget_title"><h3>Rubriques</h3></div>
+			<div class="tb_widget_categories">
+				<ul>
+					<li><a href="#">Notre histoire</a> </li>
+					<li><a href="#">Notre identité</a> </li>
+					<li><a href="#">Notre vision</a> </li>
+					<li><a href="#">Notre équipe</a> </li>
+					<li><a href="#">Les bénévoles</a> </li>
+					<li><a href="#">Les permanents</a> </li>
+					<li><a href="#">Les occasionnels</a> </li>
+					<li><a href="#">Developpement communautaire</a></li>
+					<li><a href="#">Formation</a> </li>
+					<li><a href="#">Spiritualité</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+</footer>
+
+	<div id="copyright" role="contentinfo">
+		<div class="container"> 
+			<div class="col col_6_of_12">
+				&copy; 2016-2017  <a href="http://scoutascci.org/" target="_blank">Association des Scouts Catholiques de Côte d'Ivoire</a> | Tous droits réservés
+			</div>
+			<div class="col col_3_of_12">
+				<a href="http://scoutascci.org/webmail" target="_blank">webmail</a>
+			</div>
+			<div class="col col_2_of_12 alignright">
+				Powered by <a href="http://scoutascci.org/cenacom" target="_blank">CENACOM</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="{{ asset('ressources/js/jqueryscript.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('ressources/js/jqueryuiscript.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('ressources/js/easing.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('ressources/js/smoothscroll.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('ressources/js/magnific.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('ressources/js/bxslider.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('ressources/js/fitvids.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('ressources/js/viewportchecker.js')}}"></script>
+<script type="text/javascript" src="{{ asset('ressources/js/init.js')}}"></script>
+
+<script type="text/javascript" src="{{ asset('ressources/js/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('ressources/js/owl.carousel.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('ressources/js/script.js')}}"></script>
+</body>
+
 </html>
