@@ -52,7 +52,7 @@ class SliderRepository extends \Doctrine\ORM\EntityRepository
                         'actif' => 1,
                         'date'  => date('Y-m-d', time())
                     ))
-                    ->getQuery()->getSingleResult();
+                    ->getQuery()->getResult();
         return $qb;
     }
 }

@@ -22,7 +22,7 @@ class EnvolRepository extends \Doctrine\ORM\EntityRepository
                     ->orderBy('e.id', 'ASC')
                     ->setFirstResult($offset)
                     ->setMaxResults($limit)
-                    ->getQuery()->getSingleResult()
+                    ->getQuery()->getResult()
                     ;
         return $qb;
     }
