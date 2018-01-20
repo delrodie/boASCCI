@@ -3,31 +3,10 @@
 {% block title %}Se connecter{% endblock %}
 
 {% block body %}
-<div class="page-title">
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <ol class="breadcrumb">
-          <li><a href="{{ path('homepage')}}">Accueil</a></li>
-          <li><a href="#">Connexion</a></li>
-        </ol>
-    </div>
-  </div>
-</div>
-</div>
-<section class="block-wrapper">
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-
-      <div class="single-post">
-
-        <div class="post-title-area">
-          <h2 class="post-title">
-            Connexion
-          </h2>
-          <div class="post-meta">
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+  <h1>Connexion</h1>
+		<div class="col col_2_of_12">
+			.
+      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
                 <a href="{{ path('fos_user_security_logout') }}">
                     {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
@@ -35,70 +14,9 @@
             {% else %}
                 <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
             {% endif %}
-          </div>
-        </div>
-
-        <div class="post-content-area">
-          <div class="post-media post-featured-image">
-            {% if app.request.hasPreviousSession %}
-                {% for type, messages in app.session.flashbag.all() %}
-                    {% for message in messages %}
-                        <div class="flash-{{ type }}">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                {% endfor %}
-            {% endif %}
-          </div>
-          <div class="entry-content">
-            {% block fos_user_content %}
-            {% endblock fos_user_content %}
-          </div><!-- Entery content end -->
-
-
-        </div>
-      </div>
-
-
-    </div>
-
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-      <div class="sidebar sidebar-right">
-        <div class="widget">
-          <h3 class="block-title"><span>Nous suivre</span></h3>
-
-          <ul class="social-icon">
-            <li><a href="#" target="_blank"><i class="fa fa-rss"></i></a></li>
-            <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-            <li><a href="#" target="_blank"><i class="fa fa-vimeo-square"></i></a></li>
-            <li><a href="#" target="_blank"><i class="fa fa-youtube"></i></a></li>
-          </ul>
-        </div><!-- Widget Social end -->
-
-        <div class="widget text-center">
-          <img class="banner img-responsive" src="images/banner-ads/ad-sidebar.png" alt="" />
-        </div><!-- Sidebar Ad end -->
-
-        <div class="widget widget-tags">
-          <h3 class="block-title"><span>Facebook</span></h3>
-          <div class="fb-page"
-          data-href="https://www.facebook.com/Nuit-2-Reves-302256336935002/"
-          data-tabs="timeline,events,messages"
-          data-height="1200"
-          data-small-header="true"
-          data-adapt-container-width="true"
-          data-hide-cover="false"
-          data-show-facepile="true">
-          <blockquote cite="https://www.facebook.com/Nuit-2-Reves-302256336935002/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Nuit-2-Reves-302256336935002/">Nuit 2 Reves</a></blockquote></div>
-              </ul>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</div>
-</section>
+		</div>
+		<div class="col col_5_of_12">
+			{% block fos_user_content %}
+      {% endblock fos_user_content %}
+		</div>
 {% endblock %}

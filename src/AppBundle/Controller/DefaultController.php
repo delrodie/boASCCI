@@ -60,4 +60,14 @@ class DefaultController extends Controller
             'menus' => $menus,
         ]);
     }
+
+    /**
+     * @Route("/admin", name="admin_dashboard")
+     */
+    public function adminAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        return $this->render('default/dashboard.html.twig');
+    }
 }
