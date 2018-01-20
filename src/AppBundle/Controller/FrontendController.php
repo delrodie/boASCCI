@@ -109,9 +109,9 @@ class FrontendController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $pedagogie = $em->getRepository('AppBundle:Pedagogie')->findPedagogie($slug);
+        $pedagogie = $em->getRepository('AppBundle:Pedagogie')->findPedagogie($slug); //dump($pedagogie);die();
 
-        return $this->render('frontend/pagePedagodie.html.twig',[
+        return $this->render('frontend/pagePedagogie.html.twig',[
             'pedagogie' => $pedagogie,
         ]);
     }

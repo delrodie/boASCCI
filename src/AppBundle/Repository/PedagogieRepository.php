@@ -22,13 +22,13 @@ class PedagogieRepository extends \Doctrine\ORM\EntityRepository
         return $qb = $em->createQuery('
                             SELECT a, b
                             FROM AppBundle:Pedagogie a
-                            join a.branche b
+                            LEFT JOIN a.branche b
                             WHERE a.statut = :actif
-                            AND b.slug <> :slug
+                            AND b.slug LIKE :slug
                         ')
                         ->setParameters(array(
                             'actif' => 1,
-                            'slug'  => $slug
+                            'slug'  => '%'.$slug.'%'
                         ))
                         ->getResult()
                         ;

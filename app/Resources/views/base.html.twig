@@ -181,15 +181,15 @@
 					<span class="site_sub_menu_toggle"></span>
 					<ul class="sub-menu" style="border-top-color: #F89406">
 						<li><a href="#">Projet Éducatif</a></li>
-						<li><a href="#">Louvetaux (8-11 ans)</a></li>
-						<li><a href="#">Eclaireurs (12-14 ans)</a></li>
-						<li><a href="#">Cheminots (15-17 ans)</a></li>
-						<li><a href="#">Routiers (18-21 ans)</a></li>
+						<li><a href="{{ path('fo_pedagogie', {'slug': 'louveteau'})}}">Louvetaux (8-11 ans)</a></li>
+						<li><a href="{{ path('fo_pedagogie', {'slug': 'eclaireur'})}}">Eclaireurs (12-14 ans)</a></li>
+						<li><a href="{{ path('fo_pedagogie', {'slug': 'chemino'})}}">Cheminots (15-17 ans)</a></li>
+						<li><a href="{{ path('fo_pedagogie', {'slug': 'route'})}}">Routiers (18-21 ans)</a></li>
 						<li><a href="#">Propositions de scoutisme</a>
 							<ul class="sub-menu" style="border-top-color: #F89406">
-								<li><a href="#">Petite Enfance</a></li>
-								<li><a href="#">Handi-Scout</a></li>
-								<li><a href="#">Scout-École</a></li>
+								<li><a href="{{ path('fo_pedagogie', {'slug': 'enfance'})}}">Petite Enfance</a></li>
+								<li><a href="{{ path('fo_pedagogie', {'slug': 'handi'})}}">Handi-Scout</a></li>
+								<li><a href="{{ path('fo_pedagogie', {'slug': 'ecole'})}}">Scout-École</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -233,7 +233,7 @@
 			<div class="col col_3_of_12">
 
 				<div class="widget">
-					<div class="widget_title"><h3>Brèves</h3></div>
+					<div class="widget_title"><h3>Annonces</h3></div>
 					<div class="tb_widget_posts_big clearfix">
 
 						{{ render(url('fo_information'))}}
