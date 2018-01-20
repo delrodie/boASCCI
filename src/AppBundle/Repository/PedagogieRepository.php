@@ -10,4 +10,27 @@ namespace AppBundle\Repository;
  */
 class PedagogieRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Recherche des trois dernières actualités sans la concernée
+     * 
+     * author: Delrodie AMOIKON
+     * date: 20/01/2018 09:57
+     */
+    public function findPedagogie($slug)
+    {
+        $em = $this->getEntityManager();
+        return $qb = $em->createQuery('
+                            SELECT a, b
+                            FROM AppBundle:Pedagogie a
+                            join a.branche b
+                            WHERE a.statut = :actif
+                            AND b.slug <> :slug
+                        ')
+                        ->setParameters(array(
+                            'actif' => 1,
+                            'slug'  => $slug
+                        ))
+                        ->getResult()
+                        ;
+    }
 }

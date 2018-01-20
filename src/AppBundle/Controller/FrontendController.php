@@ -91,7 +91,7 @@ class FrontendController extends Controller
      */
     public function internationaleAction(Request $request, $slug)
     {
-        $em = $this->getDoctrine()->getmanager();
+        $em = $this->getDoctrine()->getManager();
 
         $internationale = $em->getRepository('AppBundle:Internationale')->findOneBy(array('slug' => $slug)); //dump($nationale);die();
         $similaires = $em->getRepository('AppBundle:Internationale')->findThreeLastInternationale($slug, 0, 2); //dump($nationale);die();
@@ -99,6 +99,20 @@ class FrontendController extends Controller
         return $this->render('frontend/pageInternationale.html.twig',[
             'internationale' => $internationale,
             'similaires' => $similaires,
+        ]);
+    }
+
+    /**
+     * @Route("/pedagogie/{slug}", name="fo_pedagogie")
+     */
+    public function pedagogieAction(Request $request, $slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $pedagogie = $em->getRepository('AppBundle:Pedagogie')->findPedagogie($slug);
+
+        return $this->render('frontend/pagePedagodie.html.twig',[
+            'pedagogie' => $pedagogie,
         ]);
     }
 }

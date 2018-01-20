@@ -225,3 +225,27 @@
     /*display: none;*/
     padding: 20px;
 }
+
+.menu > li.louveteau:hover{
+    background-color: yellow;
+    color: blue;
+}
+
+.menu > li.louveteau >a:hover{
+    color: blue;
+}
+
+.menu > li.eclaireur:hover{
+    background-color: green;
+    color: white;
+}
+
+.menu > li.cheminot:hover{
+    background-color: orange;
+    color: white;
+}
+
+.menu > li.routier:hover{
+    background-color: red;
+    color: white;
+}
