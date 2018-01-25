@@ -19,8 +19,8 @@
 							</div>
 						</li>
 						{% endfor %}
-
-
+						
+						{% for slideUnique in slideUniques %}
 						<li>
 							<a href="#"><img src="{{ vich_uploader_asset(slideUnique, 'imageFile') }}" alt="{{ slideUnique.legende }}"></a>
 							<div class="slider_caption">
@@ -32,7 +32,8 @@
 									<h3><a href="#">{{ slideUnique.legende }}</a></h3>
 								</div>
 							</div>
-						</li>
+						</li>	
+						{% endfor %}
 
 					</ul>
 				</div>
@@ -47,6 +48,7 @@
 						<div class="multipack clearfix">
 
 							<div class="layout_post_1">
+								{% for envolIntro in envolIntros %}
 								<div class="item_thumb">
 									<div class="thumb_icon">
 										<a href="#" style="background-color: #446CB3"><i class="fa fa-copy"></i></a>
@@ -58,7 +60,8 @@
 								<div class="item_content">
 									<h4><a href="#">Y croire avec Tardy</a></h4>
 									<p>{{ envolIntro.resume|raw }}</p>
-								 </div>
+								 </div>	
+								{% endfor %}
 							</div>
 
 							<div class="list_posts">

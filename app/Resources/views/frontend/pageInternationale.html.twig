@@ -61,7 +61,7 @@
 										<a href="{{ path('fo_internationale', {'slug': similaire.slug})}}" style="background-color: #{{similaire.typactualite.couleur}}"><i class="fa fa-copy"></i></a>
 									</div>
 									<div class="thumb_hover">
-										<a href="{{ path('fo_internationale', {'slug': similaire.slug})}}"><img src="{{ asset('uploads/actualites/'~ similaire.imageName) | imagine_filter('similaire') }}" alt="{{ similaire.titre}}" class="visible animated"></a>
+										<a href="{{ path('fo_internationale', {'slug': similaire.slug})}}"><img src="{{ asset('uploads/internationales/'~ similaire.imageName) | imagine_filter('similaire') }}" alt="{{ similaire.titre}}" class="visible animated"></a>
 									</div>
 									<div class="thumb_meta">
 									<span class="category" style="background-color: #{{ similaire.typactualite.couleur }}"><a href="#">{{ similaire.typactualite.libelle }}</a></span>

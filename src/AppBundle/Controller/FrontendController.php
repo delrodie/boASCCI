@@ -62,7 +62,7 @@ class FrontendController extends Controller
         $em = $this->getDoctrine()->getmanager();
 
         $nationale = $em->getRepository('AppBundle:Actualite')->findOneBy(array('slug' => $slug)); //dump($nationale);die();
-        $similaires = $em->getRepository('AppBundle:Actualite')->findThreeLastActualite($slug, 0, 2); //dump($nationale);die();
+        $similaires = $em->getRepository('AppBundle:Actualite')->findThreeLastActualite($slug, 0, 3); //dump($nationale);die();
 
         return $this->render('frontend/pageNationale.html.twig',[
             'nationale' => $nationale,
@@ -78,7 +78,7 @@ class FrontendController extends Controller
         $em = $this->getDoctrine()->getmanager();
 
         $regionale = $em->getRepository('AppBundle:Regionale')->findOneBy(array('slug' => $slug)); //dump($nationale);die();
-        $similaires = $em->getRepository('AppBundle:Regionale')->findThreeLastRegionale($slug, 0, 2); //dump($nationale);die();
+        $similaires = $em->getRepository('AppBundle:Regionale')->findThreeLastRegionale($slug, 0, 3); //dump($nationale);die();
 
         return $this->render('frontend/pageRegionale.html.twig',[
             'regionale' => $regionale,
@@ -94,7 +94,7 @@ class FrontendController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $internationale = $em->getRepository('AppBundle:Internationale')->findOneBy(array('slug' => $slug)); //dump($nationale);die();
-        $similaires = $em->getRepository('AppBundle:Internationale')->findThreeLastInternationale($slug, 0, 2); //dump($nationale);die();
+        $similaires = $em->getRepository('AppBundle:Internationale')->findThreeLastInternationale($slug, 0, 3); //dump($nationale);die();
 
         return $this->render('frontend/pageInternationale.html.twig',[
             'internationale' => $internationale,
