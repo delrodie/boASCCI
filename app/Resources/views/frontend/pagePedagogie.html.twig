@@ -1,12 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ pedagogie.titre }}{% endblock %}
+{% block title %}
+	{% for pedagogie in pedagogies %}
+	{{ pedagogie.titre }}	
+	{% endfor %}
+{% endblock %}
 
 
 {% block body %}
 <article class="post">
 
 
+						{% for pedagogie in pedagogies %}
 						<div class="ariane_wrapper">
 
 							<div class="ariane">
@@ -18,13 +23,13 @@
 
 						<div class="entry_media">
 							<a href="{{ asset('uploads/pedagogies/'~ pedagogie.imageName) | imagine_filter('page') }}" class="popup_link">
-                                <img src="{{ asset('uploads/pedagogiermations/'~ info.imageName) | imagine_filter('page') }}" alt="{{ info.titre }}" title="{{ domaine.titre }}">
+                                <img src="{{ asset('uploads/pedagogies/'~ pedagogie.imageName) | imagine_filter('page') }}" alt="{{ pedagogie.titre }}" title="{{ pedagogie.branche.libelle }}">
                             </a>
 						</div>
 
 						<div class="full_meta clearfix">
 							<span class="meta_format"><i class="fa fa-file-text"></i></span>
-							<span class="meta_date">{{ pedagogie.branche.libelle }}  {{ domaine.datedeb|date('d-m-Y') }} </span>
+							<span class="meta_date">{{ pedagogie.branche.libelle }} </span>
 							
 						</div>
 
@@ -42,9 +47,10 @@
                                 <a href="#">{{ tag }}</a>
                                 {% endfor %}
 							</div>
-						</div>
+						</div>	
+						{% endfor %}
 
-					</article>
+					</article> <br> <br>
 
 					
 
@@ -60,7 +66,8 @@
 {% block accueil %}{% endblock %}
 
 {% block meta %}
-        <meta name="keywords" content="{{ pedagogie.tag|raw }}"  />
+        {% for pedagogie in pedagogies %}
+		<meta name="keywords" content="{{ pedagogie.tag|raw }}"  />
         <meta name="description" content="{{ pedagogie.resume|raw }}" />
   	    <meta name="revisit" content="7 days" />
   	    <meta name="revisit-after" content="7 days">
@@ -117,5 +124,6 @@
     		  },
     		  "description": "{{ pedagogie.resume|raw }}"
     		}
-    		</script>
-        {% endblock %}
+    		</script>	
+		{% endfor %}
+{% endblock %}

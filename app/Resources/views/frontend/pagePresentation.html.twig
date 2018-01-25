@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% for presentation in presentations %}
+    {{ presentation.titre }}    
+    {% endfor %}
+{% endblock %}
+
+
+{% block body %}
+<article class="post">
+
+
+						{% for presentation in presentations %}
+						<div class="ariane_wrapper">
+
+							<div class="ariane">
+								<span><i class="fa fa-home"></i> <a href="{{ path('homepage')}}">Accueil</a></span>&nbsp; / 
+								<a href="#">presentations</a> /
+								<a href="#">{{ presentation.typresentation.libelle }}</a>
+							</div>
+						</div>
+
+						<div class="entry_media">
+							<a href="{{ asset('uploads/presentations/'~ presentation.imageName) | imagine_filter('page') }}" class="popup_link">
+                                <img src="{{ asset('uploads/presentations/'~ presentation.imageName) | imagine_filter('page') }}" alt="{{ presentation.titre }}" title="{{ presentation.typresentation.libelle }}">
+                            </a>
+						</div>
+
+						<div class="full_meta clearfix">
+							<span class="meta_format"><i class="fa fa-file-text"></i></span>
+							<span class="meta_date">{{ presentation.typresentation.libelle }} </span>
+							
+						</div>
+
+						<div class="entry_content">
+							 <h1 class="entry_title">{{ presentation.typresentation.libelle }}</h1>
+								<p class="dropcap alignJustify">{{ presentation.contenu|raw }}</p>
+								
+						</div>
+
+						<div class="bottom_wrapper">
+
+							<div class="entry_tags">
+								<span><i class="fa fa-tags"></i> Mots clés</span>
+                                {% for tag in presentation.tag|split(',') %}
+                                <a href="#">{{ tag }}</a>
+                                {% endfor %}
+							</div>
+						</div>	
+						{% endfor %}
+
+					</article> <br> <br>
+
+					
+
+					<!--<div id="comments">
+						<div class="panel_title">
+							<div>
+								<h4><a href="blog.html">Commentaires</a></h4>
+							</div>
+						</div>
+					</div>-->
+{% endblock %}
+
+{% block accueil %}{% endblock %}
+
+{% block meta %}
+        {% for presentation in presentations %}
+		<meta name="keywords" content="{{ presentation.tag|raw }}"  />
+        <meta name="description" content="{{ presentation.resume|raw }}" />
+  	    <meta name="revisit" content="7 days" />
+  	    <meta name="revisit-after" content="7 days">
+  	    <meta name="Author" content="ASCCI-CENACOM, {{ presentation.publiePar|title }}">
+  	    <meta name="Copyright" content="www.scoutascci.org">
+  	    <meta name="Content-Language" content="FR">
+  	    <meta name="distribution" content="global" />
+  	    <meta name="Audience" content="All" />
+  	    <meta name="Robots" content="full">
+
+        <link rel="canonical" href="{http://scoutascci.org{{ path('fo_information_breve', {'slug': presentation.slug})}}" />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:type" content="Item" />
+        <meta property="og:title" content="{{ presentation.titre }}" />
+        <meta property="og:description" content="{{ presentation.resume|raw }} " />
+        <meta property="og:url" content="http://scoutascci.org{{ path('fo_information_breve', {'slug': presentation.slug})}}" />
+        <meta property="og:site_name" content="ASCCI" />
+        <meta property="article:section" content="Item" />
+        <meta property="article:published_time" content="{{ presentation.publieLe|date('Y-m-d')}}T{{ presentation.publieLe|date('H:i:s')}}+00:00" />
+        <meta property="article:modified_time" content="{{ presentation.modifieLe|date('Y-m-d')}}T{{ presentation.modifieLe|date('H:i:s')}}+00:00" />
+        <meta property="og:updated_time" content="{{ presentation.modifieLe|date('Y-m-d')}}T{{ presentation.modifieLe|date('H:i:s')}}+00:00" />
+        <meta property="og:image" content="http://scoutascci.org{{ vich_uploader_asset(presentation, 'imageFile') }}" />
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:description" content="{{ presentation.resume|raw }}"/>
+        <meta name="twitter:title" content="{{ presentation.titre }}"/>
+        <meta name="twitter:domain" content="ASCCI"/>
+        <meta name="twitter:image:src" content="http://scoutascci.org{{ vich_uploader_asset(presentation, 'imageFile') }}"/>
+        <script type="application/ld+json">
+    		{
+    		  "@context": "http://schema.org",
+    		  "@type": "NewsArticle",
+    		  "mainEntityOfPage": {
+    		    "@type": "WebPage",
+    		    "@id": "https://scoutascci.org"
+    		  },
+    		  "headline": "{{ presentation.titre }}",
+    		  "image": [
+    		    "http://scoutascci.org{{ vich_uploader_asset(presentation, 'imageFile') }}",
+    		    "http://scoutascci.org/ressources/images/logo2.png"
+    		   ],
+    		  "datePublished": "{{ presentation.publieLe|date('Y-m-d')}}T{{ presentation.publieLe|date('H:i:s')}}+00:00",
+    		  "dateModified": "{{ presentation.modifieLe|date('Y-m-d')}}T{{ presentation.modifieLe|date('H:i:s')}}+00:00",
+    		  "author": {
+    		    "@type": "Person",
+    		    "name": "Delrodie AMOIKON"
+    		  },
+    		   "publisher": {
+    		    "@type": "Organization",
+    		    "name": "{{ presentation.titre }}",
+    		    "logo": {
+    		      "@type": "ImageObject",
+    		      "url": "http://scoutascci.org{{ vich_uploader_asset(presentation, 'imageFile') }}"
+    		    }
+    		  },
+    		  "description": "{{ presentation.resume|raw }}"
+    		}
+    		</script>	
+		{% endfor %}
+{% endblock %}
