@@ -111,6 +111,16 @@
 	<link rel="stylesheet" type="text/css" media="(min-width:993px) and (max-width:1200px)" href="{{ asset('ressources/css/responsive-992.css')}}">
 	<link rel="stylesheet" type="text/css" media="(min-width:1201px)" href="{{ asset('ressources/css/responsive-1200.css')}}">
 	<link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,300italic,400,400italic,700,700italic" rel="stylesheet" type="text/css">
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-104978409-4"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-104978409-4');
+	</script>
 </head>
 
 <body>
@@ -140,21 +150,19 @@
 		<nav class="top_navigation" role="navigation">
 			<span class="top_navigation_toggle"><i class="fa fa-reorder"></i></span>
 			<ul class="menu">
-				<!--<li><a href="#" title="Moins de 8 ans">Oisillons</a></li>-->
-				<li>
-					<a href="#" title="8-11 ans"><img src="{{ asset('ressources/images/branche/icon01.png')}}" width="30"></a>
+				<li class="louveteau">
+					<a href="#" title="8-11 ans"><img src="{{ asset('ressources/images/branche/icon01.png')}}" width="30"> 
+						Louveteau
+					</a>
 				</li>
-				<li>
-					<a href="#" title="12-14 ans"><img src="{{ asset('ressources/images/branche/icon02.png')}}" width="30"></a>
+				<li class="eclaireur">
+					<a href="#" title="12-14 ans"><img src="{{ asset('ressources/images/branche/icon02.png')}}" width="30">Eclaireur</a>
 				</li>
-				<li>
-					<a href="#" title="15-17 ans"><img src="{{ asset('ressources/images/branche/icon03.png')}}" width="30"></a>
+				<li class="cheminot">
+					<a href="#" title="15-17 ans"><img src="{{ asset('ressources/images/branche/icon03.png')}}" width="30">Cheminot</a>
 				</li>
-				<li>
-					<a href="#" title="18-21 ans"><img src="{{ asset('ressources/images/branche/icon04.png')}}" width="30"></a>
-				</li>
-				<li>
-					<a href="#" title="plus de 21 ans"><img src="{{ asset('ressources/images/branche/icon05.png')}}" width="30"></a>
+				<li class="routier">
+					<a href="#" title="18-21 ans"><img src="{{ asset('ressources/images/branche/icon04.png')}}" width="30">Routier</a>
 				</li>
 			</ul>
 		</nav>
@@ -179,111 +187,20 @@
 					<span class="site_sub_menu_toggle"></span>
 					{{ render(url('menu_presentation'))}}
 				</li>
-				<li class="menu-item-has-children has_dt_mega_menu"><a href="#">Notre pédagogie<div class="subtitle">Nos jeunes</div></a>
+				<li class="menu-item-has-children"><a href="#">Notre pédagogie<div class="subtitle">Nos jeunes</div></a>
 					<span class="site_sub_menu_toggle"></span>
-					<ul class="dt_mega_menu" style="border-top-color: #22A7F0">
-						<li>							
-
-							<div class="widget">
-								<!--<div class="widget_title"><h3>Meute</h3></div>-->
-								<div class="tb_widget_recent_list clearfix">
-
-									<div class="item clearfix">
-										<div class="item_thumb">
-											<div class="thumb_icon">
-												<a href="#" style="background-color: #F89406"><i class="fa fa-copy"></i></a>
-											</div>
-											<div class="thumb_hover">
-												<a href="#"><img src="{{ asset('ressources/images/branche/icon01.png')}}" alt="Post"></a>
-											</div>
-										</div>
-										<div class="item_content">
-											<h4><a href="#">Louveteaux</a></h4>
-											 <div class="item_meta clearfix">
-												<span class="">8-11 ans</span>
-											</div>
-										</div>
-									</div>
-
-									<div class="item clearfix">
-										<div class="item_thumb">
-											<div class="thumb_icon">
-												<a href="#" style="background-color: #F89406"><i class="fa fa-copy"></i></a>
-											</div>
-											<div class="thumb_hover">
-												<a href="#"><img src="{{ asset('ressources/images/branche/icon02.png')}}" alt="Post"></a>
-											</div>
-										</div>
-										<div class="item_content">
-											<h4><a href="#">Eclaireurs</a></h4>
-											 <div class="item_meta clearfix">
-												<span class="">12-14 ans</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<div class="widget">
-								<!--<div class="widget_title"><h3>Meute</h3></div>-->
-								<div class="tb_widget_recent_list clearfix">
-
-									<div class="item clearfix">
-										<div class="item_thumb">
-											<div class="thumb_icon">
-												<a href="#" style="background-color: #F89406"><i class="fa fa-copy"></i></a>
-											</div>
-											<div class="thumb_hover">
-												<a href="#"><img src="{{ asset('ressources/images/branche/icon03.png')}}" alt="Post"></a>
-											</div>
-										</div>
-										<div class="item_content">
-											<h4><a href="#">Cheminots</a></h4>
-											 <div class="item_meta clearfix">
-												<span class="">15-17 ans</span>
-											</div>
-										</div>
-									</div>
-
-									<div class="item clearfix">
-										<div class="item_thumb">
-											<div class="thumb_icon">
-												<a href="#" style="background-color: #F89406"><i class="fa fa-copy"></i></a>
-											</div>
-											<div class="thumb_hover">
-												<a href="#"><img src="{{ asset('ressources/images/branche/icon04.png')}}" alt="Post"></a>
-											</div>
-										</div>
-										<div class="item_content">
-											<h4><a href="#">Routiers</a></h4>
-											 <div class="item_meta clearfix">
-												<span class="">18-21 ans</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-								<div class="widget">
-									<div class="widget_title"><h3>Propositions de scoutisme</h3></div>
-									<div class="tb_widget_timeline clearfix">
-
-										<article>
-											<span class="date">Petite Enfance</span>
-											<a href="#">le scoutisme adapté aux enfants de moins de 8 ans</a>
-										</article>
-										<article>
-											<span class="date">Handi-scout</span>
-											<a href="#">le scoutisme adapté aux jeunes vivant avec un handicap</a>
-										</article>
-										<article>
-											<span class="date">Scout Ecole</span>
-											<a href="#">le scoutisme dans les écoles et les universités</a>
-										</article>
-
-									</div>
-								</div>
-
+					<ul class="sub-menu" style="border-top-color: #F89406">
+						<li><a href="#">Projet Éducatif</a></li>
+						<li><a href="{{ path('fo_pedagogie', {'slug': 'louveteau'})}}">Louvetaux (8-11 ans)</a></li>
+						<li><a href="{{ path('fo_pedagogie', {'slug': 'eclaireur'})}}">Eclaireurs (12-14 ans)</a></li>
+						<li><a href="{{ path('fo_pedagogie', {'slug': 'chemino'})}}">Cheminots (15-17 ans)</a></li>
+						<li><a href="{{ path('fo_pedagogie', {'slug': 'route'})}}">Routiers (18-21 ans)</a></li>
+						<li><a href="#">Propositions de scoutisme</a>
+							<ul class="sub-menu" style="border-top-color: #F89406">
+								<li><a href="{{ path('fo_pedagogie', {'slug': 'enfance'})}}">Petite Enfance</a></li>
+								<li><a href="{{ path('fo_pedagogie', {'slug': 'handi'})}}">Handi-Scout</a></li>
+								<li><a href="{{ path('fo_pedagogie', {'slug': 'ecole'})}}">Scout-École</a></li>
+							</ul>
 						</li>
 					</ul>
 				</li>
@@ -291,12 +208,7 @@
 					<span class="site_sub_menu_toggle"></span>
 					{{ render(url('menu_chef'))}}
 				</li>
-				<li class="menu-item-has-children"><a href="#">Notre couverture<div class="subtitle">Nos régions</div></a>
-					<span class="site_sub_menu_toggle"></span>
-					<ul class="sub-menu" style="border-top-color: #F89406">
-						<li><a href="#">Cartographie</a></li>
-					</ul>
-				</li>
+				<li ><a href="#">Notre couverture<div class="subtitle">Nos régions</div></a></li>
 				<li><a href="#">Contact<div class="subtitle">Nous joindre</div></a></li>				
 				<li class="menu-item-has-children"><a href="#">
 					<img src="{{('ressources/images/icon-flag.png')}}" alt=""><div class="subtitle"></div></a>
@@ -331,7 +243,7 @@
 			<div class="col col_3_of_12">
 
 				<div class="widget">
-					<div class="widget_title"><h3>Brèves</h3></div>
+					<div class="widget_title"><h3>Annonces</h3></div>
 					<div class="tb_widget_posts_big clearfix">
 
 						{{ render(url('fo_information'))}}
@@ -414,14 +326,11 @@
 		<div class="widget">
 			<div class="widget_title"><h3>Newsletter</h3></div>
 			<p class="alignjustify">
-				Souscrire à notre newsletter pour recevoir réguilièrement des informations des Scouts
-				Catholiques de Côte d'Ivoire
-				<form>
-					<input type="text" name="" class="form-control">
-					<button class="button btn btn_blue">S'inscrire</button>
-				</form>
+				S'inscrire à notre newsletter pour recevoir réguilièrement des informations des Scouts
+				Catholiques de Côte d'Ivoire <br> <br>
+				<a href="http://scoutascci.us15.list-manage.com/subscribe?u=e45cc25b19cab92147264a631&id=2938902cc7" class="button btn btn_blue" target="_blank">S'inscrire à notre Nwesletter</a>
 			</p>
-		</div>
+		</div> <br><br>
 
 		<div class="widget">
 			<div class="widget_title"><h3>Nous suivre</h3></div>
@@ -527,7 +436,7 @@
 						</div>
 					</div>
 					<div class="item_content">
-						<h4><a href="#">Rover way</a></h4>
+						<h4><a href="#">So'kraff</a></h4>
 						<div class="item_meta clearfix">
 							<span class="">18-21 ans</span>
 						</div>
@@ -543,16 +452,21 @@
 			<div class="widget_title"><h3>Rubriques</h3></div>
 			<div class="tb_widget_categories">
 				<ul>
-					<li><a href="#">Notre histoire</a> </li>
-					<li><a href="#">Notre identité</a> </li>
-					<li><a href="#">Notre vision</a> </li>
-					<li><a href="#">Notre équipe</a> </li>
-					<li><a href="#">Les bénévoles</a> </li>
-					<li><a href="#">Les permanents</a> </li>
-					<li><a href="#">Les occasionnels</a> </li>
-					<li><a href="#">Developpement communautaire</a></li>
-					<li><a href="#">Formation</a> </li>
-					<li><a href="#">Spiritualité</a></li>
+					<li><a href="#">Qui sommes-nous?</a> </li>
+					<li><a href="#">Notre pédagogie</a> </li>
+					<li><a href="#">Nos ressources adultes</a> </li>
+					<li><a href="#">Notre couverture nationale</a> </li>
+				</ul>
+			</div><br><br>
+		</div>
+		<div class="widget">
+			<div class="widget_title"><h3>Liens utiles</h3></div>
+			<div class="tb_widget_categories">
+				<ul>
+					<li><a href="https://www.scout.org/fr" target="_blank">OMMS</a> </li>
+					<li><a href="https://www.scout.org/fr/africa" target="_blank">Africa Scout Region</a> </li>
+					<li><a href="http://www.cics.org/" target="_blank">CICS</a> </li>
+					<li><a href="cics.org" target="_blank">ICCS - CICS</a> </li>
 				</ul>
 			</div>
 		</div>

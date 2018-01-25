@@ -1,1 +1,168 @@
-<a href="{{ path('admin_dashboard') }}">admin</a>
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+<div class="content_slider">
+					<ul>
+
+						{% for slider in sliders %}
+						<li>
+							<a href="#"><img src="{{ vich_uploader_asset(slider, 'imageFile') }}" alt="{{ slider.legende }}"></a>
+							<div class="slider_caption">
+								<div class="thumb_meta">
+									<span class="category" style="background-color: #2ECC71"><a href="#">{{ slider.type1 }} </a></span>
+									<span class="category"><a href="#">{{ slider.type2 }}</a></span>
+								</div>
+								<div class="thumb_link">
+									<h3><a href="#">{{ slider.legende }}</a></h3>
+								</div>
+							</div>
+						</li>
+						{% endfor %}
+
+
+
+
+					</ul>
+				</div>
+
+				<div class="panel_title">
+					<div>
+						<h4><a href="#">Pour l'envol de l'ASCCI</a></h4>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col_12_of_12">
+						<div class="multipack clearfix">
+
+							
+
+							<div class="list_posts">
+
+								{% for envol in envols %}
+								<div class="post clearfix">
+									<div class="item_thumb">
+										<div class="thumb_icon">
+											<a href="#" style="background-color: #4183D7"><i class="fa fa-copy"></i></a>
+										</div>
+										<div class="thumb_hover">
+											<a href="#"><img src="{{ asset('uploads/envols/'~ envol.imageName) | imagine_filter('envol') }}" alt="{{ envol.titre }}"></a>
+										</div>
+									</div>
+									<div class="item_content">
+										<h4><a href="#">{{ envol.titre }}</a></h4>
+										<div class="item_meta clearfix">
+											<span class="">{{ envol.typenvol.libelle }}</span>
+										</div>
+									</div>
+								</div>	
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="panel_title" style="padding: 0 15px">
+						<div>
+							<h4><a href="#">La Nationale</a></h4>
+						</div>
+					</div>
+					{% for nationale in nationales %}
+					<div class="col col_4_of_12">
+
+						<div class="layout_post_1">
+							<div class="item_thumb">
+								<div class="thumb_icon">
+									<a href="{{  path('fo_nationale', {'slug': nationale.slug}) }}" style="background-color: #{{ nationale.typactualite.couleur }}"><i class="fa fa-copy"></i></a>
+								</div>
+								<div class="thumb_hover">
+									<a href="{{  path('fo_nationale', {'slug': nationale.slug}) }}"><img src="{{ asset('uploads/actualites/'~ nationale.imageName) | imagine_filter('actualite') }}" alt="{{ nationale.titre }}"></a>
+								</div>
+								<div class="thumb_meta">
+									<span class="category" style="background-color: #{{ nationale.typactualite.couleur }}"><a href="#">{{ nationale.typactualite.libelle }}</a></span>
+								</div>
+							</div>
+							<div class="item_content">
+								<h4><a href="{{  path('fo_nationale', {'slug': nationale.slug}) }}">{{ nationale.titre }}</a></h4>
+								<div class="item_meta clearfix">
+									<span class="meta_date">{{ nationale.publieLe|date('d-m-Y')}}</span>
+								</div>
+								<p>{{ nationale.resume|raw }}[...]</p>
+							</div>
+						</div>
+					</div>	
+					{% endfor %}
+
+				</div>
+{% endblock %}
+
+{% block accueil %}
+<div class="panel_title clearfix">
+			<div>
+				<h4><a href="#">La régionale </a></h4>
+			</div>
+		</div>
+		<div class="row">
+			{% for regionale in regionales %}
+			<div class="col col_3_of_12">
+				<div class="layout_post_1">
+					<div class="item_thumb">
+						<div class="thumb_icon">
+							<a href="{{  path('fo_regionale', {'slug': regionale.slug}) }}" style="background-color: #{{ regionale.region.couleur}}"><i class="fa fa-copy"></i></a>
+						</div>
+						<div class="thumb_hover">
+							<a href="{{  path('fo_regionale', {'slug': regionale.slug}) }}"><img src="{{ asset('uploads/regionales/'~ regionale.imageName) | imagine_filter('actualite') }}" alt="{{ regionale.titre}}"></a>
+						</div>
+						<div class="thumb_meta">
+							<span class="category" style="background-color: #{{regionale.region.couleur}}"><a href="#">{{ regionale.region.libelle }}</a></span>
+						</div>
+					</div>
+					<div class="item_content">
+						<h4><a href="{{  path('fo_regionale', {'slug': regionale.slug}) }}">{{ regionale.titre }}</a></h4>
+						<div class="item_meta clearfix">
+							<span class="meta_date">{{ regionale.publieLe|date('d-m-Y')}}</span>
+						</div>
+						<p>{{ regionale.resume|raw }} [...]</p>
+					</div>
+				</div>
+			</div>	
+			{% endfor %}
+			
+		</div>
+
+
+
+		<div class="panel_title clearfix" style="margin-top: 75px">
+			<div>
+				<h4><a href="#">L'international </a></h4>
+			</div>
+		</div>
+		<div class="row">
+			{% for internationale in internationales %}
+			<div class="col col_4_of_12">
+				<div class="layout_post_1">
+					<div class="item_thumb">
+						<div class="thumb_icon">
+							<a href="{{ path('fo_internationale', {'slug': internationale.slug}) }}" style="background-color: #F89406"><i class="fa fa-copy"></i></a>
+						</div>
+						<div class="thumb_hover">
+							<a href="{{ path('fo_internationale', {'slug': internationale.slug}) }}"><img src="{{ asset('uploads/internationales/'~ internationale.imageName) | imagine_filter('actualite') }}" alt="{{ internationale.titre}}"></a>
+						</div>
+						<div class="thumb_meta">
+							<span class="category" style="background-color: #F89406"><a href="#">{{ internationale.domaine }}</a></span>
+						</div>
+					</div>
+					<div class="item_content">
+						<h4><a href="{{ path('fo_internationale', {'slug': internationale.slug}) }}">{{ internationale.titre }}</a></h4>
+						<div class="item_meta clearfix">
+							<span class="meta_date">{{ internationale.publieLe|date('d-m-Y')}}</span>
+						</div>
+						<p>{{ internationale.resume|raw }} [...]</p>
+					</div>
+				</div>
+			</div>	
+			{% endfor %}
+		</div>
+{% endblock %}
+
