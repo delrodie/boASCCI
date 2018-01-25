@@ -20,7 +20,21 @@
 						</li>
 						{% endfor %}
 
-
+						
+						{% for slideUnique in slideUniques %}
+						<li>
+							<a href="#"><img src="{{ vich_uploader_asset(slideUnique, 'imageFile') }}" alt="{{ slideUnique.legende }}"></a>
+							<div class="slider_caption">
+								<div class="thumb_meta">
+									<span class="category" style="background-color: #2574A9"><a href="#">{{ slideUnique.type1 }}</a></span>
+									<span class="category"><a href="#">{{ slideUnique.type2}}</a></span>
+								</div>
+								<div class="thumb_link">
+									<h3><a href="#">{{ slideUnique.legende }}</a></h3>
+								</div>
+							</div>
+						</li>	
+						{% endfor %}
 
 
 					</ul>
@@ -35,7 +49,24 @@
 					<div class="col col_12_of_12">
 						<div class="multipack clearfix">
 
-							
+
+							<div class="layout_post_1">
+								{% for envolIntro in envolIntros %}
+								<div class="item_thumb">
+									<div class="thumb_icon">
+										<a href="#" style="background-color: #446CB3"><i class="fa fa-copy"></i></a>
+									</div>
+									<div class="thumb_hover">
+										<a href="#"><img src="{{ asset('uploads/envols/'~ envolIntro.imageName) | imagine_filter('envolIntro') }}" alt="{{ envolIntro.titre }}"></a>
+									</div>
+								</div>
+								<div class="item_content">
+									<h4><a href="#">Y croire avec Tardy</a></h4>
+									<p>{{ envolIntro.resume|raw }}</p>
+								 </div>	
+								{% endfor %}
+							</div>
+
 
 							<div class="list_posts">
 

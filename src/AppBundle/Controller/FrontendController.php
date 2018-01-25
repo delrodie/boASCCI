@@ -109,10 +109,50 @@ class FrontendController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $pedagogie = $em->getRepository('AppBundle:Pedagogie')->findPedagogie($slug); //dump($pedagogie);die();
+        $pedagogies = $em->getRepository('AppBundle:Pedagogie')->findPedagogie($slug); //dump($pedagogie);die();
+
+        if (!$pedagogies){ //dump('error500.html');die();
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }
 
         return $this->render('frontend/pagePedagogie.html.twig',[
-            'pedagogie' => $pedagogie,
+            'pedagogies' => $pedagogies,
+        ]);
+    }
+
+    /**
+     * @Route("/qui-sommes-nous/{slug}", name="fo_presentation")
+     */
+    public function presentationAction(Request $request, $slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $presentations = $em->getRepository('AppBundle:Presentation')->findPresentation($slug);
+
+        // Si aucun élément alors renvoyer à la page de maintenance
+        if (!$presentations) {
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }//dump($presentations);die();
+
+        return $this->render("frontend/pagePresentation.html.twig", [
+            'presentations' => $presentations,
+        ]);
+    }
+
+    /**
+     * @Route("/ressources-adultes/{slug}", name="fo_chef")
+     */
+    public function chefAction(Request $request, $slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $adultes = $em->getRepository('AppBundle:Adulte')->findAdulte($slug);
+
+        // Si aucun éléments alors renvoyer à la page de maintenance
+        if (!$adultes){
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }
+
+        return $this->render("frontend/pageAdulte.html.twig", [
+            'adultes' => $adultes,
         ]);
     }
 }

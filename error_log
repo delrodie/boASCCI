@@ -1,0 +1,8 @@
+[25-Jan-2018 04:27:02 UTC] PHP Fatal error:  Uncaught Symfony\Component\Debug\Exception\FatalThrowableError: Parse error: syntax error, unexpected '<<' (T_SL) in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php:18
+Stack trace:
+#0 [internal function]: Symfony\Component\Debug\DebugClassLoader->loadClass('AppBundle\\Contr...')
+#1 [internal function]: spl_autoload_call('AppBundle\\Contr...')
+#2 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/Config/Resource/ReflectionClassResource.php(100): ReflectionClass->__construct('AppBundle\\Contr...')
+#3 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/Config/Resource/ReflectionClassResource.php(45): Symfony\Component\Config\Resource\ReflectionClassResource->computeHash()
+#4 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/Config/Resource/SelfCheckingResourceChecker.php(34): Symfony\Component\Config\Resource\ReflectionClassResource->isFresh(1516840287)
+#5 /home/scoutsacci/public_html/v3/vendor/symfony/sy in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php on line 18

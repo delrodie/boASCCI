@@ -15,18 +15,19 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $sliders = $em->getRepository('AppBundle:Slider')->findSlideStandard(0, 6); //dump($sliders);die();
-        $slideUnique = $em->getRepository('AppBundle:Slider')->findOneSlide(5, 1); //dump($slideUnique);die();
-        $envolIntro = $em->getRepository('AppBundle:Envol')->findOneEnvol(0, 1); //dump($envolIntro);die();
+
+        $sliders = $em->getRepository('AppBundle:Slider')->findSlideStandard(0, 4); //dump($sliders);die();
+        $slideUniques = $em->getRepository('AppBundle:Slider')->findOneSlide(5, 1); //dump($slideUnique);die();
+        $envolIntros = $em->getRepository('AppBundle:Envol')->findOneEnvol(0, 1); //dump($envolIntro);die();
         $envols = $em->getRepository('AppBundle:Envol')->findEnvol(); //dump($envols);die();
         $nationales = $em->getRepository('AppBundle:Actualite')->findLastActualite(0, 3);
         $regionales = $em->getRepository('AppBundle:Regionale')->findLastRegionale(0, 4);
-        $internationales = $em->getRepository('AppBundle:Internationale')->findLastInternationale(0, 3); //dump($internationales);die();
+        $internationales = $em->getRepository('AppBundle:Internationale')->findLastInternationale(0, 3);
 
         return $this->render('default/index.html.twig', [
             'sliders'   => $sliders,
-            'slideUnique'   => $slideUnique,
-            'envolIntro'    => $envolIntro,
+            'slideUniques'   => $slideUniques,
+            'envolIntros'    => $envolIntros,
             'envols' => $envols,
             'nationales' => $nationales,
             'regionales' => $regionales,
@@ -43,7 +44,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $menus = $em->getRepository('AppBundle:Chef')->findBy(array('statut' => 1));
 
-        return $this->render('default/menu.html.twig',[
+        return $this->render('default/menuChef.html.twig',[
             'menus' => $menus,
         ]);
     }

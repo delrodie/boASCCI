@@ -10,4 +10,27 @@ namespace AppBundle\Repository;
  */
 class PresentationRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Recherche des trois dernières actualités sans la concernée
+     * 
+     * author: Delrodie AMOIKON
+     * date: 25/01/2018 02:20
+     */
+    public function findPresentation($slug)
+    {
+        $em = $this->getEntityManager();
+        return $qb = $em->createQuery('
+                            SELECT a, b
+                            FROM AppBundle:Presentation a
+                            LEFT JOIN a.typresentation b
+                            WHERE a.statut = :actif
+                            AND b.slug LIKE :slug
+                        ')
+                        ->setParameters(array(
+                            'actif' => 1,
+                            'slug'  => '%'.$slug.'%'
+                        ))
+                        ->getResult()
+                        ;
+    }
 }
