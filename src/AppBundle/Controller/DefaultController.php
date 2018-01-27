@@ -78,4 +78,21 @@ class DefaultController extends Controller
 
         return $this->render('default/dashboard.html.twig');
     }
+
+    /**
+     * @Route("/publicite", name="menu_publicite")
+     */
+    public function publiciteAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $publicites = $em->getRepository('AppBundle:Publicite')->findPublicite(0,1);
+
+        if (!$publicites){
+            return $this->render('frontend/noPublicite.html.twig');
+        }
+
+        return $this->render('frontend/publicite.html.twig',[
+            'publicites' => $publicites,
+        ]);
+    }
 }

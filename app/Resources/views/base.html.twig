@@ -253,13 +253,7 @@
 					</div>
 				</div>
 
-				<div class="widget">
-					<div class="widget_title"><h3></h3></div>
-					<div class="tb_widget_socialize clearfix">
-						<img src="http://via.placeholder.com/500x500" alt="Espace publicité" title="Espace publicité">
-						<!---->
-					</div>
-				</div>
+				{{ render(url('menu_publicite'))}}
 
 				<div class="widget">
 					<div class="widget_title"><h3>Actu facebook</h3></div>
@@ -280,13 +274,7 @@
 					</div>
 				</div>
 
-				<div class="widget">
-					<div class="widget_title"><h3></h3></div>
-					<div class="tb_widget_socialize clearfix">
-						<img src="http://via.placeholder.com/500x500" alt="Espace publicité" title="Espace publicité">
-						<!---->
-					</div>
-				</div>
+				{% block publicite %}{% endblock %}
 
 
 			</div>
