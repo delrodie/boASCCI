@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Publicite</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ publicite.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ publicite.titre }}</td>
+            </tr>
+            <tr>
+                <th>Datedeb</th>
+                <td>{{ publicite.datedeb }}</td>
+            </tr>
+            <tr>
+                <th>Datefin</th>
+                <td>{{ publicite.datefin }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{% if publicite.statut %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Imagename</th>
+                <td>{{ publicite.imageName }}</td>
+            </tr>
+            <tr>
+                <th>Imagesize</th>
+                <td>{{ publicite.imageSize }}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if publicite.updatedAt %}{{ publicite.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ publicite.slug }}</td>
+            </tr>
+            <tr>
+                <th>Publiepar</th>
+                <td>{{ publicite.publiePar }}</td>
+            </tr>
+            <tr>
+                <th>Modifiepar</th>
+                <td>{{ publicite.modifiePar }}</td>
+            </tr>
+            <tr>
+                <th>Publiele</th>
+                <td>{{ publicite.publieLe }}</td>
+            </tr>
+            <tr>
+                <th>Modifiele</th>
+                <td>{{ publicite.modifieLe }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_publicite_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_publicite_edit', { 'id': publicite.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
