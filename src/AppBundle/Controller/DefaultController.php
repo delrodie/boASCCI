@@ -22,6 +22,13 @@ class DefaultController extends Controller
         $nationales = $em->getRepository('AppBundle:Actualite')->findLastActualite(0, 3);
         $regionales = $em->getRepository('AppBundle:Regionale')->findLastRegionale(0, 4);
         $internationales = $em->getRepository('AppBundle:Internationale')->findLastInternationale(0, 3);
+        $messages = $em->getRepository('AppBundle:Message')
+                        ->findBy(
+                            array('statut' => 1),
+                            array('id' => 'DESC'),
+                            $limit = 1,
+                            $offset = 0
+                        );
 
         return $this->render('default/index.html.twig', [
             'sliders'   => $sliders,
@@ -31,6 +38,7 @@ class DefaultController extends Controller
             'nationales' => $nationales,
             'regionales' => $regionales,
             'internationales' => $internationales,
+            'messages'  => $messages,
         ]);
 		
     }

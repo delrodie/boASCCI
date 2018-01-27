@@ -48,17 +48,32 @@
 						<div class="multipack clearfix">
 
 							<div class="layout_post_1">
-								{% for envolIntro in envolIntros %}
+								{% for message in messages %}
 								<div class="item_thumb">
+									<div class="thumb_icon">
+										<a href="#" style="background-color: #446CB3"><i class="fa fa-copy"></i></a>
+									</div>
+									<div class="thumb_hover">
+										<a href="#"><img src="{{ asset('uploads/messages/'~ message.imageName) | imagine_filter('envolIntro') }}" alt="{{ message.titre }}"></a>
+									</div>
+								</div>
+								<div class="item_content">
+									<h4><a href="#">{{ message.titre }}</a></h4>
+									<p>{{ message.resume|raw }}</p>
+								 </div>	
+								{% endfor %}
+								<br>
+								{% for envolIntro in envolIntros %}
+								<!--<div class="item_thumb">
 									<div class="thumb_icon">
 										<a href="#" style="background-color: #446CB3"><i class="fa fa-copy"></i></a>
 									</div>
 									<div class="thumb_hover">
 										<a href="#"><img src="{{ asset('uploads/envols/'~ envolIntro.imageName) | imagine_filter('envolIntro') }}" alt="{{ envolIntro.titre }}"></a>
 									</div>
-								</div>
+								</div>-->
 								<div class="item_content">
-									<h4><a href="#">Y croire avec Tardy</a></h4>
+									<h4><a href="#">{{ envolIntro.titre }}</a></h4>
 									<p>{{ envolIntro.resume|raw }}</p>
 								 </div>	
 								{% endfor %}
@@ -87,7 +102,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> <br> <br><br>
 
 				<div class="row">
 					<div class="panel_title" style="padding: 0 15px">
@@ -121,7 +136,7 @@
 					</div>	
 					{% endfor %}
 
-				</div>
+				</div> <br><br><br>
 {% endblock %}
 
 {% block accueil %}
