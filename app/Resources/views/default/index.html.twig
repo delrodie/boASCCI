@@ -51,14 +51,14 @@
 								{% for message in messages %}
 								<div class="item_thumb">
 									<div class="thumb_icon">
-										<a href="#" style="background-color: #446CB3"><i class="fa fa-copy"></i></a>
+										<a href="{{ path('fo_messageNational', {'slug': message.slug})}}" style="background-color: #446CB3"><i class="fa fa-copy"></i></a>
 									</div>
 									<div class="thumb_hover">
-										<a href="#"><img src="{{ asset('uploads/messages/'~ message.imageName) | imagine_filter('envolIntro') }}" alt="{{ message.titre }}"></a>
+										<a href="{{ path('fo_messageNational', {'slug': message.slug})}}"><img src="{{ asset('uploads/messages/'~ message.imageName) | imagine_filter('envolIntro') }}" alt="{{ message.titre }}"></a>
 									</div>
 								</div>
 								<div class="item_content">
-									<h4><a href="#">{{ message.titre }}</a></h4>
+									<h4><a href="{{ path('fo_messageNational', {'slug': message.slug})}}">{{ message.titre }}</a></h4>
 									<p>{{ message.resume|raw }}</p>
 								 </div>	
 								{% endfor %}
@@ -73,7 +73,7 @@
 									</div>
 								</div>-->
 								<div class="item_content">
-									<h4><a href="#">{{ envolIntro.titre }}</a></h4>
+									<h4><a href="{{ path('fo_envolASCCI', {'slug': envolIntro.slug})}}">{{ envolIntro.titre }}</a></h4>
 									<p>{{ envolIntro.resume|raw }}</p>
 								 </div>	
 								{% endfor %}
@@ -85,14 +85,14 @@
 								<div class="post clearfix">
 									<div class="item_thumb">
 										<div class="thumb_icon">
-											<a href="#" style="background-color: #4183D7"><i class="fa fa-copy"></i></a>
+											<a href="{{ path('fo_envolASCCI', {'slug': envol.slug})}}" style="background-color: #4183D7"><i class="fa fa-copy"></i></a>
 										</div>
 										<div class="thumb_hover">
-											<a href="#"><img src="{{ asset('uploads/envols/'~ envol.imageName) | imagine_filter('envol') }}" alt="{{ envol.titre }}"></a>
+											<a href="{{ path('fo_envolASCCI', {'slug': envol.slug})}}"><img src="{{ asset('uploads/envols/'~ envol.imageName) | imagine_filter('envol') }}" alt="{{ envol.titre }}"></a>
 										</div>
 									</div>
 									<div class="item_content">
-										<h4><a href="#">{{ envol.titre }}</a></h4>
+										<h4><a href="{{ path('fo_envolASCCI', {'slug': envol.slug})}}">{{ envol.titre }}</a></h4>
 										<div class="item_meta clearfix">
 											<span class="">{{ envol.typenvol.libelle }}</span>
 										</div>

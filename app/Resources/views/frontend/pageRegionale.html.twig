@@ -58,13 +58,13 @@
 							<div class="layout_post_1">
 								<div class="item_thumb">
 									<div class="thumb_icon">
-										<a href="{{ path('fo_regionale', {'slug': similaire.slug})}}" style="background-color: #{{similaire.typactualite.couleur}}"><i class="fa fa-copy"></i></a>
+										<a href="{{ path('fo_regionale', {'slug': similaire.slug})}}" style="background-color: #{{similaire.region.couleur}}"><i class="fa fa-copy"></i></a>
 									</div>
 									<div class="thumb_hover">
 										<a href="{{ path('fo_regionale', {'slug': similaire.slug})}}"><img src="{{ asset('uploads/regionales/'~ similaire.imageName) | imagine_filter('similaire') }}" alt="{{ similaire.titre}}" class="visible animated"></a>
 									</div>
 									<div class="thumb_meta">
-									<span class="category" style="background-color: #{{ similaire.typactualite.couleur }}"><a href="#">{{ similaire.typactualite.libelle }}</a></span>
+									<span class="category" style="background-color: #{{ similaire.region.couleur }}"><a href="#">{{ similaire.region.libelle }}</a></span>
 									</div>
 								</div>
 								<div class="item_content">
