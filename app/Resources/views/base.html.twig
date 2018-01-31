@@ -191,7 +191,7 @@
 				<li class="menu-item-has-children"><a href="#">Notre pédagogie<div class="subtitle">Nos jeunes</div></a>
 					<span class="site_sub_menu_toggle"></span>
 					<ul class="sub-menu" style="border-top-color: #F89406">
-						<li><a href="#">Projet Éducatif</a></li>
+						<li><a href="{{ path('fo_pedagogie', {'slug': 'projet'})}}">Projet Éducatif</a></li>
 						<li><a href="{{ path('fo_pedagogie', {'slug': 'louveteau'})}}">Louvetaux (8-11 ans)</a></li>
 						<li><a href="{{ path('fo_pedagogie', {'slug': 'eclaireur'})}}">Eclaireurs (12-14 ans)</a></li>
 						<li><a href="{{ path('fo_pedagogie', {'slug': 'chemino'})}}">Cheminots (15-17 ans)</a></li>
@@ -252,13 +252,7 @@
 					</div>
 				</div>
 
-				<div class="widget">
-					<div class="widget_title"><h3></h3></div>
-					<div class="tb_widget_socialize clearfix">
-						<img src="http://via.placeholder.com/500x500" alt="Espace publicité" title="Espace publicité">
-						<!---->
-					</div>
-				</div>
+				{{ render(url('menu_publicite'))}}
 
 				<div class="widget">
 					<div class="widget_title"><h3>Actu facebook</h3></div>
@@ -278,6 +272,8 @@
 
 					</div>
 				</div>
+
+				{% block publicite %}{% endblock %}
 
 
 			</div>

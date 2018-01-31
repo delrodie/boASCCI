@@ -31,8 +31,14 @@ class FrontendController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $info = $em->getRepository('AppBundle:Information')->findInformationBySlug($slug); //dump($info);die();
+        //$info = $em->getRepository('AppBundle:Information')->findInformationBySlug($slug); //dump($info);die();
+        $info = $em->getRepository('AppBundle:Information')->findOneBy(array('slug' => $slug, 'statut' => 1)); //dump($info);die();
         $similaires = $em->getRepository('AppBundle:Information')->findThreeLastInfos(0,3); //dump($similaires);die();
+
+        // Si le message n'exite pas alors renvoie à la page de maintenance
+        if(!$info){
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }
 
         return $this->render('frontend/pageInformation.html.twig',[
             'info' => $info,
@@ -61,8 +67,13 @@ class FrontendController extends Controller
     {
         $em = $this->getDoctrine()->getmanager();
 
-        $nationale = $em->getRepository('AppBundle:Actualite')->findOneBy(array('slug' => $slug)); //dump($nationale);die();
+        $nationale = $em->getRepository('AppBundle:Actualite')->findOneBy(array('slug' => $slug, 'statut' => 1)); //dump($nationale);die();
         $similaires = $em->getRepository('AppBundle:Actualite')->findThreeLastActualite($slug, 0, 3); //dump($nationale);die();
+
+        // Si le message n'exite pas alors renvoie à la page de maintenance
+        if(!$nationale){
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }
 
         return $this->render('frontend/pageNationale.html.twig',[
             'nationale' => $nationale,
@@ -77,8 +88,13 @@ class FrontendController extends Controller
     {
         $em = $this->getDoctrine()->getmanager();
 
-        $regionale = $em->getRepository('AppBundle:Regionale')->findOneBy(array('slug' => $slug)); //dump($nationale);die();
+        $regionale = $em->getRepository('AppBundle:Regionale')->findOneBy(array('slug' => $slug, 'statut' => 1)); //dump($nationale);die();
         $similaires = $em->getRepository('AppBundle:Regionale')->findThreeLastRegionale($slug, 0, 3); //dump($nationale);die();
+
+        // Si le message n'exite pas alors renvoie à la page de maintenance
+        if(!$regionale){
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }
 
         return $this->render('frontend/pageRegionale.html.twig',[
             'regionale' => $regionale,
@@ -93,8 +109,13 @@ class FrontendController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $internationale = $em->getRepository('AppBundle:Internationale')->findOneBy(array('slug' => $slug)); //dump($nationale);die();
+        $internationale = $em->getRepository('AppBundle:Internationale')->findOneBy(array('slug' => $slug, 'statut' => 1)); //dump($nationale);die();
         $similaires = $em->getRepository('AppBundle:Internationale')->findThreeLastInternationale($slug, 0, 3); //dump($nationale);die();
+
+        // Si le message n'exite pas alors renvoie à la page de maintenance
+        if(!$internationale){
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }
 
         return $this->render('frontend/pageInternationale.html.twig',[
             'internationale' => $internationale,
@@ -153,6 +174,42 @@ class FrontendController extends Controller
 
         return $this->render("frontend/pageAdulte.html.twig", [
             'adultes' => $adultes,
+        ]);
+    }
+
+    /**
+     * @Route("/message-du-national/{slug}", name="fo_messageNational")
+     */
+    public function messageAction(Request $request, $slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $message = $em->getRepository('AppBundle:Message')->findOneBy(array('slug' => $slug, 'statut' => 1));
+
+        // Si le message n'exite pas alors renvoie à la page de maintenance
+        if(!$message){
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }
+
+        return $this->render("frontend/pageMessage.html.twig", [
+            'message'   => $message,
+        ]);
+    }
+
+    /**
+     * @Route("/envol/{slug}", name="fo_envolASCCI")
+     */
+    public function envolAscciAction(Request $request, $slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $envol = $em->getRepository('AppBundle:Envol')->findOneBy(array('slug' => $slug, 'statut' => 1));
+
+        // Si la rubrique n'existe pas alors renvoie à la page de maintenance
+        if(!$envol){
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }
+
+        return $this->render("frontend/pageEnvol.html.twig",[
+            'envol' => $envol,
         ]);
     }
 }

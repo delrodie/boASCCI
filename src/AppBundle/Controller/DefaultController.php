@@ -23,6 +23,13 @@ class DefaultController extends Controller
         $nationales = $em->getRepository('AppBundle:Actualite')->findLastActualite(0, 3);
         $regionales = $em->getRepository('AppBundle:Regionale')->findLastRegionale(0, 4);
         $internationales = $em->getRepository('AppBundle:Internationale')->findLastInternationale(0, 3);
+        $messages = $em->getRepository('AppBundle:Message')
+                        ->findBy(
+                            array('statut' => 1),
+                            array('id' => 'DESC'),
+                            $limit = 1,
+                            $offset = 0
+                        );
 
         return $this->render('default/index.html.twig', [
             'sliders'   => $sliders,
@@ -32,6 +39,7 @@ class DefaultController extends Controller
             'nationales' => $nationales,
             'regionales' => $regionales,
             'internationales' => $internationales,
+            'messages'  => $messages,
         ]);
 		
     }
@@ -70,5 +78,22 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         return $this->render('default/dashboard.html.twig');
+    }
+
+    /**
+     * @Route("/publicite", name="menu_publicite")
+     */
+    public function publiciteAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $publicites = $em->getRepository('AppBundle:Publicite')->findPublicite(0,1);
+
+        if (!$publicites){
+            return $this->render('frontend/noPublicite.html.twig');
+        }
+
+        return $this->render('frontend/publicite.html.twig',[
+            'publicites' => $publicites,
+        ]);
     }
 }
