@@ -212,4 +212,52 @@ class FrontendController extends Controller
             'envol' => $envol,
         ]);
     }
+
+    /**
+     * @Route("/presentation/nos-departement", name="fo_presentation_departement")
+     */
+    public function departementAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $departements = $em->getRepository('AppBundle:Departement2')->findBy(array('statut' => 1));
+        $presentations = $em->getRepository('AppBundle:Presentation')->findBy(array('slug' => 'notre-equipe-dirigeante'));
+
+        // S'il n'y a aucun contenu alors renvoie à la page de maintenance
+        if(!$departements){
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }
+
+        return $this->render('frontend/pageDepartement.html.twig',[
+            'departements'  => $departements,
+            'presentations' => $presentations,
+        ]);
+    }
+
+    /**
+     * @Route("/qui-sommes-nous/departement/{slug}", name="fo_departement")
+     */
+    public function departementdetailsAction(Request $request, $slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $departement = $em->getRepository('AppBundle:Departement2')->findOneBy(array('slug' => $slug, 'statut' => 1));
+
+        // S'il n'y a aucun article alors renvoie à la page de maintenance
+        if(!$departement){
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }
+
+        return $this->render('frontend/pageDepartement_detail.html.twig',[
+            'departement'  => $departement,
+        ]);
+    }
+
+    /**
+     * @Route("/grands-rassemblements/{slug}", name="fo_rassemblement")
+     */
+    public function rassemblementAction(Request $request, $slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        return $this->render("frontend/pageMaintenance.html.twig");
+    }
 }

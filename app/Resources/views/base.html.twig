@@ -152,18 +152,18 @@
 			<span class="top_navigation_toggle"><i class="fa fa-reorder"></i></span>
 			<ul class="menu">
 				<li class="louveteau">
-					<a href="#" title="8-11 ans"><img src="{{ asset('ressources/images/branche/icon01.png')}}" width="30"> 
+					<a href="{{ path('fo_pedagogie', {'slug': 'louveteau'})}}" title="8-11 ans"><img src="{{ asset('ressources/images/branche/icon01.png')}}" width="30"> 
 						Louveteau
 					</a>
 				</li>
 				<li class="eclaireur">
-					<a href="#" title="12-14 ans"><img src="{{ asset('ressources/images/branche/icon02.png')}}" width="30">Eclaireur</a>
+					<a href="{{ path('fo_pedagogie', {'slug': 'eclaireur'})}}" title="12-14 ans"><img src="{{ asset('ressources/images/branche/icon02.png')}}" width="30">Eclaireur</a>
 				</li>
 				<li class="cheminot">
-					<a href="#" title="15-17 ans"><img src="{{ asset('ressources/images/branche/icon03.png')}}" width="30">Cheminot</a>
+					<a href="{{ path('fo_pedagogie', {'slug': 'chemino'})}}" title="15-17 ans"><img src="{{ asset('ressources/images/branche/icon03.png')}}" width="30">Cheminot</a>
 				</li>
 				<li class="routier">
-					<a href="#" title="18-21 ans"><img src="{{ asset('ressources/images/branche/icon04.png')}}" width="30">Routier</a>
+					<a href="{{ path('fo_pedagogie', {'slug': 'route'})}}" title="18-21 ans"><img src="{{ asset('ressources/images/branche/icon04.png')}}" width="30">Routier</a>
 				</li>
 			</ul>
 		</nav>
@@ -361,28 +361,31 @@
 				<div class="item clearfix">
 					<div class="item_thumb">
 						<div class="thumb_icon">
-							<a href="#"><i class="fa fa-copy"></i></a>
+							<a href="{{ path('fo_rassemblement', {'slug': 'jamboree-attougblan'})}}"><i class="fa fa-copy"></i></a>
 						</div>
 						<div class="thumb_hover">
-							<a href="#"><img src="{{ asset('ressources/images/branche/05.png')}}" alt="Post"></a>
+							<a href="{{ path('fo_rassemblement', {'slug': 'jamboree-attougblan'})}}"><img src="{{ asset('ressources/images/branche/05.png')}}" alt="Jamboree - Attougblan"></a>
 						</div>
 					</div>
 					<div class="item_content">
-						<h4><a href="#">Jamboree </a></h4>
+						<h4><a href="{{ path('fo_rassemblement', {'slug': 'jamboree-attougblan'})}}">Jamboree </a></h4>
+						<div class="item_meta clearfix">
+							<span class="">Attougblan</span>
+						</div>
 					</div>
 				</div>
 
 				<div class="item clearfix">
 					<div class="item_thumb">
 						<div class="thumb_icon">
-							<a href="#"><i class="fa fa-copy"></i></a>
+							<a href="{{ path('fo_rassemblement', {'slug': 'carnaloup'})}}"><i class="fa fa-copy"></i></a>
 						</div>
 						<div class="thumb_hover">
-							<a href="#"><img src="{{ asset('ressources/images/branche/01.png')}}" alt="Post"></a>
+							<a href="{{ path('fo_rassemblement', {'slug': 'carnaloup'})}}"><img src="{{ asset('ressources/images/camps/01-carnaloup.png')}}" alt="carnaloup"></a>
 						</div>
 					</div>
 					<div class="item_content">
-						<h4><a href="#">Carnaloup</a></h4>
+						<h4><a href="{{ path('fo_rassemblement', {'slug': 'carnaloup'})}}">Carnaloup</a></h4>
 						<div class="item_meta clearfix">
 							<span class="">8-11 ans</span>
 						</div>
@@ -392,14 +395,14 @@
 				<div class="item clearfix">
 					<div class="item_thumb">
 						<div class="thumb_icon">
-							<a href="#"><i class="fa fa-copy"></i></a>
+							<a href="{{ path('fo_rassemblement', {'slug': 'eclai-carnaval'})}}"><i class="fa fa-copy"></i></a>
 						</div>
 						<div class="thumb_hover">
-							<a href="#"><img src="{{ asset('ressources/images/branche/02.png')}}" alt="Post"></a>
+							<a href="{{ path('fo_rassemblement', {'slug': 'eclai-carnaval'})}}"><img src="{{ asset('ressources/images/camps/02-eclaicarnaval.png')}}" alt="Eclai carnaval"></a>
 						</div>
 					</div>
 					<div class="item_content">
-						<h4><a href="#">Eclai carnaval</a></h4>
+						<h4><a href="{{ path('fo_rassemblement', {'slug': 'eclai-carnaval'})}}">Eclai carnaval</a></h4>
 						<div class="item_meta clearfix">
 							<span class="">12-14 ans</span>
 						</div>
@@ -409,14 +412,14 @@
 				<div class="item clearfix">
 					<div class="item_thumb">
 						<div class="thumb_icon">
-							<a href="#"><i class="fa fa-copy"></i></a>
+							<a href="{{ path('fo_rassemblement', {'slug': 'yeyawa'})}}"><i class="fa fa-copy"></i></a>
 						</div>
 						<div class="thumb_hover">
-							<a href="#"><img src="{{ asset('ressources/images/branche/03.png')}}" alt="Post"></a>
+							<a href="{{ path('fo_rassemblement', {'slug': 'yeyawa'})}}"><img src="{{ asset('ressources/images/camps/03-yeyawa.png')}}" alt="Yeyawa"></a>
 						</div>
 					</div>
 					<div class="item_content">
-						<h4><a href="#">Yeyawa</a></h4>
+						<h4><a href="{{ path('fo_rassemblement', {'slug': 'yeyawa'})}}">Yeyawa</a></h4>
 						<div class="item_meta clearfix">
 							<span class="">15-17 ans</span>
 						</div>
@@ -426,14 +429,14 @@
 				<div class="item clearfix">
 					<div class="item_thumb">
 						<div class="thumb_icon">
-							<a href="#"><i class="fa fa-copy"></i></a>
+							<a href="{{ path('fo_rassemblement', {'slug': 'so-kraff'})}}"><i class="fa fa-copy"></i></a>
 						</div>
 						<div class="thumb_hover">
-							<a href="#"><img src="{{ asset('ressources/images/branche/04.png')}}" alt="Post"></a>
+							<a href="{{ path('fo_rassemblement', {'slug': 'so-kraff'})}}"><img src="{{ asset('ressources/images/camps/04-sokraff.png')}}" alt='SO"KRAFF'></a>
 						</div>
 					</div>
 					<div class="item_content">
-						<h4><a href="#">So'kraff</a></h4>
+						<h4><a href="{{ path('fo_rassemblement', {'slug': 'so-kraff'})}}">So"kraff</a></h4>
 						<div class="item_meta clearfix">
 							<span class="">18-21 ans</span>
 						</div>
@@ -449,9 +452,9 @@
 			<div class="widget_title"><h3>Rubriques</h3></div>
 			<div class="tb_widget_categories">
 				<ul>
-					<li><a href="#">Qui sommes-nous?</a> </li>
-					<li><a href="#">Notre pédagogie</a> </li>
-					<li><a href="#">Nos ressources adultes</a> </li>
+					<li><a href="{{ path('fo_presentation', {'slug': 'notre-identite'})}}">Qui sommes-nous?</a> </li>
+					<li><a href="{{ path('fo_pedagogie', {'slug': 'projet'})}}">Notre pédagogie</a> </li>
+					<li><a href="{{ path('fo_chef', {'slug': 'les-benevoles'})}}">Nos ressources adultes</a> </li>
 					<li><a href="#">Notre couverture nationale</a> </li>
 				</ul>
 			</div><br><br>

@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos departements{% endblock %}
+
+
+{% block body %}
+<article class="post">
+
+
+						<div class="ariane_wrapper">
+
+							<div class="ariane">
+								<span><i class="fa fa-home"></i> <a href="{{ path('homepage')}}">Accueil</a></span>&nbsp; / 
+								<a href="#">Qui sommes-nous?</a> /
+								<a href="#">Departements</a>
+							</div>
+						</div>
+
+						<div class="multipack clearfix">
+                            <div class="layout_post_1">
+								{% for presentation in presentations %}
+								<div class="item_thumb">
+									<div class="thumb_icon">
+										<a href="{{ path('fo_presentation', {'slug': presentation.slug})}}" style="background-color: #446CB3"><i class="fa fa-copy"></i></a>
+									</div>
+									<div class="thumb_hover">
+										<a href="{{ path('fo_presentation', {'slug': presentation.slug})}}"><img src="{{ asset('uploads/presentations/'~ presentation.imageName) | imagine_filter('envolIntro') }}" alt="{{ presentation.titre }}"></a>
+									</div>
+								</div>
+								<div class="item_content">
+									<h4><a href="{{ path('fo_presentation', {'slug': presentation.slug})}}">{{ presentation.titre }}</a></h4>
+									<p>{{ presentation.resume|raw }}</p>
+								 </div>	
+								{% endfor %}
+							</div>
+
+
+							<div class="list_posts">
+
+								{% for departement in departements %}
+								<div class="post clearfix">
+									<div class="item_thumb">
+										<div class="thumb_icon">
+											<a href="{{ path('fo_departement', {'slug': departement.slug})}}" style="background-color: #4183D7"><i class="fa fa-copy"></i></a>
+										</div>
+										<div class="thumb_hover">
+											<a href="{{ path('fo_departement', {'slug': departement.slug})}}"><img src="{{ asset('uploads/departements/'~ departement.imageName) | imagine_filter('envol') }}" alt="{{ departement.titre }}"></a>
+										</div>
+									</div>
+									<div class="item_content">
+										<h4><a href="{{ path('fo_departement', {'slug': departement.slug})}}">{{ departement.titre }}</a></h4>
+										<div class="item_meta clearfix">
+											<span class="">{{ departement.typedepartement.libelle }}</span>
+										</div>
+									</div>
+								</div>	
+								{% endfor %}
+							</div>
+						</div>
+
+
+					</article>
+
+{% endblock %}
+
+{% block accueil %}{% endblock %}
