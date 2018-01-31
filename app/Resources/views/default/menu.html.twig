@@ -1,5 +1,10 @@
                     <ul class="sub-menu" style="border-top-color: #F89406"> 
 						{% for menu in menus %}
-                        <li><a href="{{ path('fo_presentation', {'slug': menu.slug})}}">{{ menu.libelle }}</a></li>  
+                            {% if (menu.slug == 'nos-departements' ) %}
+                                <li><a href="{{ path('fo_presentation_departement') }}">{{ menu.libelle }}</a></li>
+                            {% else %}
+                                <li><a href="{{ path('fo_presentation', {'slug': menu.slug})}}">{{ menu.libelle }}</a></li>
+                            {% endif %}
+                          
                         {% endfor %}
 					</ul>
