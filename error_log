@@ -6,3 +6,9 @@ Stack trace:
 #3 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/Config/Resource/ReflectionClassResource.php(45): Symfony\Component\Config\Resource\ReflectionClassResource->computeHash()
 #4 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/Config/Resource/SelfCheckingResourceChecker.php(34): Symfony\Component\Config\Resource\ReflectionClassResource->isFresh(1516840287)
 #5 /home/scoutsacci/public_html/v3/vendor/symfony/sy in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php on line 18
+[07-Feb-2018 09:24:51 UTC] PHP Fatal error:  Uncaught Symfony\Component\Config\Exception\FileLocatorFileNotFoundException: The file "/home/scoutsacci/public_html/v3/app/config/config_rod.yml" does not exist. in /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/Config/FileLocator.php:46
+Stack trace:
+#0 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Config/FileLocator.php(54): Symfony\Component\Config\FileLocator->locate('/home/scoutsacc...', NULL, true)
+#1 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/Loader/YamlFileLoader.php(107): Symfony\Component\HttpKernel\Config\FileLocator->locate('/home/scoutsacc...')
+#2 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/Config/Loader/DelegatingLoader.php(45): Symfony\Component\DependencyInjection\Loader\YamlFileLoader->load('/home/scoutsacc...', NULL)
+#3 /home/scoutsacci/public_html/v3/app/AppKernel.php(56): Symfony\Component\Config\Loader\DelegatingLoader->load('/home/ in /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/Config/FileLocator.php on line 46

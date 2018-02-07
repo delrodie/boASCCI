@@ -64,13 +64,13 @@
 										<a href="{{ path('fo_information_breve', {'slug': similaire.slug})}}"><img src="{{ asset('uploads/informations/'~ similaire.imageName) | imagine_filter('similaire') }}" alt="{{ similaire.titre}}" class="visible animated"></a>
 									</div>
 									<div class="thumb_meta">
-									<span class="category" style="background-color: #{{ similaire.typinfo.couleur }}"><a href="#">{{ info.typinfo.libelle }}</a></span>
+									<span class="category" style="background-color: #{{ similaire.typinfo.couleur }}"><a href="#">{{ similaire.typinfo.libelle }}</a></span>
 									</div>
 								</div>
 								<div class="item_content">
 									<h4><a href="{{ path('fo_information_breve', {'slug': similaire.slug})}}">{{ similaire.titre }}</a></h4>
 									<div class="item_meta clearfix">
-										<span class="meta_date">{{ similaire.datedeb }}</span>
+										<span class="meta_date">{{ similaire.datedeb|date('d-m-Y') }}</span>
 									</div>
 									<p>{{ similaire.resume|raw }} [...]</p>
 								</div>
@@ -91,7 +91,7 @@
 {% block accueil %}{% endblock %}
 
 {% block meta %}
-        <meta name="keywords" content="{{ info.tag|raw }}"  />
+        <meta name="keywords" content="{% for tag in info.tag|split(',') %}{{ tag }}, {% endfor %}"  />
         <meta name="description" content="{{ info.resume|raw }}" />
   	    <meta name="revisit" content="7 days" />
   	    <meta name="revisit-after" content="7 days">
@@ -102,7 +102,7 @@
   	    <meta name="Audience" content="All" />
   	    <meta name="Robots" content="full">
 
-        <link rel="canonical" href="{http://scoutascci.org{{ path('fo_information_breve', {'slug': info.slug})}}" />
+        <link rel="canonical" href="http://scoutascci.org{{ path('fo_information_breve', {'slug': info.slug})}}" />
         <meta property="og:locale" content="fr_FR" />
         <meta property="og:type" content="Item" />
         <meta property="og:title" content="{{ info.titre }}" />

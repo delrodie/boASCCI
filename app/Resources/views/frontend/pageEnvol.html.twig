@@ -52,7 +52,7 @@
 {% block accueil %}{% endblock %}
 
 {% block meta %}
-        <meta name="keywords" content="{{ envol.tag|raw }}"  />
+        <meta name="keywords" content="{% for tag in envol.tag|split(',') %}{{ tag }}, {% endfor %}"  />
         <meta name="description" content="{{ envol.resume|raw }}" />
   	    <meta name="revisit" content="7 days" />
   	    <meta name="revisit-after" content="7 days">
@@ -63,7 +63,7 @@
   	    <meta name="Audience" content="All" />
   	    <meta name="Robots" content="full">
 
-        <link rel="canonical" href="{http://scoutascci.org{{ path('fo_envolASCCI', {'slug': envol.slug})}}" />
+        <link rel="canonical" href="http://scoutascci.org{{ path('fo_envolASCCI', {'slug': envol.slug})}}" />
         <meta property="og:locale" content="fr_FR" />
         <meta property="og:type" content="Item" />
         <meta property="og:title" content="{{ envol.titre }}" />

@@ -62,7 +62,7 @@
 {% block accueil %}{% endblock %}
 
 {% block meta %}
-		<meta name="keywords" content="{{ departement.tag|raw }}"  />
+		<meta name="keywords" content="{% for tag in departement.tag|split(',') %}{{ tag }}, {% endfor %}"  />
         <meta name="description" content="{{ departement.resume|raw }}" />
   	    <meta name="revisit" content="7 days" />
   	    <meta name="revisit-after" content="7 days">
@@ -73,7 +73,7 @@
   	    <meta name="Audience" content="All" />
   	    <meta name="Robots" content="full">
 
-        <link rel="canonical" href="{http://scoutascci.org{{ path('fo_departement', {'slug': departement.slug})}}" />
+        <link rel="canonical" href="http://scoutascci.org{{ path('fo_departement', {'slug': departement.slug})}}" />
         <meta property="og:locale" content="fr_FR" />
         <meta property="og:type" content="Item" />
         <meta property="og:title" content="{{ departement.titre }}" />
