@@ -259,7 +259,17 @@ class FrontendController extends Controller
     public function rassemblementAction(Request $request, $slug)
     {
         $em = $this->getDoctrine()->getManager();
+
+        $rassemblement = $em->getRepository('AppBundle:Rassemblement')->findRassemblement($slug);
+
+        if (!$rassemblement){
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }
+        $similaires = $em->getRepository('AppBundle:Rassemblement')->findSimilaire($rassemblement->getSlug(),0, 4);
         
-        return $this->render("frontend/pageMaintenance.html.twig");
+        return $this->render("frontend/pageRassemblement.html.twig",[
+            'rassemblement' => $rassemblement,
+            'similaires'    => $similaires,
+        ]);
     }
 }
