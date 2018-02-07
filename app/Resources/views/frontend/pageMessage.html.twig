@@ -51,7 +51,7 @@
 {% block accueil %}{% endblock %}
 
 {% block meta %}
-        <meta name="keywords" content="{{ message.tag|raw }}"  />
+        <meta name="keywords" content="{% for tag in message.tag|split(',') %}{{ tag }}, {% endfor %}"  />
         <meta name="description" content="{{ message.resume|raw }}" />
   	    <meta name="revisit" content="7 days" />
   	    <meta name="revisit-after" content="7 days">
@@ -62,7 +62,7 @@
   	    <meta name="Audience" content="All" />
   	    <meta name="Robots" content="full">
 
-        <link rel="canonical" href="{http://scoutascci.org{{ path('fo_messageNational', {'slug': message.slug})}}" />
+        <link rel="canonical" href="http://scoutascci.org{{ path('fo_messageNational', {'slug': message.slug})}}" />
         <meta property="og:locale" content="fr_FR" />
         <meta property="og:type" content="Item" />
         <meta property="og:title" content="{{ message.titre }}" />

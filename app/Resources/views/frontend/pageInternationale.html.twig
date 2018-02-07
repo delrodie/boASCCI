@@ -91,7 +91,7 @@
 {% block accueil %}{% endblock %}
 
 {% block meta %}
-        <meta name="keywords" content="{{ internationale.tag|raw }}"  />
+        <meta name="keywords" content="{% for tag in internationale.tag|split(',') %}{{ tag }}, {% endfor %}"  />
         <meta name="description" content="{{ internationale.resume|raw }}" />
   	    <meta name="revisit" content="7 days" />
   	    <meta name="revisit-after" content="7 days">
@@ -102,7 +102,7 @@
   	    <meta name="Audience" content="All" />
   	    <meta name="Robots" content="full">
 
-        <link rel="canonical" href="{http://scoutascci.org{{ path('fo_internationale', {'slug': internationale.slug})}}" />
+        <link rel="canonical" href="http://scoutascci.org{{ path('fo_internationale', {'slug': internationale.slug})}}" />
         <meta property="og:locale" content="fr_FR" />
         <meta property="og:type" content="Item" />
         <meta property="og:title" content="{{ internationale.titre }}" />

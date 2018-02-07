@@ -91,7 +91,7 @@
 {% block accueil %}{% endblock %}
 
 {% block meta %}
-        <meta name="keywords" content="{{ regionale.tag|raw }}"  />
+        <meta name="keywords" content="{% for tag in regionale.tag|split(',') %}{{ tag }}, {% endfor %}"  />
         <meta name="description" content="{{ regionale.resume|raw }}" />
   	    <meta name="revisit" content="7 days" />
   	    <meta name="revisit-after" content="7 days">
@@ -102,7 +102,7 @@
   	    <meta name="Audience" content="All" />
   	    <meta name="Robots" content="full">
 
-        <link rel="canonical" href="{http://scoutascci.org{{ path('fo_regionale', {'slug': regionale.slug})}}" />
+        <link rel="canonical" href="http://scoutascci.org{{ path('fo_regionale', {'slug': regionale.slug})}}" />
         <meta property="og:locale" content="fr_FR" />
         <meta property="og:type" content="Item" />
         <meta property="og:title" content="{{ regionale.titre }}" />

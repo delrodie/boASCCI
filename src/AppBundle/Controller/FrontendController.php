@@ -214,14 +214,16 @@ class FrontendController extends Controller
     }
 
     /**
-     * @Route("/presentation/nos-departement", name="fo_presentation_departement")
+     * @Route("/presentation/nos-departements", name="fo_presentation_departement")
      */
     public function departementAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $departements = $em->getRepository('AppBundle:Departement2')->findBy(array('statut' => 1));
-        $presentations = $em->getRepository('AppBundle:Presentation')->findBy(array('slug' => 'notre-equipe-dirigeante'));
+        //$presentations = $em->getRepository('AppBundle:Presentation')->findBy(array('slug' => 'notre-equipe-dirigeante'));
+        $presentations = $em->getRepository('AppBundle:Presentation')->findPresentation($slug = 'notre-equipe-dirigeante');
 
+        //dump($presentations);die();
         // S'il n'y a aucun contenu alors renvoie à la page de maintenance
         if(!$departements){
             return $this->render('frontend/pageMaintenance.html.twig');
