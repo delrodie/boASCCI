@@ -59,6 +59,11 @@ class Region
     private $slug;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Regionpresentation", mappedBy="region")
+     */
+    private $presentation;
+
+    /**
      * @var string
      *
      * @Gedmo\Blameable(on="create")
@@ -337,5 +342,39 @@ class Region
 
     public function __toString() {
         return $this->getLibelle();
+    }
+
+    /**
+     * Add presentation
+     *
+     * @param \AppBundle\Entity\Regionpresentation $presentation
+     *
+     * @return Region
+     */
+    public function addPresentation(\AppBundle\Entity\Regionpresentation $presentation)
+    {
+        $this->presentation[] = $presentation;
+
+        return $this;
+    }
+
+    /**
+     * Remove presentation
+     *
+     * @param \AppBundle\Entity\Regionpresentation $presentation
+     */
+    public function removePresentation(\AppBundle\Entity\Regionpresentation $presentation)
+    {
+        $this->presentation->removeElement($presentation);
+    }
+
+    /**
+     * Get presentation
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPresentation()
+    {
+        return $this->presentation;
     }
 }
