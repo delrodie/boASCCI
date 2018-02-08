@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Liste des régions scoutes de l'ASCCI
+{% endblock %}
+
+
+{% block body %}
+<article class="post">
+
+
+	<div class="ariane_wrapper">
+
+		<div class="ariane">
+			<span><i class="fa fa-home"></i> <a href="{{ path('homepage') }}">Accueil</a></span>&nbsp; /
+			<a href="#">Couverture nationale</a> /
+		</div>
+	</div>
+
+	<div class="entry_media">
+		<a href="#" class="popup_link"><img src="{{ asset('ressources/images/carte.png') }}" alt="Cartographie scoute de l'ASCCI"></a>
+	</div>
+
+	<div class="full_meta clearfix">
+		<span class="meta_format"><i class="fa fa-file-text"></i></span>
+		<span style="font-size: 20px">CARTOGRAPHIE SCOUTE DE L'ASCCI</span>
+
+	</div>
+</article><br><br>
+
+	<div class="row" style="font-size: 20px;">
+        {% for region in regions %}
+			<div class="col col_3_of_12" style="padding-bottom: 17px">
+				<a href="{{ path('fo_region_presentation', {'slug': region.slug}) }}" alt="{{ region.libelle }}">
+					<span style="color: #{{ region.couleur }}"><i class="fa fa-arrow-circle-up"></i></span></a> {{ region.libelle }}
+				</a>
+			</div>
+        {% endfor %}
+	</div>
+
+					</article> <br> <br>
+
+
+{% endblock %}
+
+{% block accueil %}{% endblock %}

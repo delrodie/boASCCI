@@ -61,7 +61,7 @@ class Region
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Regionpresentation", mappedBy="region")
      */
-    private $presentation;
+    private $presentations;
 
     /**
      * @var string
@@ -376,5 +376,15 @@ class Region
     public function getPresentation()
     {
         return $this->presentation;
+    }
+
+    /**
+     * Get presentations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPresentations()
+    {
+        return $this->presentations;
     }
 }
