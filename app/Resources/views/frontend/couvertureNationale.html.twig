@@ -32,7 +32,7 @@
         {% for region in regions %}
 			<div class="col col_3_of_12" style="padding-bottom: 17px">
 				<a href="{{ path('fo_region_presentation', {'slug': region.slug}) }}" alt="{{ region.libelle }}">
-					<span style="color: #{{ region.couleur }}"><i class="fa fa-arrow-circle-up"></i></span></a> {{ region.libelle }}
+					<span style="color: #{{ region.couleur }}"><i class="fa fa-arrow-circle-up"></i></span> {{ region.libelle }}
 				</a>
 			</div>
         {% endfor %}
