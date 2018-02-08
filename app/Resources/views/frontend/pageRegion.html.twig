@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ regionpresentation.titre }}
+{% endblock %}
+
+
+{% block body %}
+<article class="post">
+
+
+						
+						<div class="ariane_wrapper">
+
+							<div class="ariane">
+								<span><i class="fa fa-home"></i> <a href="{{ path('homepage')}}">Accueil</a></span>&nbsp; / 
+								<a href="#">regionpresentations</a> /
+								<a href="#">{{ regionpresentation.region.libelle }}</a>
+							</div>
+						</div>
+
+						<div class="entry_media">
+							<a href="{{ asset('uploads/regions/'~ regionpresentation.imageName) | imagine_filter('page') }}" class="popup_link">
+                                <img src="{{ asset('uploads/regions/'~ regionpresentation.imageName) | imagine_filter('page') }}" alt="{{ regionpresentation.titre }}" title="{{ regionpresentation.region.libelle }}">
+                            </a>
+						</div>
+
+						<div class="full_meta clearfix">
+							<span class="meta_format"><i class="fa fa-file-text"></i></span>
+							<span class="meta_date">{{ regionpresentation.region.libelle }} </span>
+							
+						</div>
+
+						<div class="entry_content">
+							 <h1 class="entry_title">{{ regionpresentation.region.libelle }}</h1>
+								<p class="dropcap alignJustify">{{ regionpresentation.contenu|raw }}</p>
+								
+						</div>
+
+						<div class="bottom_wrapper">
+
+							<div class="entry_tags">
+								<span><i class="fa fa-tags"></i> Mots clés</span>
+                                {% for tag in regionpresentation.tag|split(',') %}
+                                <a href="#">{{ tag }}</a>
+                                {% endfor %}
+							</div>
+						</div>	
+						
+
+					</article> <br> <br>
+
+{% endblock %}
+
+{% block accueil %}{% endblock %}
+
+{% block meta %}
+		<meta name="keywords" content="{% for tag in regionpresentation.tag|split(',') %}{{ tag }}, {% endfor %}"  />
+        <meta name="description" content="{{ regionpresentation.resume|raw }}" />
+  	    <meta name="revisit" content="7 days" />
+  	    <meta name="revisit-after" content="7 days">
+  	    <meta name="Author" content="ASCCI-CENACOM, {{ regionpresentation.publiePar|title }}">
+  	    <meta name="Copyright" content="www.scoutascci.org">
+  	    <meta name="Content-Language" content="FR">
+  	    <meta name="distribution" content="global" />
+  	    <meta name="Audience" content="All" />
+  	    <meta name="Robots" content="full">
+
+        <link rel="canonical" href="http://scoutascci.org{{ path('fo_region_presentation', {'slug': regionpresentation.slug})}}" />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:type" content="Item" />
+        <meta property="og:title" content="{{ regionpresentation.titre }}" />
+        <meta property="og:description" content="{{ regionpresentation.resume|raw }} " />
+        <meta property="og:url" content="http://scoutascci.org{{ path('fo_region_presentation', {'slug': regionpresentation.slug})}}" />
+        <meta property="og:site_name" content="ASCCI" />
+        <meta property="article:section" content="Item" />
+        <meta property="article:published_time" content="{{ regionpresentation.publieLe|date('Y-m-d')}}T{{ regionpresentation.publieLe|date('H:i:s')}}+00:00" />
+        <meta property="article:modified_time" content="{{ regionpresentation.modifieLe|date('Y-m-d')}}T{{ regionpresentation.modifieLe|date('H:i:s')}}+00:00" />
+        <meta property="og:updated_time" content="{{ regionpresentation.modifieLe|date('Y-m-d')}}T{{ regionpresentation.modifieLe|date('H:i:s')}}+00:00" />
+        <meta property="og:image" content="http://scoutascci.org{{ vich_uploader_asset(regionpresentation, 'imageFile') }}" />
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:description" content="{{ regionpresentation.resume|raw }}"/>
+        <meta name="twitter:title" content="{{ regionpresentation.titre }}"/>
+        <meta name="twitter:domain" content="ASCCI"/>
+        <meta name="twitter:image:src" content="http://scoutascci.org{{ vich_uploader_asset(regionpresentation, 'imageFile') }}"/>
+        <script type="application/ld+json">
+    		{
+    		  "@context": "http://schema.org",
+    		  "@type": "NewsArticle",
+    		  "mainEntityOfPage": {
+    		    "@type": "WebPage",
+    		    "@id": "https://scoutascci.org"
+    		  },
+    		  "headline": "{{ regionpresentation.titre }}",
+    		  "image": [
+    		    "http://scoutascci.org{{ vich_uploader_asset(regionpresentation, 'imageFile') }}",
+    		    "http://scoutascci.org/ressources/images/logo2.png"
+    		   ],
+    		  "datePublished": "{{ regionpresentation.publieLe|date('Y-m-d')}}T{{ regionpresentation.publieLe|date('H:i:s')}}+00:00",
+    		  "dateModified": "{{ regionpresentation.modifieLe|date('Y-m-d')}}T{{ regionpresentation.modifieLe|date('H:i:s')}}+00:00",
+    		  "author": {
+    		    "@type": "Person",
+    		    "name": "Delrodie AMOIKON"
+    		  },
+    		   "publisher": {
+    		    "@type": "Organization",
+    		    "name": "{{ regionpresentation.titre }}",
+    		    "logo": {
+    		      "@type": "ImageObject",
+    		      "url": "http://scoutascci.org{{ vich_uploader_asset(regionpresentation, 'imageFile') }}"
+    		    }
+    		  },
+    		  "description": "{{ regionpresentation.resume|raw }}"
+    		}
+    		</script>	
+{% endblock %}

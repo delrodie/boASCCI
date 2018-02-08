@@ -272,4 +272,33 @@ class FrontendController extends Controller
             'similaires'    => $similaires,
         ]);
     }
+
+    /**
+     * @Route("/couverture-nationale", name="fo_couverture_nationale")
+     */
+    public function couvertureAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $regions = $em->getRepository('AppBundle:Region')->findBy(array('statut' => 1));
+        return $this->render("frontend/couvertureNationale.html.twig",[
+            'regions'   => $regions,
+        ]);
+    }
+
+    /**
+     * @Route("/couverture-nationale/{slug}", name="fo_region_presentation")
+     */
+    public function regionAction(Request $request, $slug)
+    {
+        $em =$this->getDoctrine()->getManager();
+        $regionpresentation = $em->getRepository('AppBundle:Regionpresentation')->findPresentationBy($slug);
+
+        if (!$regionpresentation){
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }
+
+        return $this->render("frontend/pageRegion.html.twig",[
+            'regionpresentation'    => $regionpresentation,
+        ]);
+    }
 }
