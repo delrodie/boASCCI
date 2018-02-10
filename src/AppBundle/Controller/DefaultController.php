@@ -17,7 +17,7 @@ class DefaultController extends Controller
 
 
         $sliders = $em->getRepository('AppBundle:Slider')->findSlideStandard(0, 5); //dump($sliders);die();
-        $slideUniques = $em->getRepository('AppBundle:Slider')->findOneSlide(5, 1); //dump($slideUnique);die();
+        $slideUniques = $em->getRepository('AppBundle:Slider')->findOneSlide(5, 1); //dump($slideUniques);die();
         $envolIntros = $em->getRepository('AppBundle:Envol')->findOneEnvol(0, 1); //dump($envolIntro);die();
         $envols = $em->getRepository('AppBundle:Envol')->findEnvol(); //dump($envols);die();
         $nationales = $em->getRepository('AppBundle:Actualite')->findLastActualite(0, 3);

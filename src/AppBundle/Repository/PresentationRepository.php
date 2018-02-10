@@ -33,4 +33,30 @@ class PresentationRepository extends \Doctrine\ORM\EntityRepository
                         ->getResult()
                         ;
     }
+
+    /**
+     * Verification du slug
+     *
+     * author: Delrodie AMOIKON
+     * date: 10/02/2018 06:27
+     */
+    public function verifSlug($slug)
+    {
+        $em = $this->getEntityManager();
+        $qb = $em->createQuery('
+                    SELECT p, t
+                    FROM AppBundle:Presentation p
+                    LEFT JOIN p.typresentation t
+                    WHERE p.statut = 1
+                    AND t.slug LIKE :slug
+                ')
+                ->setMaxResults(1)
+                ->setParameter('slug', '%'.$slug.'%')
+        ;
+        if (!$qb->getResult()){
+            return $qb->getResult();
+        }else{
+            return $qb->getSingleResult();
+        }
+    }
 }
