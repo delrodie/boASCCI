@@ -10,4 +10,49 @@ namespace AppBundle\Repository;
  */
 class EquipeRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Recherche u membre de l'equipe nationale correspondant au slug
+     * 
+     * author: Delrodie AMOIKON 
+     * date: 10/02/2018 09:50
+     */
+    public function findMembre($slug)
+    {
+        $em = $this->getEntityManager();
+        $q = $em->createQuery('
+                        SELECT e
+                        FROM AppBundle:Equipe e
+                        WHERE e.statut = 1
+                        AND e.slug LIKE :slug
+                    ')
+                    ->setMaxResults(1)
+                    ->setParameter('slug', '%'.$slug.'%')
+                    ;
+            if (!$q->getResult()){
+                return $q->getResult();
+            }else{
+                return $q->getSingleResult();
+            }
+    }
+
+    /**
+     * Listes des membres de l'equipe nationale par statut
+     *
+     * author: Delrodie AMOIKON
+     * date: 10/02/2018 11:34
+     */
+    public function findMembreByTypefonction($slug)
+    {
+        $em = $this->getEntityManager();
+        return $qb = $em->createQuery('
+                        SELECT e, t
+                        FROM AppBundle:Equipe e
+                        LEFT JOIN e.typefonction t
+                        WHERE e.statut = 1
+                        AND t.slug LIKE :slug
+                    ')
+                    ->setParameter('slug', '%'.$slug.'%')
+                    ->getResult()
+                    ;
+    }
 }

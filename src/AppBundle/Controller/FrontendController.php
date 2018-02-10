@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class FrontendController extends Controller
 {
@@ -154,6 +155,26 @@ class FrontendController extends Controller
             return $this->render('frontend/pageMaintenance.html.twig');
         }//dump($presentations);die();
 
+        foreach ($presentations as $index => $presentation) {
+            $slugCherche = $em->getRepository('AppBundle:Presentation')->verifSlug($presentation->getTypresentation()->getSlug());
+            $verif = $em->getRepository('AppBundle:Presentation')->verifSlug($slug = 'equipe');
+
+            if ($verif){
+                if ($verif->getSlug() == $slugCherche->getSlug()){
+                    $national = $em->getRepository('AppBundle:Equipe')->findMembre($slug = 'national');
+                    $adjoints = $em->getRepository('AppBundle:Equipe')->findMembreByTypefonction($slug="adjoint");
+                    $assistants = $em->getRepository('AppBundle:Equipe')->findMembreByTypefonction($slug="assistant");
+
+                    return $this->render("frontend/pageEquipe.html.twig",[
+                        'presentations' => $presentations,
+                        'national'  => $national,
+                        'adjoints'  => $adjoints,
+                        'assistants'    => $assistants
+                    ]);
+                }
+            }
+        }
+
         return $this->render("frontend/pagePresentation.html.twig", [
             'presentations' => $presentations,
         ]);
@@ -299,6 +320,23 @@ class FrontendController extends Controller
 
         return $this->render("frontend/pageRegion.html.twig",[
             'regionpresentation'    => $regionpresentation,
+        ]);
+    }
+
+    /**
+     * @Route("/biographie/{slug}", name="fo_biographie")
+     */
+    public function biographieAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $biographie = $em->getRepository('AppBundle:Equipe')->findOneBy(array('slug' => $slug));
+
+        if (!$biographie){
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }
+
+        return $this->render("frontend/pageBiographie.html.twig",[
+            'biographie'    => $biographie,
         ]);
     }
 }

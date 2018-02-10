@@ -1,0 +1,243 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% for presentation in presentations %}
+    {{ presentation.titre }}    
+    {% endfor %}
+{% endblock %}
+
+
+{% block body %}
+<article class="post">
+
+
+						{% for presentation in presentations %}
+						<div class="ariane_wrapper">
+
+							<div class="ariane">
+								<span><i class="fa fa-home"></i> <a href="{{ path('homepage')}}">Accueil</a></span>&nbsp; / 
+								<a href="#">presentations</a> /
+								<a href="#">{{ presentation.typresentation.libelle }}</a>
+							</div>
+						</div>
+
+						<div class="entry_media">
+							<a href="{{ asset('uploads/presentations/'~ presentation.imageName) | imagine_filter('page') }}" class="popup_link">
+                                <img src="{{ asset('uploads/presentations/'~ presentation.imageName) | imagine_filter('page') }}" alt="{{ presentation.titre }}" title="{{ presentation.typresentation.libelle }}">
+                            </a>
+						</div>
+
+						<div class="full_meta clearfix">
+							<span class="meta_format"><i class="fa fa-file-text"></i></span>
+							<span class="meta_date">{{ presentation.typresentation.libelle }} </span>
+							
+						</div>
+
+						<div class="entry_content">
+							 <h1 class="entry_title">{{ presentation.typresentation.libelle }}</h1>
+								<p class="dropcap alignJustify">{{ presentation.contenu|raw }}</p>
+								
+						</div>
+						{% endfor %}
+
+					</article> <br> <br>
+
+					<!-- NATIONAL -->
+					<div class="row" style="font-size: 20px;">
+						<div class="col col_4_of_12" style="padding-bottom: 17px"><a href="#"></a></div>
+						<div class="col col_4_of_12" style="padding-bottom: 17px">
+							<div class="layout_post_1">
+								<div class="item_thumb">
+									<div class="thumb_icon">
+										<a href="#" style="background-color: #F89406" title="{{ national.fonction }}" alt="{{ national.nomcomplet }}"><i class="fa fa-copy"></i></a>
+									</div>
+									<div class="thumb_hover">
+                                        {% if (national.lien) %}
+											<a href="{{ path('fo_biographie', {'slug': national.slug}) }}">
+												<img src="{{ asset('uploads/equipes/'~ national.imageName) | imagine_filter('envol') }}" alt="{{ national.nomcomplet }}" title="{{ national.nomcomplet }}" class="visible animated">
+											</a>
+										{% else %}
+											<a href="#">
+												<img src="{{ asset('uploads/equipes/'~ national.imageName) | imagine_filter('envol') }}" alt="{{ national.nomcomplet }}" title="{{ national.nomcomplet }}" class="visible animated">
+											</a>
+                                        {% endif %}
+									</div>
+								</div>
+								<div class="item_content">
+									<p>
+                                        {% if (national.lien) %}
+											<a href="{{ path('fo_biographie', {'slug': national.slug}) }}" style="font-size: 14px; font-style: bold" title="{{ national.typefonction.libelle }}" alt="{{ national.nomcomplet }} - {{ national.fonction }}">
+												<strong>{{ national.nom }}</strong>
+											</a>
+										{% else %}
+											<a href="#" style="font-size: 14px; font-style: bold" title="{{ national.typefonction.libelle }}" alt="{{ national.nomcomplet }} - {{ national.fonction }}">
+												<strong>{{ national.nom }}</strong>
+											</a>
+                                        {% endif %}
+										<br>
+										<span><em>{{ national.fonction }}</em></span>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col col_4_of_12" style="padding-bottom: 17px"></div>
+					</div><br><br>
+					<!-- /NATIONAL -->
+
+					<!-- COMMISSAIRES NATIONAUX ADJOINTS -->
+					<div class="panel_title">
+						<div>
+							<h4><a href="#">COMMISAIRES NATIONAUX ADJOINTS</a></h4>
+						</div>
+					</div>
+					<div class="row">
+                        {% for adjoint in adjoints %}
+							<div class="col col_2_of_12">
+								<div class="layout_post_1">
+									<div class="item_thumb">
+										<div class="thumb_icon">
+											<a href="#" style="background-color: #{{ adjoint.departement.couleur }}" title="{{ adjoint.fonction }}" alt="{{ adjoint.nomcomplet }}"><i class="fa fa-copy"></i></a>
+										</div>
+										<div class="thumb_hover">
+                                            {% if (adjoint.lien) %}
+												<a href="{{ path('fo_biographie', {'slug': adjoint.slug}) }}">
+													<img src="{{ asset('uploads/equipes/'~ adjoint.imageName) | imagine_filter('envol') }}" alt="{{ adjoint.nomcomplet }}" title="{{ adjoint.nomcomplet }}" class="visible animated">
+												</a>
+                                            {% else %}
+												<a href="#">
+													<img src="{{ asset('uploads/equipes/'~ adjoint.imageName) | imagine_filter('envol') }}" alt="{{ adjoint.nomcomplet }}" title="{{ adjoint.nomcomplet }}" class="visible animated">
+												</a>
+                                            {% endif %}
+										</div>
+									</div>
+									<div class="item_content">
+										<p>
+                                            {% if (adjoint.lien) %}
+												<a href="{{ path('fo_biographie', {'slug': adjoint.slug}) }}" style="font-size: 14px; font-style: bold" title="{{ adjoint.typefonction.libelle }}" alt="{{ adjoint.nomcomplet }} - {{ adjoint.fonction }}">
+													<strong>{{ adjoint.nom }}</strong>
+												</a>
+											{% else %}
+												<a href="#" style="font-size: 14px; font-style: bold" title="{{ adjoint.typefonction.libelle }}" alt="{{ adjoint.nomcomplet }} - {{ adjoint.fonction }}">
+													<strong>{{ adjoint.nom }}</strong>
+												</a>
+                                            {% endif %}
+											<br>
+										</p>
+									</div>
+								</div>
+							</div>
+                        {% endfor %}
+					</div>
+					<!-- /COMMISSAIRES NATIONAUX ADJOINTS -->
+
+					<!-- ASSISTANTS COMMISSAIRES NATIONAUX  -->
+					<div class="panel_title" style="padding-top: 75px">
+						<div>
+							<h4><a href="#">ASSISTANTS COMMISAIRES NATIONAUX </a></h4>
+						</div>
+					</div>
+					<div class="row">
+						{% for assistant in assistants %}
+							<div class="col col_2_of_12">
+								<div class="layout_post_1">
+									<div class="item_thumb">
+										<div class="thumb_icon">
+											<a href="#" style="background-color: #{{ assistant.departement.couleur }}" title="{{ assistant.fonction }}" alt="{{ assistant.nomcomplet }}"><i class="fa fa-copy"></i></a>
+										</div>
+										<div class="thumb_hover">
+											{% if (assistant.lien) %}
+												<a href="{{ path('fo_biographie', {'slug': assistant.slug}) }}">
+													<img src="{{ asset('uploads/equipes/'~ assistant.imageName) | imagine_filter('envol') }}" alt="{{ assistant.nomcomplet }}" title="{{ assistant.nomcomplet }}" class="visible animated">
+												</a>
+											{% else %}
+												<a href="#">
+													<img src="{{ asset('uploads/equipes/'~ assistant.imageName) | imagine_filter('envol') }}" alt="{{ assistant.nomcomplet }}" title="{{ assistant.nomcomplet }}" class="visible animated">
+												</a>
+											{% endif %}
+										</div>
+									</div>
+									<div class="item_content">
+										<p>
+                                            {% if (assistant.lien) %}
+												<a href="{{ path('fo_biographie', {'slug': assistant.slug}) }}" style="font-size: 14px; font-style: bold" title="{{ assistant.typefonction.libelle }}" alt="{{ assistant.nomcomplet }} - {{ assistant.fonction }}">
+													<strong>{{ assistant.nom }}</strong>
+												</a>
+											{% else %}
+												<a href="#" style="font-size: 14px; font-style: bold" title="{{ assistant.typefonction.libelle }}" alt="{{ assistant.nomcomplet }} - {{ assistant.fonction }}">
+													<strong>{{ assistant.nom }}</strong>
+												</a>
+                                            {% endif %}
+											<br>
+										</p>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+					<!-- /ASSISTANTS COMMISSAIRES NATIONAUX  -->
+{% endblock %}
+
+{% block accueil %}{% endblock %}
+
+{% block meta %}
+        {% for presentation in presentations %}
+		<meta name="keywords" content="{% for tag in presentation.tag|split(',') %}{{ tag }}, {% endfor %}"  />
+        <meta name="description" content="{{ presentation.resume|raw }}" />
+  	    <meta name="revisit" content="7 days" />
+  	    <meta name="revisit-after" content="7 days">
+  	    <meta name="Author" content="ASCCI-CENACOM, {{ presentation.publiePar|title }}">
+  	    <meta name="Copyright" content="www.scoutascci.org">
+  	    <meta name="Content-Language" content="FR">
+  	    <meta name="distribution" content="global" />
+  	    <meta name="Audience" content="All" />
+  	    <meta name="Robots" content="full">
+
+        <link rel="canonical" href="http://scoutascci.org{{ path('fo_presentation', {'slug': presentation.slug})}}" />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:type" content="Item" />
+        <meta property="og:title" content="{{ presentation.titre }}" />
+        <meta property="og:description" content="{{ presentation.resume|raw }} " />
+        <meta property="og:url" content="http://scoutascci.org{{ path('fo_presentation', {'slug': presentation.slug})}}" />
+        <meta property="og:site_name" content="ASCCI" />
+        <meta property="article:section" content="Item" />
+        <meta property="article:published_time" content="{{ presentation.publieLe|date('Y-m-d')}}T{{ presentation.publieLe|date('H:i:s')}}+00:00" />
+        <meta property="article:modified_time" content="{{ presentation.modifieLe|date('Y-m-d')}}T{{ presentation.modifieLe|date('H:i:s')}}+00:00" />
+        <meta property="og:updated_time" content="{{ presentation.modifieLe|date('Y-m-d')}}T{{ presentation.modifieLe|date('H:i:s')}}+00:00" />
+        <meta property="og:image" content="http://scoutascci.org{{ vich_uploader_asset(presentation, 'imageFile') }}" />
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:description" content="{{ presentation.resume|raw }}"/>
+        <meta name="twitter:title" content="{{ presentation.titre }}"/>
+        <meta name="twitter:domain" content="ASCCI"/>
+        <meta name="twitter:image:src" content="http://scoutascci.org{{ vich_uploader_asset(presentation, 'imageFile') }}"/>
+        <script type="application/ld+json">
+    		{
+    		  "@context": "http://schema.org",
+    		  "@type": "NewsArticle",
+    		  "mainEntityOfPage": {
+    		    "@type": "WebPage",
+    		    "@id": "https://scoutascci.org"
+    		  },
+    		  "headline": "{{ presentation.titre }}",
+    		  "image": [
+    		    "http://scoutascci.org{{ vich_uploader_asset(presentation, 'imageFile') }}",
+    		    "http://scoutascci.org/ressources/images/logo2.png"
+    		   ],
+    		  "datePublished": "{{ presentation.publieLe|date('Y-m-d')}}T{{ presentation.publieLe|date('H:i:s')}}+00:00",
+    		  "dateModified": "{{ presentation.modifieLe|date('Y-m-d')}}T{{ presentation.modifieLe|date('H:i:s')}}+00:00",
+    		  "author": {
+    		    "@type": "Person",
+    		    "name": "Delrodie AMOIKON"
+    		  },
+    		   "publisher": {
+    		    "@type": "Organization",
+    		    "name": "{{ presentation.titre }}",
+    		    "logo": {
+    		      "@type": "ImageObject",
+    		      "url": "http://scoutascci.org{{ vich_uploader_asset(presentation, 'imageFile') }}"
+    		    }
+    		  },
+    		  "description": "{{ presentation.resume|raw }}"
+    		}
+    		</script>	
+		{% endfor %}
+{% endblock %}

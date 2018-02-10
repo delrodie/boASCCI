@@ -119,7 +119,7 @@ class Equipe
     /**
      * @var string
      *
-     * @Gedmo\Slug(fields={"nomcomplet"})
+     * @Gedmo\Slug(fields={"nomcomplet","fonction"})
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;

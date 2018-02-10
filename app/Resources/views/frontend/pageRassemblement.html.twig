@@ -53,15 +53,15 @@
 					</div>
 					<div class="row">
 						{% for similaire in similaires %}
-                            <div class="col col_4_of_12">
+                            <div class="col col_3_of_12">
 
 							<div class="layout_post_1">
 								<div class="item_thumb">
 									<div class="thumb_icon">
-										<a href="{{ path('fo_rassemblement', {'slug': similaire.slug})}}" style="background-color: #F89406"><i class="fa fa-copy"></i></a>
+										<a href="{{ path('fo_rassemblement', {'slug': similaire.typerassemblement.slug})}}" style="background-color: #F89406"><i class="fa fa-copy"></i></a>
 									</div>
 									<div class="thumb_hover">
-										<a href="{{ path('fo_rassemblement', {'slug': similaire.slug})}}"><img src="{{ asset('uploads/rassemblements/'~ similaire.imageName) | imagine_filter('similaire') }}" alt="{{ similaire.titre}}" class="visible animated"></a>
+										<a href="{{ path('fo_rassemblement', {'slug': similaire.typerassemblement.slug})}}"><img src="{{ asset('uploads/rassemblements/'~ similaire.imageName) | imagine_filter('similaire') }}" alt="{{ similaire.titre}}" class="visible animated"></a>
 									</div>
 									<div class="thumb_meta">
 									<span class="category" style="background-color: #{{ similaire.typerassemblement.couleur }}"><a href="#">{{ similaire.typerassemblement.libelle }}</a></span>
