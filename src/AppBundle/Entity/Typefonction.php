@@ -4,16 +4,14 @@ namespace AppBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * Departement
+ * Typefonction
  *
- * @ORM\Table(name="departement")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\DepartementRepository")
+ * @ORM\Table(name="typefonction")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TypefonctionRepository")
  */
-class Departement
+class Typefonction
 {
     /**
      * @var int
@@ -46,12 +44,7 @@ class Departement
     private $statut;
 
     /**
-    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Departement2", mappedBy="typedepartement")
-    */
-    private $departements;
-
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Equipe", mappedBy="departement")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Equipe", mappedBy="$typefonction")
      */
     private $equipes;
 
@@ -105,13 +98,20 @@ class Departement
     {
         return $this->id;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->equipes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Set libelle
      *
      * @param string $libelle
      *
-     * @return Departement
+     * @return Typefonction
      */
     public function setLibelle($libelle)
     {
@@ -135,7 +135,7 @@ class Departement
      *
      * @param string $couleur
      *
-     * @return Departement
+     * @return Typefonction
      */
     public function setCouleur($couleur)
     {
@@ -159,7 +159,7 @@ class Departement
      *
      * @param boolean $statut
      *
-     * @return Departement
+     * @return Typefonction
      */
     public function setStatut($statut)
     {
@@ -171,7 +171,7 @@ class Departement
     /**
      * Get statut
      *
-     * @return bool
+     * @return boolean
      */
     public function getStatut()
     {
@@ -183,7 +183,7 @@ class Departement
      *
      * @param string $slug
      *
-     * @return Departement
+     * @return Typefonction
      */
     public function setSlug($slug)
     {
@@ -207,7 +207,7 @@ class Departement
      *
      * @param string $publiePar
      *
-     * @return Departement
+     * @return Typefonction
      */
     public function setPubliePar($publiePar)
     {
@@ -231,7 +231,7 @@ class Departement
      *
      * @param string $modifiePar
      *
-     * @return Departement
+     * @return Typefonction
      */
     public function setModifiePar($modifiePar)
     {
@@ -255,7 +255,7 @@ class Departement
      *
      * @param \DateTime $publieLe
      *
-     * @return Departement
+     * @return Typefonction
      */
     public function setPublieLe($publieLe)
     {
@@ -279,7 +279,7 @@ class Departement
      *
      * @param \DateTime $modifieLe
      *
-     * @return Departement
+     * @return Typefonction
      */
     public function setModifieLe($modifieLe)
     {
@@ -298,91 +298,12 @@ class Departement
         return $this->modifieLe;
     }
 
-    public function __toString() {
-        return $this->getLibelle();
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->actualites = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add actualite
-     *
-     * @param \AppBundle\Entity\Actualite $actualite
-     *
-     * @return Departement
-     */
-    public function addActualite(\AppBundle\Entity\Actualite $actualite)
-    {
-        $this->actualites[] = $actualite;
-
-        return $this;
-    }
-
-    /**
-     * Remove actualite
-     *
-     * @param \AppBundle\Entity\Actualite $actualite
-     */
-    public function removeActualite(\AppBundle\Entity\Actualite $actualite)
-    {
-        $this->actualites->removeElement($actualite);
-    }
-
-    /**
-     * Get actualites
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getActualites()
-    {
-        return $this->actualites;
-    }
-
-    /**
-     * Add departement
-     *
-     * @param \AppBundle\Entity\Departement2 $departement
-     *
-     * @return Departement
-     */
-    public function addDepartement(\AppBundle\Entity\Departement2 $departement)
-    {
-        $this->departements[] = $departement;
-
-        return $this;
-    }
-
-    /**
-     * Remove departement
-     *
-     * @param \AppBundle\Entity\Departement2 $departement
-     */
-    public function removeDepartement(\AppBundle\Entity\Departement2 $departement)
-    {
-        $this->departements->removeElement($departement);
-    }
-
-    /**
-     * Get departements
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDepartements()
-    {
-        return $this->departements;
-    }
-
     /**
      * Add equipe
      *
      * @param \AppBundle\Entity\Equipe $equipe
      *
-     * @return Departement
+     * @return Typefonction
      */
     public function addEquipe(\AppBundle\Entity\Equipe $equipe)
     {
@@ -409,5 +330,9 @@ class Departement
     public function getEquipes()
     {
         return $this->equipes;
+    }
+
+    public function __toString() {
+        return $this->getLibelle();
     }
 }

@@ -42,15 +42,16 @@ class SliderRepository extends \Doctrine\ORM\EntityRepository
     public function findOneSlide($offset, $limit)
     {
         $qb = $this->createQueryBuilder('s')
-                    ->where('s.statut = :actif')
-                    ->andWhere('s.datedebut <= :date')
+                    ->where('s.statut = 1')
+                    ->andWhere('s.datedebut < :date')
                     ->andWhere('s.datefin >= :date')
-                    ->orderBy('s.datefin', 'ASC')
-                    ->setFirstResult($offset)
+                    ->andWhere('s.id > :offset')
+                    ->orderBy('s.datedebut', 'DESC')
+                    //->setFirstResult($offset)
                     ->setMaxresults($limit)
                     ->setParameters(array(
-                        'actif' => 1,
-                        'date'  => date('Y-m-d', time())
+                        'date' => date('Y-m-d', time()),
+                        'offset'   => $offset,
                     ))
                     ->getQuery()->getResult();
         return $qb;
