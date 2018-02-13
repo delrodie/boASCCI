@@ -19,21 +19,6 @@
 							</div>
 						</li>
 						{% endfor %}
-						
-						{% for slideUnique in slideUniques %}
-						<li>
-							<a href="#"><img src="{{ vich_uploader_asset(slideUnique, 'imageFile') }}" alt="{{ slideUnique.legende }}"></a>
-							<div class="slider_caption">
-								<div class="thumb_meta">
-									<span class="category" style="background-color: #2574A9"><a href="#">{{ slideUnique.type1 }}</a></span>
-									<span class="category"><a href="#">{{ slideUnique.type2}}</a></span>
-								</div>
-								<div class="thumb_link">
-									<h3><a href="#">{{ slideUnique.legende }}</a></h3>
-								</div>
-							</div>
-						</li>	
-						{% endfor %}
 
 					</ul>
 				</div>
@@ -63,42 +48,14 @@
 								 </div>	
 								{% endfor %}
 								<br>
-								{% for envolIntro in envolIntros %}
-								<!--<div class="item_thumb">
-									<div class="thumb_icon">
-										<a href="#" style="background-color: #446CB3"><i class="fa fa-copy"></i></a>
-									</div>
-									<div class="thumb_hover">
-										<a href="#"><img src="{{ asset('uploads/envols/'~ envolIntro.imageName) | imagine_filter('envolIntro') }}" alt="{{ envolIntro.titre }}"></a>
-									</div>
-								</div>-->
-								<div class="item_content">
-									<h4><a href="{{ path('fo_envolASCCI', {'slug': envolIntro.slug})}}">{{ envolIntro.titre }}</a></h4>
-									<p>{{ envolIntro.resume|raw }}</p>
-								 </div>	
-								{% endfor %}
 							</div>
 
 							<div class="list_posts">
-
-								{% for envol in envols %}
-								<div class="post clearfix">
-									<div class="item_thumb">
-										<div class="thumb_icon">
-											<a href="{{ path('fo_envolASCCI', {'slug': envol.slug})}}" style="background-color: #4183D7"><i class="fa fa-copy"></i></a>
-										</div>
-										<div class="thumb_hover">
-											<a href="{{ path('fo_envolASCCI', {'slug': envol.slug})}}"><img src="{{ asset('uploads/envols/'~ envol.imageName) | imagine_filter('envol') }}" alt="{{ envol.titre }}"></a>
-										</div>
+                                {% for publicite in publicites %}
+									<div class="post clearfix">
+										<img src="{{ asset('uploads/publicites/'~ publicite.imageName) | imagine_filter('publicite') }}" alt="{{ publicite.titre }}" title="{{ publicite.titre }}">
 									</div>
-									<div class="item_content">
-										<h4><a href="{{ path('fo_envolASCCI', {'slug': envol.slug})}}">{{ envol.titre }}</a></h4>
-										<div class="item_meta clearfix">
-											<span class="">{{ envol.typenvol.libelle }}</span>
-										</div>
-									</div>
-								</div>	
-								{% endfor %}
+                                {% endfor %}
 							</div>
 						</div>
 					</div>

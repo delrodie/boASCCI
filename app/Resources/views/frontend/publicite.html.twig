@@ -1,8 +1,8 @@
-{% for publicite in publicites %}
+{% for video in videos %}
                     <div class="widget">
 					<div class="widget_title"><h3></h3></div>
 					<div class="tb_widget_socialize clearfix">
-						<img src="{{ asset('uploads/publicites/'~ publicite.imageName) | imagine_filter('publicite') }}" alt="{{ publicite.titre }}" title="{{ publicite.titre }}">
+						<iframe width="" height="315" src="https://www.youtube.com/embed/{{ video.lien }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 						<!---->
 					</div>
 				</div>

@@ -23,9 +23,9 @@ class PubliciteRepository extends \Doctrine\ORM\EntityRepository
                     SELECT p
                     FROM AppBundle:Publicite p
                     WHERE p.statut = :actif
-                    AND p.datedeb >= :date
+                    AND p.datedeb <= :date
                     AND p.datefin >= :date
-                    ORDER BY p.datedeb ASC
+                    ORDER BY p.datefin ASC
                     ')
                     ->setFirstResult($offset)
                     ->setMaxresults($limit)
