@@ -3,3 +3,12 @@
 [27-Jan-2018 12:40:02 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/Debug/Exception/FlattenException.php on line 203
 [27-Jan-2018 12:40:29 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/scoutsacci/public_html/v3/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php on line 93
 [27-Jan-2018 12:42:51 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/Debug/Exception/FlattenException.php on line 250
+[07-Feb-2018 16:20:41 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (111) in /home/scoutsacci/public_html/v3/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/scoutsacci/public_html/v3/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=127....', 'cenacom', 'website', Array)
+#1 /home/scoutsacci/public_html/v3/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(44): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'cenacom', 'website', Array)
+#2 /home/scoutsacci/public_html/v3/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'cenacom', 'website', Array)
+#3 /home/scoutsacci/public_html/v3/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/scoutsacci/public_html/v3/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDat in /home/scoutsacci/public_html/v3/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 115
+[13-Feb-2018 20:12:51 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/Debug/Exception/FlattenException.php on line 232
+[13-Feb-2018 20:13:05 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/Debug/Exception/FlattenException.php on line 232

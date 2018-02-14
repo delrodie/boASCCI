@@ -15,14 +15,13 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-
-        $sliders = $em->getRepository('AppBundle:Slider')->findSlideStandard(0, 5); //dump($sliders);die();
-        $slideUniques = $em->getRepository('AppBundle:Slider')->findOneSlide(5, 1); //dump($slideUniques);die();
-        $envolIntros = $em->getRepository('AppBundle:Envol')->findOneEnvol(0, 1); //dump($envolIntro);die();
-        $envols = $em->getRepository('AppBundle:Envol')->findEnvol(); //dump($envols);die();
+ 
+        $sliders = $em->getRepository('AppBundle:Slider')->findSlideStandard(0, 6);
         $nationales = $em->getRepository('AppBundle:Actualite')->findLastActualite(0, 3);
         $regionales = $em->getRepository('AppBundle:Regionale')->findLastRegionale(0, 4);
         $internationales = $em->getRepository('AppBundle:Internationale')->findLastInternationale(0, 3);
+        $publicites = $em->getRepository('AppBundle:Publicite')->findPublicite(0,1);//dump($publicites);die();
+        //$publicites = $em->getRepository('AppBundle:Publicite')->findPublicite(0,1);dump($publicites);die();
         $messages = $em->getRepository('AppBundle:Message')
                         ->findBy(
                             array('statut' => 1),
@@ -33,13 +32,11 @@ class DefaultController extends Controller
 
         return $this->render('default/index.html.twig', [
             'sliders'   => $sliders,
-            'slideUniques'   => $slideUniques,
-            'envolIntros'    => $envolIntros,
-            'envols' => $envols,
             'nationales' => $nationales,
             'regionales' => $regionales,
             'internationales' => $internationales,
             'messages'  => $messages,
+            'publicites' => $publicites,
         ]);
 		
     }
@@ -81,19 +78,19 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/publicite", name="menu_publicite")
+     * @Route("/video", name="menu_video")
      */
     public function publiciteAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $publicites = $em->getRepository('AppBundle:Publicite')->findPublicite(0,1);
+        $videos = $em->getRepository('AppBundle:Video')->findVideo(0,1);
 
-        if (!$publicites){
+        if (!$videos){
             return $this->render('frontend/noPublicite.html.twig');
         }
 
         return $this->render('frontend/publicite.html.twig',[
-            'publicites' => $publicites,
+            'videos' => $videos,
         ]);
     }
 }
