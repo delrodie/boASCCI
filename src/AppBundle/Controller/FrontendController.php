@@ -301,8 +301,10 @@ class FrontendController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $regions = $em->getRepository('AppBundle:Region')->findBy(array('statut' => 1));
+        $couverture = $em->getRepository('AppBundle:Couverture')->findOneBy(array('statut' => 1), array('id' => 'DESC'), 1, 0); //dump($couverture);die();
         return $this->render("frontend/couvertureNationale.html.twig",[
             'regions'   => $regions,
+            'couverture'    => $couverture,
         ]);
     }
 
