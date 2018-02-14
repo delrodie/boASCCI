@@ -88,7 +88,7 @@ class CouvertureController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_couverture_edit', array('id' => $couverture->getId()));
+            return $this->redirectToRoute('admin_couverture_show', array('id' => $couverture->getId()));
         }
 
         return $this->render('couverture/edit.html.twig', array(
