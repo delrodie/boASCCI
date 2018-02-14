@@ -341,4 +341,17 @@ class FrontendController extends Controller
             'biographie'    => $biographie,
         ]);
     }
+
+    /**
+     * @Route("/nous-contacter/", name="fo_nous_contacter")
+     */
+    public function contactAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $contact = $em->getRepository('AppBundle:Contact')->findOneBy(array('statut' => 1), array('id' => 'DESC'),1,0);
+
+        return $this->render('frontend/pageContact.html.twig',[
+            'contact' => $contact,
+        ]);
+    }
 }
