@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Archives des actualités internationales
+{% endblock %}
+
+{% block body %}
+    <div class="panel_title">
+        <div>
+            <h4><a href="#">archives des actualités internationales</a></h4>
+        </div>
+    </div>
+    <div class="row">
+        {% for actualite in actualites %}
+            <div class="col col_4_of_12" style="margin-bottom: 50px;">
+
+                <div class="layout_post_1">
+                    <div class="item_thumb">
+                        <div class="thumb_icon">
+                            <a href="{{ path('fo_internationale', {'slug': actualite.slug}) }}" style="background-color: #F89406"><i class="fa fa-copy"></i></a>
+                        </div>
+                        <div class="thumb_hover">
+                            <a href="{{ path('fo_internationale', {'slug': actualite.slug}) }}"><img src="{{ asset('uploads/internationales/'~ actualite.imageName) | imagine_filter('actualite') }}" alt="{{ actualite.titre}}"></a>
+                        </div>
+                        <div class="thumb_meta">
+                            <span class="category" style="background-color: #F89406"><a href="#">{{ actualite.domaine }}</a></span>
+                        </div>
+                    </div>
+                    <div class="item_content">
+                        <h4><a href="{{ path('fo_internationale', {'slug': actualite.slug}) }}">{{ actualite.titre }}</a></h4>
+                        <div class="item_meta clearfix">
+                            <span class="meta_date">{{ actualite.publieLe|date('d-m-Y')}}</span>
+                        </div>
+                        <p>{{ actualite.resume|raw }} [...]</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
