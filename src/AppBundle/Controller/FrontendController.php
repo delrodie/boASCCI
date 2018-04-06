@@ -164,12 +164,16 @@ class FrontendController extends Controller
                     $national = $em->getRepository('AppBundle:Equipe')->findMembre($slug = 'national');
                     $adjoints = $em->getRepository('AppBundle:Equipe')->findMembreByTypefonction($slug="adjoint");
                     $assistants = $em->getRepository('AppBundle:Equipe')->findMembreByTypefonction($slug="assistant");
+                    $internationaux = $em->getRepository('AppBundle:Equipe')->findMembreByDepartement($slug="internationa");
+                    $secretariat = $em->getRepository('AppBundle:Equipe')->findMembre($slug="secreta");
 
                     return $this->render("frontend/pageEquipe.html.twig",[
                         'presentations' => $presentations,
                         'national'  => $national,
                         'adjoints'  => $adjoints,
-                        'assistants'    => $assistants
+                        'assistants'    => $assistants,
+                        'internationaux'    => $internationaux,
+                        'secretariat'    => $secretariat,
                     ]);
                 }
             }

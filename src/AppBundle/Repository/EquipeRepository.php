@@ -55,4 +55,25 @@ class EquipeRepository extends \Doctrine\ORM\EntityRepository
                     ->getResult()
                     ;
     }
+
+    /**
+     * Liste des commissaires nationaux à l'international
+     *
+     * author: Delrodie AMOIKON
+     * date 06/04/2018 18:54
+     */
+    public function findMembreByDepartement($slug)
+    {
+        $em = $this->getEntityManager();
+        return $qb = $em->createQuery('
+                        SELECT e, d
+                        FROM AppBundle:Equipe e
+                        LEFT JOIN e.departement d
+                        WHERE e.statut = 1
+                        AND d.slug LIKE :slug
+                    ')
+                    ->setParameter('slug', '%'.$slug.'%')
+                    ->getResult()
+                ;
+    }
 }
