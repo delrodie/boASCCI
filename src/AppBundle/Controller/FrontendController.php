@@ -164,12 +164,16 @@ class FrontendController extends Controller
                     $national = $em->getRepository('AppBundle:Equipe')->findMembre($slug = 'national');
                     $adjoints = $em->getRepository('AppBundle:Equipe')->findMembreByTypefonction($slug="adjoint");
                     $assistants = $em->getRepository('AppBundle:Equipe')->findMembreByTypefonction($slug="assistant");
+                    $internationaux = $em->getRepository('AppBundle:Equipe')->findMembreByDepartement($slug="internationa");
+                    $secretariat = $em->getRepository('AppBundle:Equipe')->findMembre($slug="secreta");
 
                     return $this->render("frontend/pageEquipe.html.twig",[
                         'presentations' => $presentations,
                         'national'  => $national,
                         'adjoints'  => $adjoints,
-                        'assistants'    => $assistants
+                        'assistants'    => $assistants,
+                        'internationaux'    => $internationaux,
+                        'secretariat'    => $secretariat,
                     ]);
                 }
             }
@@ -353,5 +357,42 @@ class FrontendController extends Controller
         return $this->render('frontend/pageContact.html.twig',[
             'contact' => $contact,
         ]);
+    }
+
+    /**
+     * @Route("/archives/actualites-{slug}", name="fo_archives_actualites")
+     */
+    public function archivesAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        if ($slug === "nationales"){
+            $actualites = $em->getRepository('AppBundle:Actualite')->findLastActualite(3, 15);
+
+            return $this->render('frontend/archive_nationale.html.twig',[
+                'actualites' => $actualites,
+            ]);
+
+        }elseif ($slug === "regionales"){
+            $actualites = $em->getRepository('AppBundle:Regionale')->findLastRegionale(4, 15);
+            return $this->render('frontend/archives.html.twig',[
+                'actualites' => $actualites,
+            ]);
+
+        }elseif ($slug === "internationales"){
+            $actualites = $em->getRepository('AppBundle:Internationale')->findLastInternationale(3, 15);
+
+            return $this->render('frontend/archive_internationale.html.twig',[
+                'actualites' => $actualites,
+            ]);
+        }else{
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }
+
+        // Si l'actualité n'exite pas alors renvoie à la page de maintenance
+        if(!$actualites){
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }
+
     }
 }

@@ -97,6 +97,8 @@
 						</div>
 					</div>	
 					{% endfor %}
+					<br><br><br>
+					<div class="autres-articles"><a href="{{ path('fo_archives_actualites', {'slug': "nationales"}) }}">&raquo; Voir les autres articles</a></div>
 
 				</div> <br><br><br>
 {% endblock %}
@@ -132,8 +134,10 @@
 				</div>
 			</div>	
 			{% endfor %}
+			<br><br><br>
+			<div class="autres-articles"><a href="{{ path('fo_archives_actualites', {'slug': "regionales"}) }}">&raquo; Voir les autres articles</a></div>
 			
-		</div>
+		</div><br>
 
 
 
@@ -167,6 +171,8 @@
 				</div>
 			</div>	
 			{% endfor %}
-		</div>
+			<br><br><br>
+			<div class="autres-articles"><a href="{{ path('fo_archives_actualites', {'slug': "internationales"}) }}">&raquo; Voir les autres articles</a></div>
+		</div><br><br><br>
 {% endblock %}
 

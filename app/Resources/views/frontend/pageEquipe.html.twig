@@ -44,8 +44,8 @@
 
 					<!-- NATIONAL -->
 					<div class="row" style="font-size: 20px;">
-						<div class="col col_4_of_12" style="padding-bottom: 17px"><a href="#"></a></div>
-						<div class="col col_4_of_12" style="padding-bottom: 17px">
+						<div class="col col_4_of_12" style="padding-bottom: 5px"><a href="#"></a></div>
+						<div class="col col_4_of_12" style="padding-bottom: 5px">
 							<div class="layout_post_1">
 								<div class="item_thumb">
 									<div class="thumb_icon">
@@ -83,6 +83,50 @@
 						<div class="col col_4_of_12" style="padding-bottom: 17px"></div>
 					</div><br><br>
 					<!-- /NATIONAL -->
+
+					<!-- SECRETARIAT -->
+					{% if (secretariat) %}
+						<div class="row" style="font-size: 20px;">
+							<div class="col col_8_of_12" style="padding-bottom: 17px"><a href="#"></a></div>
+							<div class="col col_3_of_12" style="padding-bottom: 17px; padding-left: 75px">
+								<div class="layout_post_1">
+									<div class="item_thumb">
+										<div class="thumb_icon">
+											<a href="#" style="background-color: #F89406" title="{{ secretariat.fonction }}" alt="{{ secretariat.nomcomplet }}"><i class="fa fa-copy"></i></a>
+										</div>
+										<div class="thumb_hover">
+                                            {% if (national.lien) %}
+												<a href="{{ path('fo_biographie', {'slug': secretariat.slug}) }}">
+													<img src="{{ asset('uploads/equipes/'~ secretariat.imageName) | imagine_filter('envol') }}" alt="{{ secretariat.nomcomplet }}" title="{{ secretariat.nomcomplet }}" class="visible animated">
+												</a>
+                                            {% else %}
+												<a href="#">
+													<img src="{{ asset('uploads/equipes/'~ secretariat.imageName) | imagine_filter('envol') }}" alt="{{ secretariat.nomcomplet }}" title="{{ secretariat.nomcomplet }}" class="visible animated">
+												</a>
+                                            {% endif %}
+										</div>
+									</div>
+									<div class="item_content">
+										<p>
+                                            {% if (secretariat.lien) %}
+												<a href="{{ path('fo_biographie', {'slug': secretariat.slug}) }}" style="font-size: 14px; font-style: bold" title="{{ secretariat.typefonction.libelle }}" alt="{{ secretariat.nomcomplet }} - {{ secretariat.fonction }}">
+													<strong>{{ secretariat.nom }}</strong>
+												</a>
+                                            {% else %}
+												<a href="#" style="font-size: 14px; font-style: bold" title="{{ secretariat.typefonction.libelle }}" alt="{{ secretariat.nomcomplet }} - {{ secretariat.fonction }}">
+													<strong>{{ secretariat.nom }}</strong>
+												</a>
+                                            {% endif %}
+											<br>
+											<span><em>{{ secretariat.fonction }}</em></span>
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="col col_1_of_12" style="padding-bottom: 17px"></div>
+						</div><br><br>
+					{% endif %}
+					<!-- \SECRETARIAT -->
 
 					<!-- COMMISSAIRES NATIONAUX ADJOINTS -->
 					<div class="panel_title">
@@ -175,6 +219,52 @@
 						{% endfor %}
 					</div>
 					<!-- /ASSISTANTS COMMISSAIRES NATIONAUX  -->
+
+					<!-- COMMISSAIRES NATIONAUX A L'INTERNATIONAL  -->
+					<div class="panel_title" style="padding-top: 75px">
+						<div>
+							<h4><a href="#">COMMISSAIRES NATIONAUX A L'INTERNATIONAL</a></h4>
+						</div>
+					</div>
+					<div class="row" style="padding-bottom: 100px">
+						{% for international in internationaux %}
+							<div class="col col_2_of_12">
+								<div class="layout_post_1">
+									<div class="item_thumb">
+										<div class="thumb_icon">
+											<a href="#" style="background-color: #{{ international.departement.couleur }}" title="{{ international.fonction }}" alt="{{ international.nomcomplet }}"><i class="fa fa-copy"></i></a>
+										</div>
+										<div class="thumb_hover">
+											{% if (international.lien) %}
+												<a href="{{ path('fo_biographie', {'slug': international.slug}) }}">
+													<img src="{{ asset('uploads/equipes/'~ international.imageName) | imagine_filter('envol') }}" alt="{{ international.nomcomplet }}" title="{{ international.nomcomplet }}" class="visible animated">
+												</a>
+											{% else %}
+												<a href="#">
+													<img src="{{ asset('uploads/equipes/'~ international.imageName) | imagine_filter('envol') }}" alt="{{ international.nomcomplet }}" title="{{ international.nomcomplet }}" class="visible animated">
+												</a>
+											{% endif %}
+										</div>
+									</div>
+									<div class="item_content">
+										<p>
+											{% if (international.lien) %}
+												<a href="{{ path('fo_biographie', {'slug': international.slug}) }}" style="font-size: 14px; font-style: bold" title="{{ international.typefonction.libelle }}" alt="{{ international.nomcomplet }} - {{ international.fonction }}">
+													<strong>{{ international.nom }}</strong>
+												</a>
+											{% else %}
+												<a href="#" style="font-size: 14px; font-style: bold" title="{{ international.typefonction.libelle }}" alt="{{ international.nomcomplet }} - {{ international.fonction }}">
+													<strong>{{ international.nom }}</strong>
+												</a>
+											{% endif %}
+											<br>
+										</p>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+					<!-- /COMMISSAIRES NATIONAUX A L'INTERNATIONAL  -->
 {% endblock %}
 
 {% block accueil %}{% endblock %}
