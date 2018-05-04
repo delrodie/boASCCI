@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -46,10 +47,26 @@ class EquipeType extends AbstractType
                 )
             ))
             ->add('statut')
+            ->add('cc', CheckboxType::class, array(
+                'required'  => false,
+            ))
+            ->add('bn', CheckboxType::class, array(
+                'required'  => false,
+            ))
+            ->add('cna', CheckboxType::class, array(
+                'required'  => false,
+            ))
+            ->add('acn', CheckboxType::class, array(
+                'required'  => false,
+            ))
+            ->add('si', CheckboxType::class, array(
+                'required'  => false,
+            ))
             ->add('lien')
             ->add('imageFile', VichImageType::class, array(
                 'required' => false,
                 'allow_delete' => true,
+                'label' => 'Photo d\'identité du chef',
             ))
             //->add('imageName')->add('imageSize')->add('updatedAt')->add('slug')->add('publiePar')
             //->add('modifiePar')->add('publieLe')->add('modifieLe')

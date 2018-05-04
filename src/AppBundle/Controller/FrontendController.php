@@ -162,10 +162,16 @@ class FrontendController extends Controller
             if ($verif){
                 if ($verif->getSlug() == $slugCherche->getSlug()){
                     $national = $em->getRepository('AppBundle:Equipe')->findMembre($slug = 'national');
-                    $adjoints = $em->getRepository('AppBundle:Equipe')->findMembreByTypefonction($slug="adjoint");
-                    $assistants = $em->getRepository('AppBundle:Equipe')->findMembreByTypefonction($slug="assistant");
-                    $internationaux = $em->getRepository('AppBundle:Equipe')->findMembreByDepartement($slug="internationa");
+                    //$adjoints = $em->getRepository('AppBundle:Equipe')->findMembreByTypefonction($slug="adjoint");
+                    //$assistants = $em->getRepository('AppBundle:Equipe')->findMembreByTypefonction($slug="assistant");
+                    //$internationaux = $em->getRepository('AppBundle:Equipe')->findMembreByDepartement($slug="internationa");
                     $secretariat = $em->getRepository('AppBundle:Equipe')->findMembre($slug="secreta");
+                    $aumonier = $em->getRepository('AppBundle:Equipe')->findMembre($slug="aumon");
+                    $adjoints = $em->getRepository('AppBundle:Equipe')->findBy(array('statut'=> 1, 'cna'=>1));
+                    $assistants = $em->getRepository('AppBundle:Equipe')->findBy(array('statut'=>1, 'acn'=>1));
+                    $internationaux = $em->getRepository('AppBundle:Equipe')->findBy(array('statut'=>1, 'si'=>1));
+                    $cabinets = $em->getRepository('AppBundle:Equipe')->findBy(array('statut'=>1, 'cc'=>1));
+                    $bureaux = $em->getRepository('AppBundle:Equipe')->findBy(array('statut'=>1, 'bn'=>1));
 
                     return $this->render("frontend/pageEquipe.html.twig",[
                         'presentations' => $presentations,
@@ -174,6 +180,9 @@ class FrontendController extends Controller
                         'assistants'    => $assistants,
                         'internationaux'    => $internationaux,
                         'secretariat'    => $secretariat,
+                        'cabinets'  => $cabinets,
+                        'bureaux'   => $bureaux,
+                        'aumonier'   => $aumonier,
                     ]);
                 }
             }
