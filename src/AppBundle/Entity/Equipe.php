@@ -75,6 +75,42 @@ class Equipe
     private $lien;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="cc", type="boolean", nullable=true)
+     */
+    private $cc;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="bn", type="boolean", nullable=true)
+     */
+    private $bn;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="cna", type="boolean", nullable=true)
+     */
+    private $cna;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="acn", type="boolean", nullable=true)
+     */
+    private $acn;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="si", type="boolean", nullable=true)
+     */
+    private $si;
+
+
+    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Departement", inversedBy="equipes")
      * @ORM\JoinColumn(name="departement_id", referencedColumnName="id")
      */
@@ -589,5 +625,125 @@ class Equipe
     public function setLien($lien)
     {
         $this->lien = $lien;
+    }
+
+    /**
+     * Set cc
+     *
+     * @param boolean $cc
+     *
+     * @return Equipe
+     */
+    public function setCc($cc)
+    {
+        $this->cc = $cc;
+
+        return $this;
+    }
+
+    /**
+     * Get cc
+     *
+     * @return boolean
+     */
+    public function getCc()
+    {
+        return $this->cc;
+    }
+
+    /**
+     * Set bn
+     *
+     * @param boolean $bn
+     *
+     * @return Equipe
+     */
+    public function setBn($bn)
+    {
+        $this->bn = $bn;
+
+        return $this;
+    }
+
+    /**
+     * Get bn
+     *
+     * @return boolean
+     */
+    public function getBn()
+    {
+        return $this->bn;
+    }
+
+    /**
+     * Set cna
+     *
+     * @param boolean $cna
+     *
+     * @return Equipe
+     */
+    public function setCna($cna)
+    {
+        $this->cna = $cna;
+
+        return $this;
+    }
+
+    /**
+     * Get cna
+     *
+     * @return boolean
+     */
+    public function getCna()
+    {
+        return $this->cna;
+    }
+
+    /**
+     * Set acn
+     *
+     * @param boolean $acn
+     *
+     * @return Equipe
+     */
+    public function setAcn($acn)
+    {
+        $this->acn = $acn;
+
+        return $this;
+    }
+
+    /**
+     * Get acn
+     *
+     * @return boolean
+     */
+    public function getAcn()
+    {
+        return $this->acn;
+    }
+
+    /**
+     * Set si
+     *
+     * @param boolean $si
+     *
+     * @return Equipe
+     */
+    public function setSi($si)
+    {
+        $this->si = $si;
+
+        return $this;
+    }
+
+    /**
+     * Get si
+     *
+     * @return boolean
+     */
+    public function getSi()
+    {
+        return $this->si;
     }
 }

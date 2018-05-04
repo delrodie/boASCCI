@@ -44,7 +44,7 @@
 
 					<!-- NATIONAL -->
 					<div class="row" style="font-size: 20px;">
-						<div class="col col_4_of_12" style="padding-bottom: 5px"><a href="#"></a></div>
+						<div class="col col_2_of_12" style="padding-bottom: 5px"><a href="#"></a></div>
 						<div class="col col_4_of_12" style="padding-bottom: 5px">
 							<div class="layout_post_1">
 								<div class="item_thumb">
@@ -80,14 +80,50 @@
 								</div>
 							</div>
 						</div>
-						<div class="col col_4_of_12" style="padding-bottom: 17px"></div>
+						<div class="col col_3_of_12" style="padding-bottom: 17px"></div>
+						<div class="col col_3_of_12" style="padding-bottom: 5px">
+							<div class="layout_post_1">
+								<div class="item_thumb">
+									<div class="thumb_icon">
+										<a href="#" style="background-color: #F89406" title="{{ aumonier.fonction }}" alt="{{ aumonier.nomcomplet }}"><i class="fa fa-copy"></i></a>
+									</div>
+									<br>
+									<div class="thumb_hover">
+                                        {% if (national.lien) %}
+											<a href="{{ path('fo_biographie', {'slug': aumonier.slug}) }}">
+												<img src="{{ asset('uploads/equipes/'~ aumonier.imageName) | imagine_filter('envol') }}" alt="{{ aumonier.nomcomplet }}" title="{{ aumonier.nomcomplet }}" class="visible animated">
+											</a>
+                                        {% else %}
+											<a href="#">
+												<img src="{{ asset('uploads/equipes/'~ aumonier.imageName) | imagine_filter('envol') }}" alt="{{ aumonier.nomcomplet }}" title="{{ aumonier.nomcomplet }}" class="visible animated">
+											</a>
+                                        {% endif %}
+									</div>
+								</div>
+								<div class="item_content">
+									<p>
+                                        {% if (aumonier.lien) %}
+											<a href="{{ path('fo_biographie', {'slug': aumonier.slug}) }}" style="font-size: 14px; font-style: bold" title="{{ aumonier.typefonction.libelle }}" alt="{{ aumonier.nomcomplet }} - {{ aumonier.fonction }}">
+												<strong>{{ aumonier.nom }}</strong>
+											</a>
+                                        {% else %}
+											<a href="#" style="font-size: 14px; font-style: bold" title="{{ aumonier.typefonction.libelle }}" alt="{{ aumonier.nomcomplet }} - {{ aumonier.fonction }}">
+												<strong>{{ aumonier.nom }}</strong>
+											</a>
+                                        {% endif %}
+										<br>
+										<span><em>{{ aumonier.fonction }}</em></span>
+									</p>
+								</div>
+							</div>
+						</div>
 					</div><br><br>
 					<!-- /NATIONAL -->
 
 					<!-- SECRETARIAT -->
 					{% if (secretariat) %}
 						<div class="row" style="font-size: 20px;">
-							<div class="col col_8_of_12" style="padding-bottom: 17px"><a href="#"></a></div>
+							<div class="col col_5_of_12" style="padding-bottom: 17px"><a href="#"></a></div>
 							<div class="col col_3_of_12" style="padding-bottom: 17px; padding-left: 75px">
 								<div class="layout_post_1">
 									<div class="item_thumb">
@@ -127,6 +163,98 @@
 						</div><br><br>
 					{% endif %}
 					<!-- \SECRETARIAT -->
+
+					<!-- CABINET DU COMMISSAIRE NATIONAL -->
+					<div class="panel_title">
+						<div>
+							<h4><a href="#">CABINET DU COMMISSAIRE NATIONAL</a></h4>
+						</div>
+					</div>
+					<div class="row">
+						{% for cabinet in cabinets %}
+							<div class="col col_2_of_12">
+								<div class="layout_post_1">
+									<div class="item_thumb">
+										<div class="thumb_icon">
+											<a href="#" style="background-color: #{{ cabinet.departement.couleur }}" title="{{ cabinet.fonction }}" alt="{{ cabinet.nomcomplet }}"><i class="fa fa-copy"></i></a>
+										</div>
+										<div class="thumb_hover">
+											{% if (cabinet.lien) %}
+												<a href="{{ path('fo_biographie', {'slug': cabinet.slug}) }}">
+													<img src="{{ asset('uploads/equipes/'~ cabinet.imageName) | imagine_filter('envol') }}" alt="{{ cabinet.nomcomplet }}" title="{{ cabinet.nomcomplet }}" class="visible animated">
+												</a>
+											{% else %}
+												<a href="#">
+													<img src="{{ asset('uploads/equipes/'~ cabinet.imageName) | imagine_filter('envol') }}" alt="{{ cabinet.nomcomplet }}" title="{{ cabinet.nomcomplet }}" class="visible animated">
+												</a>
+											{% endif %}
+										</div>
+									</div>
+									<div class="item_content">
+										<p>
+											{% if (cabinet.lien) %}
+												<a href="{{ path('fo_biographie', {'slug': cabinet.slug}) }}" style="font-size: 14px; font-style: bold" title="{{ cabinet.typefonction.libelle }}" alt="{{ cabinet.nomcomplet }} - {{ cabinet.fonction }}">
+													<strong>{{ cabinet.nom }}</strong>
+												</a>
+											{% else %}
+												<a href="#" style="font-size: 14px; font-style: bold" title="{{ cabinet.typefonction.libelle }}" alt="{{ cabinet.nomcomplet }} - {{ cabinet.fonction }}">
+													<strong>{{ cabinet.nom }}</strong>
+												</a>
+											{% endif %}
+											<br>
+										</p>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div><br><br>
+					<!-- /CABINET DU COMMISSAIRE NATIONAL -->
+
+					<!-- BUREAU NATIONAL -->
+					<div class="panel_title">
+						<div>
+							<h4><a href="#">BUREAU NATIONAL</a></h4>
+						</div>
+					</div>
+					<div class="row">
+						{% for bureau in bureaux %}
+							<div class="col col_2_of_12">
+								<div class="layout_post_1">
+									<div class="item_thumb">
+										<div class="thumb_icon">
+											<a href="#" style="background-color: #{{ bureau.departement.couleur }}" title="{{ bureau.fonction }}" alt="{{ bureau.nomcomplet }}"><i class="fa fa-copy"></i></a>
+										</div>
+										<div class="thumb_hover">
+											{% if (bureau.lien) %}
+												<a href="{{ path('fo_biographie', {'slug': bureau.slug}) }}">
+													<img src="{{ asset('uploads/equipes/'~ bureau.imageName) | imagine_filter('envol') }}" alt="{{ bureau.nomcomplet }}" title="{{ bureau.nomcomplet }}" class="visible animated">
+												</a>
+											{% else %}
+												<a href="#">
+													<img src="{{ asset('uploads/equipes/'~ bureau.imageName) | imagine_filter('envol') }}" alt="{{ bureau.nomcomplet }}" title="{{ bureau.nomcomplet }}" class="visible animated">
+												</a>
+											{% endif %}
+										</div>
+									</div>
+									<div class="item_content">
+										<p>
+											{% if (bureau.lien) %}
+												<a href="{{ path('fo_biographie', {'slug': bureau.slug}) }}" style="font-size: 14px; font-style: bold" title="{{ bureau.typefonction.libelle }}" alt="{{ bureau.nomcomplet }} - {{ bureau.fonction }}">
+													<strong>{{ bureau.nom }}</strong>
+												</a>
+											{% else %}
+												<a href="#" style="font-size: 14px; font-style: bold" title="{{ bureau.typefonction.libelle }}" alt="{{ bureau.nomcomplet }} - {{ bureau.fonction }}">
+													<strong>{{ bureau.nom }}</strong>
+												</a>
+											{% endif %}
+											<br>
+										</p>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div><br><br>
+					<!-- /BUREAU NATIONAL -->
 
 					<!-- COMMISSAIRES NATIONAUX ADJOINTS -->
 					<div class="panel_title">
@@ -171,7 +299,7 @@
 								</div>
 							</div>
                         {% endfor %}
-					</div>
+					</div><br><br>
 					<!-- /COMMISSAIRES NATIONAUX ADJOINTS -->
 
 					<!-- ASSISTANTS COMMISSAIRES NATIONAUX  -->
@@ -220,10 +348,10 @@
 					</div>
 					<!-- /ASSISTANTS COMMISSAIRES NATIONAUX  -->
 
-					<!-- COMMISSAIRES NATIONAUX A L'INTERNATIONAL  -->
+					<!-- SERVICE INTERNATIONAL  -->
 					<div class="panel_title" style="padding-top: 75px">
 						<div>
-							<h4><a href="#">COMMISSAIRES NATIONAUX A L'INTERNATIONAL</a></h4>
+							<h4><a href="#">SERVICE INTERNATIONAL</a></h4>
 						</div>
 					</div>
 					<div class="row" style="padding-bottom: 100px">
@@ -264,7 +392,7 @@
 							</div>
 						{% endfor %}
 					</div>
-					<!-- /COMMISSAIRES NATIONAUX A L'INTERNATIONAL  -->
+					<!-- /SERVICE INTERNATIONAL  -->
 {% endblock %}
 
 {% block accueil %}{% endblock %}
