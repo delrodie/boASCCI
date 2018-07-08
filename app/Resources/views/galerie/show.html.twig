@@ -1,72 +1,83 @@
-{% extends 'base.html.twig' %}
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}Liste des galeries{% endblock %}
 
 {% block body %}
-    <h1>Galerie</h1>
+<div class="pageheader">
+  <h3><i class="fa fa-home"></i>  Gestion des galeries</h3>
+  <div class="breadcrumb-wrapper">
+    <span class="label"></span>
+    <ol class="breadcrumb">
+      <li><a href="#">Accueil</a></li>
+      <li class="active">galerie</li>
+    </ol>
+  </div>
+</div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ galerie.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ galerie.titre }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ galerie.description }}</td>
-            </tr>
-            <tr>
-                <th>Statut</th>
-                <td>{% if galerie.statut %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Imagename</th>
-                <td>{{ galerie.imageName }}</td>
-            </tr>
-            <tr>
-                <th>Imagesize</th>
-                <td>{{ galerie.imageSize }}</td>
-            </tr>
-            <tr>
-                <th>Updatedat</th>
-                <td>{% if galerie.updatedAt %}{{ galerie.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ galerie.slug }}</td>
-            </tr>
-            <tr>
-                <th>Publiepar</th>
-                <td>{{ galerie.publiePar }}</td>
-            </tr>
-            <tr>
-                <th>Modifiepar</th>
-                <td>{{ galerie.modifiePar }}</td>
-            </tr>
-            <tr>
-                <th>Publiele</th>
-                <td>{{ galerie.publieLe }}</td>
-            </tr>
-            <tr>
-                <th>Modifiele</th>
-                <td>{{ galerie.modifieLe }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div id="page-content">
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_galerie_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('admin_galerie_edit', { 'id': galerie.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+  <br>
+    <!-- Message -->
+      {% for flash_message in app.session.flashBag.get('notice') %}
+        {% if flash_message %}
+        <div class="row">
+          <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2">
+            <div class="alert alert-info media fade in">
+              <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+              <div class="media-left">
+                <span class="icon-wrap icon-wrap-xs icon-circle alert-icon">
+                  <i class="fa fa-check fa-lg"></i>
+                </span>
+              </div>
+              <div class="media-body">
+                <p></p>
+                  <h4 class="alert-title" style="color: green">
+                    {{ flash_message }}
+                  </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+      <!-- \Message -->
+      <br>
+
+  <div class="row">
+    <div class="col-sm-12 col-sm-offset-0">
+      <div class="panel">
+        <div class="btn-toolbar pad-all text-right">
+          <div class="btn-group">
+            <a href="{{ path('admin_galerie_edit', {'slug': galerie.slug})}}" class="btn btn-sm btn-primary">
+              <i class="fa fa-edit"></i> Modifier
+            </a>
+            <a href="{{ path('admin_photo_new', {'galerie': galerie.id}) }}" class="btn btn-sm btn-default">
+              <i class="fa fa-plus"></i> Ajouter une nouvelle photo
+            </a>
+          </div>
+        </div>
+        <div class="panel-heading">
+          <h3 class="panel-title">{{ galerie.titre}}</h3>
+          <span>{{ galerie.description }}</span>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <img src="{{ asset('uploads/galeries/'~ galerie.imageName) | imagine_filter('bo_galerie') }}" alt="">
+              </div>
+              {% for photo in photos %}
+              <div class="col-sm-3">
+                <a href="{{ path('admin_photo_edit',{'id': photo.id, 'galerie': photo.galerie.id})}}">
+                  <img src="{{ asset('uploads/galeries/'~ photo.imageName) | imagine_filter('bo_galerie') }}" alt="">
+                </a>
+              </div>
+              {% endfor %}
+            </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
 {% endblock %}

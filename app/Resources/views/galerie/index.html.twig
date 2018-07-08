@@ -63,8 +63,8 @@
             <div class="row" style="margin-bottom: 20px; padding-bottom: 25px; border-bottom: solid 1px #ccc;">
               <div class="col-md-3">
                 <div class="view-mail text-justify">
-                  <a href="{{ path('admin_galerie_edit', {'slug': galerie.slug})}}">
-                    <img src="{{ vich_uploader_asset(galerie, 'imageFile') }}" alt="{{ galerie.titre }}" class="img-thumbnail img-page" />
+                  <a href="{{ path('admin_galerie_show', {'slug': galerie.slug})}}">
+                    <img src="{{ asset('uploads/galeries/'~ galerie.imageName) | imagine_filter('bo_galerie') }}" class="img-thumbnail img-page">
                   </a>
                 </div>
               </div>

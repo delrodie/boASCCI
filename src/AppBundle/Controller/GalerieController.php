@@ -67,8 +67,12 @@ class GalerieController extends Controller
     {
         $deleteForm = $this->createDeleteForm($galerie);
 
+        $em = $this->getDoctrine()->getManager();
+        $photos = $em->getRepository('AppBundle:Photo')->findBy(array('galerie'=>$galerie), array('id'=>'DESC'));
+
         return $this->render('galerie/show.html.twig', array(
             'galerie' => $galerie,
+            'photos' => $photos,
             'delete_form' => $deleteForm->createView(),
         ));
     }
