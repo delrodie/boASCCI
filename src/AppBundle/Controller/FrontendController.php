@@ -165,7 +165,8 @@ class FrontendController extends Controller
                     //$adjoints = $em->getRepository('AppBundle:Equipe')->findMembreByTypefonction($slug="adjoint");
                     //$assistants = $em->getRepository('AppBundle:Equipe')->findMembreByTypefonction($slug="assistant");
                     //$internationaux = $em->getRepository('AppBundle:Equipe')->findMembreByDepartement($slug="internationa");
-                    $secretariat = $em->getRepository('AppBundle:Equipe')->findMembre($slug="secreta");
+                    //$secretariat = $em->getRepository('AppBundle:Equipe')->findMembre($slug="secreta");
+		    $secretariat = $em->getRepository('AppBundle:Equipe')->findMembreByTypefonction($slug="secretaire-du-c-n");
                     $aumonier = $em->getRepository('AppBundle:Equipe')->findMembre($slug="aumon");
                     $adjoints = $em->getRepository('AppBundle:Equipe')->findBy(array('statut'=> 1, 'cna'=>1));
                     $assistants = $em->getRepository('AppBundle:Equipe')->findBy(array('statut'=>1, 'acn'=>1));

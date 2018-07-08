@@ -31,18 +31,55 @@ class DefaultController extends Controller
                         );
 
 
-        return $this->render('default/maintenance.html.twig');
+        /* return $this->render('default/maintenance.html.twig');*/
 
-       /* return $this->render('default/index.html.twig', [
+        return $this->render('default/index.html.twig', [
             'sliders'   => $sliders,
             'nationales' => $nationales,
             'regionales' => $regionales,
             'internationales' => $internationales,
             'messages'  => $messages,
             'publicites' => $publicites,
-        ]);*/
+        ]);
 		
     }
+
+    /**
+     * @Route("/index/maintenance", name="index_maintenance")
+     */
+    public function imaintenanceAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+ 
+        $sliders = $em->getRepository('AppBundle:Slider')->findSlideStandard(0, 6);
+        $nationales = $em->getRepository('AppBundle:Actualite')->findLastActualite(0, 3);
+        $regionales = $em->getRepository('AppBundle:Regionale')->findLastRegionale(0, 4);
+        $internationales = $em->getRepository('AppBundle:Internationale')->findLastInternationale(0, 3);
+        $publicites = $em->getRepository('AppBundle:Publicite')->findPublicite(0,1);//dump($publicites);die();
+        //$publicites = $em->getRepository('AppBundle:Publicite')->findPublicite(0,1);dump($publicites);die();
+        $messages = $em->getRepository('AppBundle:Message')
+                        ->findBy(
+                            array('statut' => 1),
+                            array('id' => 'DESC'),
+                            $limit = 1,
+                            $offset = 0
+                        );
+
+
+        //return $this->render('default/maintenance.html.twig');
+
+       return $this->render('default/index.html.twig', [
+            'sliders'   => $sliders,
+            'nationales' => $nationales,
+            'regionales' => $regionales,
+            'internationales' => $internationales,
+            'messages'  => $messages,
+            'publicites' => $publicites,
+        ]);
+		
+    }
+
 
     /**
      * @Route("/chef", name="menu_chef")
