@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+  Galerie photos
+{% endblock %}
+
+{% block body %}
+  <div class="panel_title">
+    <div>
+      <h4>
+        <a href="#">Galerie des photos</a>
+      </h4>
+    </div>
+  </div>
+  <ul class="products clearfix">
+    {% for galerie in galeries %}
+      <li class="product">
+
+        <div class="item_thumb">
+          <h3>
+            <a href="{{ path('phototheque_photo', {'galerie': galerie.slug })}}">{{ galerie.titre }}</a>
+          </h3>
+          <div class="thumb_icon">
+            <a href="{{ path('phototheque_photo', {'galerie': galerie.slug })}}">
+              <i class="fa fa-copy"></i>
+            </a>
+          </div>
+          <div class="thumb_hover">
+            <a href="{{ path('phototheque_photo', {'galerie': galerie.slug })}}">
+              <img src="{{ asset('uploads/galeries/'~ galerie.imageName) | imagine_filter('galerie') }}" alt="{{ galerie.titre }}">
+            </a>
+          </div>
+        </div>
+
+      </li>
+    {% else %}
+      <h6>
+        <em>Aucune photo
+        </em>
+      </h6>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

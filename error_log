@@ -28,3 +28,11 @@ Stack trace:
 #3 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/ContainerBuilder.php(357): Symfony\Component\Config\Resource\ClassExistenceResource->isFresh(0)
 #4 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/Loader/FileLoader.php(132): Symfony\Component\DependencyInjection\ContainerBuilder->getReflectionClass('AppBundle\\Contr...')
 #5 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/ in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php on line 18
+[08-Jul-2018 08:38:42 UTC] PHP Fatal error:  Uncaught Symfony\Component\Debug\Exception\FatalThrowableError: Parse error: syntax error, unexpected 'return' (T_RETURN), expecting ']' in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php:40
+Stack trace:
+#0 [internal function]: Symfony\Component\Debug\DebugClassLoader->loadClass('AppBundle\\Contr...')
+#1 [internal function]: spl_autoload_call('AppBundle\\Contr...')
+#2 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/Config/Resource/ClassExistenceResource.php(73): class_exists('AppBundle\\Contr...')
+#3 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/ContainerBuilder.php(357): Symfony\Component\Config\Resource\ClassExistenceResource->isFresh(0)
+#4 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/Loader/FileLoader.php(132): Symfony\Component\DependencyInjection\ContainerBuilder->getReflectionClass('AppBundle\\Contr...')
+#5 /home/scoutsacci/public_html/v3/vend in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php on line 40

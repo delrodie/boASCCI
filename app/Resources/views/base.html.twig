@@ -97,25 +97,27 @@
     		}
     		</script>
 
-	<link rel="stylesheet" href="{{ asset('ressources/css/normalize.css')}}">
-	<link rel="stylesheet" href="{{ asset('ressources/css/fontawesome.css')}}">
-	<link rel="stylesheet" href="{{ asset('ressources/css/weather.css')}}">
-	<link rel="stylesheet" href="{{ asset('ressources/css/colors.css')}}">
-	<link rel="stylesheet" href="{{ asset('ressources/css/typography.css')}}">
-	<link rel="stylesheet" href="{{ asset('ressources/css/style.css')}}">
-	<link rel="stylesheet" href="{{ asset('ressources/css/ascci2.css')}}">
-	<link rel="stylesheet" href="{{ asset('ressources/css/owl.carousel.min.css')}}">
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('ressources/css/normalize.css')}}">
+<link rel="stylesheet" href="{{ asset('ressources/css/fontawesome.css')}}">
+<link rel="stylesheet" href="{{ asset('ressources/css/weather.css')}}">
+<link rel="stylesheet" href="{{ asset('ressources/css/colors.css')}}">
+<link rel="stylesheet" href="{{ asset('ressources/css/typography.css')}}">
+<link rel="stylesheet" href="{{ asset('ressources/css/style.css')}}">
+<link rel="stylesheet" href="{{ asset('ressources/css/ascci2.css')}}">
+<link rel="stylesheet" href="{{ asset('ressources/css/owl.carousel.min.css')}}">
 
-	<link rel="stylesheet" type="text/css" media="(max-width:768px)" href="{{ asset('ressources/css/responsive-0.css')}}">
-	<link rel="stylesheet" type="text/css" media="(min-width:769px) and (max-width:992px)" href="{{ asset('ressources/css/responsive-768.css')}}">
-	<link rel="stylesheet" type="text/css" media="(min-width:993px) and (max-width:1200px)" href="{{ asset('ressources/css/responsive-992.css')}}">
-	<link rel="stylesheet" type="text/css" media="(min-width:1201px)" href="{{ asset('ressources/css/responsive-1200.css')}}">
-	<link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,300italic,400,400italic,700,700italic" rel="stylesheet" type="text/css">
-	<style>
-		.autres-articles{ margin: 35px auto 5px auto; text-align: right; font-size: 1.3em; font-style: italic; font-weight:bold; color: red;}
-		.autres-articles a{ color: red; }
-		.autres-articles a:hover{ color: #666;}
-	</style>
+<link rel="stylesheet" type="text/css" media="(max-width:768px)" href="{{ asset('ressources/css/responsive-0.css')}}">
+<link rel="stylesheet" type="text/css" media="(min-width:769px) and (max-width:992px)" href="{{ asset('ressources/css/responsive-768.css')}}">
+<link rel="stylesheet" type="text/css" media="(min-width:993px) and (max-width:1200px)" href="{{ asset('ressources/css/responsive-992.css')}}">
+<link rel="stylesheet" type="text/css" media="(min-width:1201px)" href="{{ asset('ressources/css/responsive-1200.css')}}">
+<link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,300italic,400,400italic,700,700italic" rel="stylesheet" type="text/css">
+<style>
+	.autres-articles{ margin: 35px auto 5px auto; text-align: right; font-size: 1.3em; font-style: italic; font-weight:bold; color: red;}
+	.autres-articles a{ color: red; }
+	.autres-articles a:hover{ color: #666;}
+</style>
+{% endblock %}
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-104978409-4"></script>
@@ -157,7 +159,7 @@
 			<span class="top_navigation_toggle"><i class="fa fa-reorder"></i></span>
 			<ul class="menu">
 				<li class="louveteau">
-					<a href="{{ path('fo_pedagogie', {'slug': 'louveteau'})}}" title="8-11 ans"><img src="{{ asset('ressources/images/branche/icon01.png')}}" width="30"> 
+					<a href="{{ path('fo_pedagogie', {'slug': 'louveteau'})}}" title="8-11 ans"><img src="{{ asset('ressources/images/branche/icon01.png')}}" width="30">
 						Louveteau
 					</a>
 				</li>
@@ -216,6 +218,12 @@
 				</li>
 				<li ><a href="{{ path('fo_couverture_nationale') }}">Notre couverture<div class="subtitle">Nos régions</div></a></li>
 				<li><a href="{{ path('fo_nous_contacter') }}">Contact<div class="subtitle">Nous joindre</div></a></li>
+				<li class="menu-item-has-children"><a href="#">Liens utiles<div class="subtitle"></div></a>
+					<span class="site_sub_menu_toggle"></span>
+					<ul class="sub-menu" style="border-top-color: #F89406">
+						<li><a href="{{ path('phototheque_galerie')}}">Photothèque</a></li>
+					</ul>
+				</li>
 				<li class="menu-item-has-children"><a href="#">
 					<img src="{{ asset('ressources/images/icon-flag.png')}}" alt=""><div class="subtitle"></div></a>
 					<span class="site_sub_menu_toggle"></span>
@@ -229,7 +237,7 @@
 							</p>
 						</div>
 					</div>
-				</li>			
+				</li>
 			</ul>
 		</nav>
 	</div>
@@ -480,7 +488,7 @@
 </footer>
 
 	<div id="copyright" role="contentinfo">
-		<div class="container"> 
+		<div class="container">
 			<div class="col col_6_of_12">
 				&copy; 2016-2017  <a href="http://scoutascci.org/" target="_blank">Association des Scouts Catholiques de Côte d'Ivoire</a> | Tous droits réservés
 			</div>
@@ -494,6 +502,7 @@
 	</div>
 </div>
 
+{% block javascripts %}
 <script type="text/javascript" src="{{ asset('ressources/js/jqueryscript.min.js')}}"></script>
 <script type="text/javascript" src="{{ asset('ressources/js/jqueryuiscript.min.js')}}"></script>
 <script type="text/javascript" src="{{ asset('ressources/js/easing.min.js')}}"></script>
@@ -507,6 +516,7 @@
 <script type="text/javascript" src="{{ asset('ressources/js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{ asset('ressources/js/owl.carousel.min.js')}}"></script>
 <script type="text/javascript" src="{{ asset('ressources/js/script.js')}}"></script>
+{% endblock %}
 </body>
 
 </html>

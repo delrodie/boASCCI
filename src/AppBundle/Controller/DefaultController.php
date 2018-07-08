@@ -31,9 +31,13 @@ class DefaultController extends Controller
                         );
 
 
+
         /* return $this->render('default/maintenance.html.twig');*/
 
-        return $this->render('default/index.html.twig', [
+        //return $this->render('default/index.html.twig', [
+        //return $this->render('default/maintenance.html.twig');
+
+       return $this->render('default/index.html.twig', [
             'sliders'   => $sliders,
             'nationales' => $nationales,
             'regionales' => $regionales,

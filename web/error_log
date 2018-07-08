@@ -20,3 +20,67 @@ Stack trace:
 [19-Jun-2018 15:06:59 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 34799361 bytes) in /home/scoutsacci/public_html/v3/vendor/imagine/imagine/lib/Imagine/Gd/Image.php on line 617
 [19-Jun-2018 15:07:17 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 34799361 bytes) in /home/scoutsacci/public_html/v3/vendor/imagine/imagine/lib/Imagine/Gd/Image.php on line 617
 [19-Jun-2018 15:09:13 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 34799361 bytes) in /home/scoutsacci/public_html/v3/vendor/imagine/imagine/lib/Imagine/Gd/Image.php on line 617
+[08-Jul-2018 08:37:29 UTC] PHP Fatal error:  Uncaught Symfony\Component\Debug\Exception\FatalThrowableError: Parse error: syntax error, unexpected 'return' (T_RETURN), expecting ']' in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php:40
+Stack trace:
+#0 /home/scoutsacci/public_html/v3/vendor/composer/ClassLoader.php(301): Composer\Autoload\includeFile('/home/scoutsacc...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('AppBundle\\Contr...')
+#2 [internal function]: spl_autoload_call('AppBundle\\Contr...')
+#3 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Controller/ControllerResolver.php(186): class_exists('AppBundle\\Contr...')
+#4 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Controller/ContainerControllerResolver.php(47): Symfony\Component\HttpKernel\Controller\ControllerResolver->createController('AppBundle\\Contr...')
+#5 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/C in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php on line 40
+[08-Jul-2018 08:37:41 UTC] PHP Fatal error:  Uncaught Symfony\Component\Debug\Exception\FatalThrowableError: Parse error: syntax error, unexpected 'return' (T_RETURN), expecting ']' in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php:40
+Stack trace:
+#0 /home/scoutsacci/public_html/v3/vendor/composer/ClassLoader.php(301): Composer\Autoload\includeFile('/home/scoutsacc...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('AppBundle\\Contr...')
+#2 [internal function]: spl_autoload_call('AppBundle\\Contr...')
+#3 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Controller/ControllerResolver.php(186): class_exists('AppBundle\\Contr...')
+#4 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Controller/ContainerControllerResolver.php(47): Symfony\Component\HttpKernel\Controller\ControllerResolver->createController('AppBundle\\Contr...')
+#5 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/C in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php on line 40
+[08-Jul-2018 08:37:52 UTC] PHP Fatal error:  Uncaught Symfony\Component\Debug\Exception\FatalThrowableError: Parse error: syntax error, unexpected 'return' (T_RETURN), expecting ']' in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php:40
+Stack trace:
+#0 /home/scoutsacci/public_html/v3/vendor/composer/ClassLoader.php(301): Composer\Autoload\includeFile('/home/scoutsacc...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('AppBundle\\Contr...')
+#2 [internal function]: spl_autoload_call('AppBundle\\Contr...')
+#3 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Controller/ControllerResolver.php(186): class_exists('AppBundle\\Contr...')
+#4 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Controller/ContainerControllerResolver.php(47): Symfony\Component\HttpKernel\Controller\ControllerResolver->createController('AppBundle\\Contr...')
+#5 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/C in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php on line 40
+[08-Jul-2018 08:37:59 UTC] PHP Fatal error:  Uncaught Symfony\Component\Debug\Exception\FatalThrowableError: Parse error: syntax error, unexpected 'return' (T_RETURN), expecting ']' in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php:40
+Stack trace:
+#0 /home/scoutsacci/public_html/v3/vendor/composer/ClassLoader.php(301): Composer\Autoload\includeFile('/home/scoutsacc...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('AppBundle\\Contr...')
+#2 [internal function]: spl_autoload_call('AppBundle\\Contr...')
+#3 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Controller/ControllerResolver.php(186): class_exists('AppBundle\\Contr...')
+#4 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Controller/ContainerControllerResolver.php(47): Symfony\Component\HttpKernel\Controller\ControllerResolver->createController('AppBundle\\Contr...')
+#5 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/C in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php on line 40
+[08-Jul-2018 08:38:07 UTC] PHP Fatal error:  Uncaught Symfony\Component\Debug\Exception\FatalThrowableError: Parse error: syntax error, unexpected 'return' (T_RETURN), expecting ']' in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php:40
+Stack trace:
+#0 /home/scoutsacci/public_html/v3/vendor/composer/ClassLoader.php(301): Composer\Autoload\includeFile('/home/scoutsacc...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('AppBundle\\Contr...')
+#2 [internal function]: spl_autoload_call('AppBundle\\Contr...')
+#3 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Controller/ControllerResolver.php(186): class_exists('AppBundle\\Contr...')
+#4 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Controller/ContainerControllerResolver.php(47): Symfony\Component\HttpKernel\Controller\ControllerResolver->createController('AppBundle\\Contr...')
+#5 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/C in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php on line 40
+[08-Jul-2018 08:38:37 UTC] PHP Fatal error:  Uncaught Symfony\Component\Debug\Exception\FatalThrowableError: Parse error: syntax error, unexpected 'return' (T_RETURN), expecting ']' in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php:40
+Stack trace:
+#0 /home/scoutsacci/public_html/v3/vendor/composer/ClassLoader.php(301): Composer\Autoload\includeFile('/home/scoutsacc...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('AppBundle\\Contr...')
+#2 [internal function]: spl_autoload_call('AppBundle\\Contr...')
+#3 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Controller/ControllerResolver.php(186): class_exists('AppBundle\\Contr...')
+#4 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Controller/ContainerControllerResolver.php(47): Symfony\Component\HttpKernel\Controller\ControllerResolver->createController('AppBundle\\Contr...')
+#5 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/C in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php on line 40
+[08-Jul-2018 08:39:02 UTC] PHP Fatal error:  Uncaught Symfony\Component\Debug\Exception\FatalThrowableError: Parse error: syntax error, unexpected 'return' (T_RETURN), expecting ']' in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php:40
+Stack trace:
+#0 /home/scoutsacci/public_html/v3/vendor/composer/ClassLoader.php(301): Composer\Autoload\includeFile('/home/scoutsacc...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('AppBundle\\Contr...')
+#2 [internal function]: spl_autoload_call('AppBundle\\Contr...')
+#3 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Controller/ControllerResolver.php(186): class_exists('AppBundle\\Contr...')
+#4 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Controller/ContainerControllerResolver.php(47): Symfony\Component\HttpKernel\Controller\ControllerResolver->createController('AppBundle\\Contr...')
+#5 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/C in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php on line 40
+[08-Jul-2018 08:39:19 UTC] PHP Fatal error:  Uncaught Symfony\Component\Debug\Exception\FatalThrowableError: Parse error: syntax error, unexpected 'return' (T_RETURN), expecting ']' in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php:40
+Stack trace:
+#0 /home/scoutsacci/public_html/v3/vendor/composer/ClassLoader.php(301): Composer\Autoload\includeFile('/home/scoutsacc...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('AppBundle\\Contr...')
+#2 [internal function]: spl_autoload_call('AppBundle\\Contr...')
+#3 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Controller/ControllerResolver.php(186): class_exists('AppBundle\\Contr...')
+#4 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Controller/ContainerControllerResolver.php(47): Symfony\Component\HttpKernel\Controller\ControllerResolver->createController('AppBundle\\Contr...')
+#5 /home/scoutsacci/public_html/v3/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/C in /home/scoutsacci/public_html/v3/src/AppBundle/Controller/DefaultController.php on line 40

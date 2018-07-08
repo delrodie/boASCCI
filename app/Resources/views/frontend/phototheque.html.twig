@@ -1,0 +1,68 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+  {{ galerie.titre }}
+{% endblock %}
+
+{% block body %}
+  <div class="panel_title">
+    <div>
+      <h4>
+        <a href="#">{{ galerie.titre }}</a>
+      </h4>
+      <p class="text-justify">
+        <span>{{ galerie.description }}</span>
+      </p>
+    </div>
+  </div>
+  <div class="gallery-isotope grid-3 gutter-small clearfix" data-lightbox="gallery">
+    <div class="gallery-item design">
+      <div class="thumb">
+        <img src="{{ asset('uploads/galeries/'~ galerie.imageName) | imagine_filter('phototheque') }}" alt="{{ galerie.titre}}" class="img-fullwidth">
+        <div class="overlay-shade"></div>
+        <div class="text-holder"></div>
+        <div class="icons-holder">
+          <div class="icons-holder-inner">
+            <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
+              <a href="{{ vich_uploader_asset(galerie, 'imageFile') }}" data-lightbox-gallery="gallery">
+                <i class="fa fa-picture-o"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% for photo in photos %}
+    <div class="gallery-item design">
+      <div class="thumb">
+        <img src="{{ asset('uploads/galeries/'~ photo.imageName) | imagine_filter('phototheque') }}" alt="{{ photo.galerie.titre}}" class="img-fullwidth">
+        <div class="overlay-shade"></div>
+        <div class="text-holder"></div>
+        <div class="icons-holder">
+          <div class="icons-holder-inner">
+            <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
+              <a href="{{ vich_uploader_asset(photo, 'imageFile') }}" data-lightbox-gallery="gallery">
+                <i class="fa fa-picture-o"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% endblock %}
+  {% block stylesheets %}
+  {{ parent()}}
+  <link href="{{ asset('ressources/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{ asset('ressources/css/jquery-ui.min.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{ asset('ressources/css/css-plugin-collections.css')}}" rel="stylesheet"/>
+	<link href="{{ asset('ressources/css/style-main.css')}}" rel="stylesheet" type="text/css">
+  {% endblock %}
+  {% block javascripts %}
+  {{ parent() }}
+  <script src="{{ asset('ressources/js/jquery-2.2.4.min.js')}}"></script>
+<script src="{{ asset('ressources/js/jquery-plugin-collection.js')}}"></script>
+<script src="{{ asset('ressources/js/custom.js')}}"></script>
+  {% endblock %}
