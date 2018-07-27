@@ -16,7 +16,7 @@ class FrontendController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $infos = $em->getRepository('AppBundle:Information')->findThreeLastInfos(0,3);
+        $infos = $em->getRepository('AppBundle:Information')->findThreeLastInfos(0,4);
         //dump($infos);die();
 
         return $this->render('frontend/information.html.twig', [
@@ -99,6 +99,27 @@ class FrontendController extends Controller
 
         return $this->render('frontend/pageRegionale.html.twig',[
             'regionale' => $regionale,
+            'similaires' => $similaires,
+        ]);
+    }
+
+    /**
+     * @Route("/actualite-camps-de-branches/{slug}", name="fo_actucamp")
+     */
+    public function actucampAction(Request $request, $slug)
+    {
+        $em = $this->getDoctrine()->getmanager();
+
+        $actucamp = $em->getRepository('AppBundle:Actucamp')->findOneBy(array('slug' => $slug, 'statut' => 1)); //dump($nationale);die();
+        $similaires = $em->getRepository('AppBundle:Actucamp')->findThreeLastActucamp($slug, 0, 3); //dump($nationale);die();
+
+        // Si le message n'exite pas alors renvoie à la page de maintenance
+        if(!$actucamp){
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }
+
+        return $this->render('frontend/pageActucamp.html.twig',[
+            'actucamp' => $actucamp,
             'similaires' => $similaires,
         ]);
     }

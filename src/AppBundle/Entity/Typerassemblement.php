@@ -49,6 +49,11 @@ class Typerassemblement
     private $rassemblements;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Actucamp", mappedBy="typerassemblement")
+     */
+    private $actucamps;
+
+    /**
      * @var string
      *
      * @Gedmo\Slug(fields={"libelle"})
@@ -334,5 +339,39 @@ class Typerassemblement
 
     public function __toString() {
         return $this->getLibelle();
+    }
+
+    /**
+     * Add actucamp
+     *
+     * @param \AppBundle\Entity\Actucamp $actucamp
+     *
+     * @return Typerassemblement
+     */
+    public function addActucamp(\AppBundle\Entity\Actucamp $actucamp)
+    {
+        $this->actucamps[] = $actucamp;
+
+        return $this;
+    }
+
+    /**
+     * Remove actucamp
+     *
+     * @param \AppBundle\Entity\Actucamp $actucamp
+     */
+    public function removeActucamp(\AppBundle\Entity\Actucamp $actucamp)
+    {
+        $this->actucamps->removeElement($actucamp);
+    }
+
+    /**
+     * Get actucamps
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActucamps()
+    {
+        return $this->actucamps;
     }
 }

@@ -32,14 +32,26 @@ class DefaultController extends Controller
 
         //return $this->render('default/maintenance.html.twig');
 
-       return $this->render('default/index.html.twig', [
+        
+        $actucamps = $em->getRepository('AppBundle:Actucamp')->findBy(array('statut'=>1), array('id'=>'DESC'), 4, 0);
+
+        return $this->render('default/index_campbranche.html.twig', [
+            'sliders'   => $sliders,
+            'nationales' => $nationales,
+            'actucamps' => $actucamps,
+            'internationales' => $internationales,
+            'messages'  => $messages,
+            'publicites' => $publicites,
+        ]);
+
+       /*return $this->render('default/index.html.twig', [
             'sliders'   => $sliders,
             'nationales' => $nationales,
             'regionales' => $regionales,
             'internationales' => $internationales,
             'messages'  => $messages,
             'publicites' => $publicites,
-        ]);
+        ]);*/
 
     }
 
