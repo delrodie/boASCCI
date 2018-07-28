@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Radio</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ radio.id }}</td>
+            </tr>
+            <tr>
+                <th>Lien</th>
+                <td>{{ radio.lien }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{% if radio.statut %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Imagename</th>
+                <td>{{ radio.imageName }}</td>
+            </tr>
+            <tr>
+                <th>Imagesize</th>
+                <td>{{ radio.imageSize }}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if radio.updatedAt %}{{ radio.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ radio.slug }}</td>
+            </tr>
+            <tr>
+                <th>Publiepar</th>
+                <td>{{ radio.publiePar }}</td>
+            </tr>
+            <tr>
+                <th>Modifiepar</th>
+                <td>{{ radio.modifiePar }}</td>
+            </tr>
+            <tr>
+                <th>Publiele</th>
+                <td>{{ radio.publieLe }}</td>
+            </tr>
+            <tr>
+                <th>Modifiele</th>
+                <td>{{ radio.modifieLe }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_radio_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_radio_edit', { 'id': radio.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

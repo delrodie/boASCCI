@@ -114,4 +114,21 @@ class DefaultController extends Controller
             'videos' => $videos,
         ]);
     }
+
+    /**
+     * @Route("/radio", name="menu_radio")
+     */
+    public function radioAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $radio = $em->getRepository('AppBundle:Radio')->findLatestRadio(1,0); 
+
+        if (!$radio){
+            return $this->render('frontend/noRadio.html.twig');
+        }//dump($radio);die();
+
+        return $this->render('frontend/radio.html.twig',[
+            'radio' => $radio,
+        ]);
+    }
 }
