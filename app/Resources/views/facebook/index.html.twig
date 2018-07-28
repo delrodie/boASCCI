@@ -1,0 +1,94 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}Bloc facebook{% endblock %}
+
+{% block body %}
+<div class="pageheader">
+  <h3><i class="fa fa-home"></i>  bloc Facebook</h3>
+  <div class="breadcrumb-wrapper">
+    <span class="label"></span>
+    <ol class="breadcrumb">
+      <li><a href="#">Accueil</a></li>
+      <li class="active">Bloc facebook</li>
+    </ol>
+  </div>
+</div>
+
+<div id="page-content">
+
+  <br>
+    <!-- Message -->
+      {% for flash_message in app.session.flashBag.get('notice') %}
+        {% if flash_message %}
+        <div class="row">
+          <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2">
+            <div class="alert alert-info media fade in">
+              <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+              <div class="media-left">
+                <span class="icon-wrap icon-wrap-xs icon-circle alert-icon">
+                  <i class="fa fa-check fa-lg"></i>
+                </span>
+              </div>
+              <div class="media-body">
+                <p></p>
+                  <h4 class="alert-title" style="color: green">
+                    {{ flash_message }}
+                  </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+      <!-- \Message -->
+      <br>
+
+  <div class="row">
+    <div class="col-sm-12 col-sm-offset-0">
+      <div class="panel">
+        <div class="btn-toolbar pad-all">
+          {% for facebook in facebooks %}
+            <div class="btn-group">Modifier la taille</div>  
+          {% else %}
+              <div class="btn-group">
+                <a href="{{ path('admin_facebook_new')}}">
+                <button class="btn btn-sm btn-default" type="button">
+                <i class="fa fa-plus"></i> Definissez la taille du bloc facebook
+                </button>
+                </a>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="panel-heading">
+          <h3 class="panel-title"></h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                {% for facebook in facebooks %}
+                  <div class="row">
+                    <div class="col-sm-8 text-right">
+                        {% if (facebook.taille) %}
+                            <span style="color: green; font-weight:bold; font-size: 20px">Taille du bloc est {{ facebook.taille }}</span>
+                        {% else %}
+                            <span style="color: red; font-weight:bold; font-size: 20px">Le bloc facebook ne s'affichera pas.</span>
+                        {% endif %}
+                    </div>
+                    <div class="col-sm-4 text-left">
+                        <a href="{{ path('admin_facebook_edit', {'id': facebook.id})}}" title="Modifier le statut"><i class="fa fa-edit fa-2x"></i></a>
+                    </div>
+                </div>  
+                {% else %}
+                    <span style="font-weight:bold; font-size: 20px; text-align: center">Veuillez definir la taille du bloc Facebook de la page d'accueil. <br>
+                    Par defaut elle est a 800 mais pouvez la reduire ou ne pas l'afficher en fonction des elements</span>
+                {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}

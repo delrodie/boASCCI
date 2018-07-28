@@ -33,6 +33,7 @@ class DefaultController extends Controller
         //return $this->render('default/maintenance.html.twig');
 
         $bloc = $em->getRepository('AppBundle:BlockCamp')->findBy(array('enabled'=>1), array('id'=>'DESC'), 1, 0);
+        $facebooks = $em->getRepository('AppBundle:Facebook')->findLastFacebook();//dump($facebooks);die();
 
         if ($bloc) {
 
@@ -45,6 +46,7 @@ class DefaultController extends Controller
                 'internationales' => $internationales,
                 'messages'  => $messages,
                 'publicites' => $publicites,
+                'facebooks' => $facebooks,
             ]);
 
         } else {
@@ -57,6 +59,7 @@ class DefaultController extends Controller
                 'internationales' => $internationales,
                 'messages'  => $messages,
                 'publicites' => $publicites,
+                'facebooks' => $facebooks,
             ]);
         }
         
@@ -118,7 +121,7 @@ class DefaultController extends Controller
     /**
      * @Route("/radio", name="menu_radio")
      */
-    public function radioAction()
+    public function radioAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $radio = $em->getRepository('AppBundle:Radio')->findLatestRadio(1,0); 
