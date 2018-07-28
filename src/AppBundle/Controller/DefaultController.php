@@ -18,7 +18,7 @@ class DefaultController extends Controller
  
         $sliders = $em->getRepository('AppBundle:Slider')->findSlideStandard(0, 6);
         $nationales = $em->getRepository('AppBundle:Actualite')->findLastActualite(0, 3);
-        $regionales = $em->getRepository('AppBundle:Regionale')->findLastRegionale(0, 4);
+        
         $internationales = $em->getRepository('AppBundle:Internationale')->findLastInternationale(0, 3);
         $publicites = $em->getRepository('AppBundle:Publicite')->findPublicite(0,1);//dump($publicites);die();
         //$publicites = $em->getRepository('AppBundle:Publicite')->findPublicite(0,1);dump($publicites);die();
@@ -37,6 +37,7 @@ class DefaultController extends Controller
         //return $this->render('default/index.html.twig', [
         //return $this->render('default/maintenance.html.twig');
 
+<<<<<<< HEAD
        return $this->render('default/index.html.twig', [
             'sliders'   => $sliders,
             'nationales' => $nationales,
@@ -82,6 +83,36 @@ class DefaultController extends Controller
             'publicites' => $publicites,
         ]);
 		
+=======
+        $bloc = $em->getRepository('AppBundle:BlockCamp')->findBy(array('enabled'=>1), array('id'=>'DESC'), 1, 0);
+
+        if ($bloc) {
+
+            $actucamps = $em->getRepository('AppBundle:Actucamp')->findBy(array('statut'=>1), array('id'=>'DESC'), 4, 0);
+
+            return $this->render('default/index_campbranche.html.twig', [
+                'sliders'   => $sliders,
+                'nationales' => $nationales,
+                'actucamps' => $actucamps,
+                'internationales' => $internationales,
+                'messages'  => $messages,
+                'publicites' => $publicites,
+            ]);
+
+        } else {
+            $regionales = $em->getRepository('AppBundle:Regionale')->findLastRegionale(0, 4);
+
+            return $this->render('default/index.html.twig', [
+                'sliders'   => $sliders,
+                'nationales' => $nationales,
+                'regionales' => $regionales,
+                'internationales' => $internationales,
+                'messages'  => $messages,
+                'publicites' => $publicites,
+            ]);
+        }
+        
+>>>>>>> 9203086caa26c1b53860dd90589bf9f1f9a69169
     }
 
 
@@ -135,6 +166,23 @@ class DefaultController extends Controller
 
         return $this->render('frontend/publicite.html.twig',[
             'videos' => $videos,
+        ]);
+    }
+
+    /**
+     * @Route("/radio", name="menu_radio")
+     */
+    public function radioAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $radio = $em->getRepository('AppBundle:Radio')->findLatestRadio(1,0); 
+
+        if (!$radio){
+            return $this->render('frontend/noRadio.html.twig');
+        }//dump($radio);die();
+
+        return $this->render('frontend/radio.html.twig',[
+            'radio' => $radio,
         ]);
     }
 }

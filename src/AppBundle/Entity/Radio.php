@@ -4,14 +4,17 @@ namespace AppBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * Typerassemblement
+ * Radio
  *
- * @ORM\Table(name="typerassemblement")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TyperassemblementRepository")
+ * @ORM\Table(name="radio")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\RadioRepository")
+ * @Vich\Uploadable
  */
-class Typerassemblement
+class Radio
 {
     /**
      * @var int
@@ -25,16 +28,9 @@ class Typerassemblement
     /**
      * @var string
      *
-     * @ORM\Column(name="libelle", type="string", length=255, nullable=true)
+     * @ORM\Column(name="titre", type="string", length=255)
      */
-    private $libelle;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="couleur", type="string", length=255, nullable=true)
-     */
-    private $couleur;
+    private $lien;
 
     /**
      * @var bool
@@ -44,19 +40,40 @@ class Typerassemblement
     private $statut;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Rassemblement", mappedBy="typerassemblement")
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="radio_image", fileNameProperty="imageName", size="imageSize")
+     *
+     * @var File
      */
-    private $rassemblements;
+    private $imageFile;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Actucamp", mappedBy="typerassemblement")
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
      */
-    private $actucamps;
+    private $imageName;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     *
+     * @var integer
+     */
+    private $imageSize;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
+
 
     /**
      * @var string
      *
-     * @Gedmo\Slug(fields={"libelle"})
+     * @Gedmo\Slug(fields={"lien"})
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
@@ -103,60 +120,29 @@ class Typerassemblement
     {
         return $this->id;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->rassemblements = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Set libelle
+     * Set lien
      *
-     * @param string $libelle
+     * @param string $lien
      *
-     * @return Typerassemblement
+     * @return Radio
      */
-    public function setLibelle($libelle)
+    public function setLien($lien)
     {
-        $this->libelle = $libelle;
+        $this->lien = $lien;
 
         return $this;
     }
 
     /**
-     * Get libelle
+     * Get lien
      *
      * @return string
      */
-    public function getLibelle()
+    public function getLien()
     {
-        return $this->libelle;
-    }
-
-    /**
-     * Set couleur
-     *
-     * @param string $couleur
-     *
-     * @return Typerassemblement
-     */
-    public function setCouleur($couleur)
-    {
-        $this->couleur = $couleur;
-
-        return $this;
-    }
-
-    /**
-     * Get couleur
-     *
-     * @return string
-     */
-    public function getCouleur()
-    {
-        return $this->couleur;
+        return $this->lien;
     }
 
     /**
@@ -164,7 +150,7 @@ class Typerassemblement
      *
      * @param boolean $statut
      *
-     * @return Typerassemblement
+     * @return Radio
      */
     public function setStatut($statut)
     {
@@ -184,11 +170,83 @@ class Typerassemblement
     }
 
     /**
+     * Set imageName
+     *
+     * @param string $imageName
+     *
+     * @return Radio
+     */
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    /**
+     * Get imageName
+     *
+     * @return string
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
+    }
+
+    /**
+     * Set imageSize
+     *
+     * @param integer $imageSize
+     *
+     * @return Radio
+     */
+    public function setImageSize($imageSize)
+    {
+        $this->imageSize = $imageSize;
+
+        return $this;
+    }
+
+    /**
+     * Get imageSize
+     *
+     * @return integer
+     */
+    public function getImageSize()
+    {
+        return $this->imageSize;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Radio
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
      * Set slug
      *
      * @param string $slug
      *
-     * @return Typerassemblement
+     * @return Radio
      */
     public function setSlug($slug)
     {
@@ -212,7 +270,7 @@ class Typerassemblement
      *
      * @param string $publiePar
      *
-     * @return Typerassemblement
+     * @return Radio
      */
     public function setPubliePar($publiePar)
     {
@@ -236,7 +294,7 @@ class Typerassemblement
      *
      * @param string $modifiePar
      *
-     * @return Typerassemblement
+     * @return Radio
      */
     public function setModifiePar($modifiePar)
     {
@@ -260,7 +318,7 @@ class Typerassemblement
      *
      * @param \DateTime $publieLe
      *
-     * @return Typerassemblement
+     * @return Radio
      */
     public function setPublieLe($publieLe)
     {
@@ -284,7 +342,7 @@ class Typerassemblement
      *
      * @param \DateTime $modifieLe
      *
-     * @return Typerassemblement
+     * @return Radio
      */
     public function setModifieLe($modifieLe)
     {
@@ -304,74 +362,34 @@ class Typerassemblement
     }
 
     /**
-     * Add rassemblement
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
      *
-     * @param \AppBundle\Entity\Rassemblement $rassemblement
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
      *
-     * @return Typerassemblement
+     * @return Product
      */
-    public function addRassemblement(\AppBundle\Entity\Rassemblement $rassemblement)
+    public function setImageFile(File $image = null)
     {
-        $this->rassemblements[] = $rassemblement;
+        $this->imageFile = $image;
+
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
 
         return $this;
     }
 
     /**
-     * Remove rassemblement
-     *
-     * @param \AppBundle\Entity\Rassemblement $rassemblement
+     * @return File|null
      */
-    public function removeRassemblement(\AppBundle\Entity\Rassemblement $rassemblement)
+    public function getImageFile()
     {
-        $this->rassemblements->removeElement($rassemblement);
-    }
-
-    /**
-     * Get rassemblements
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getRassemblements()
-    {
-        return $this->rassemblements;
-    }
-
-    public function __toString() {
-        return $this->getLibelle();
-    }
-
-    /**
-     * Add actucamp
-     *
-     * @param \AppBundle\Entity\Actucamp $actucamp
-     *
-     * @return Typerassemblement
-     */
-    public function addActucamp(\AppBundle\Entity\Actucamp $actucamp)
-    {
-        $this->actucamps[] = $actucamp;
-
-        return $this;
-    }
-
-    /**
-     * Remove actucamp
-     *
-     * @param \AppBundle\Entity\Actucamp $actucamp
-     */
-    public function removeActucamp(\AppBundle\Entity\Actucamp $actucamp)
-    {
-        $this->actucamps->removeElement($actucamp);
-    }
-
-    /**
-     * Get actucamps
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getActucamps()
-    {
-        return $this->actucamps;
+        return $this->imageFile;
     }
 }

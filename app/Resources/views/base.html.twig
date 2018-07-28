@@ -218,10 +218,16 @@
 				</li>
 				<li ><a href="{{ path('fo_couverture_nationale') }}">Notre couverture<div class="subtitle">Nos régions</div></a></li>
 				<li><a href="{{ path('fo_nous_contacter') }}">Contact<div class="subtitle">Nous joindre</div></a></li>
-				<li class="menu-item-has-children"><a href="#">Liens utiles<div class="subtitle"></div></a>
+				<li class="menu-item-has-children"><a href="#">Autres liens<div class="subtitle"></div></a>
 					<span class="site_sub_menu_toggle"></span>
 					<ul class="sub-menu" style="border-top-color: #F89406">
+<<<<<<< HEAD
 						<li><a href="https://www.flickr.com/photos/scout_ascci/albums" target="_blank">Phototheque</a></li>
+=======
+						<li><a href="https://www.flickr.com/photos/scout_ascci/albums">Photothèque</a></li>
+						<li><a href="#">Boutique scoute</a></li>
+						<li><a href="#">Identification</a></li>
+>>>>>>> 9203086caa26c1b53860dd90589bf9f1f9a69169
 					</ul>
 				</li>
 				<li class="menu-item-has-children"><a href="#">
@@ -264,6 +270,8 @@
 
 					</div>
 				</div>
+
+				{{ render(url('menu_radio'))}}
 
 				{{ render(url('menu_video'))}}
 
