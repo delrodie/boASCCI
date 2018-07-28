@@ -37,7 +37,7 @@ class DefaultController extends Controller
         //return $this->render('default/index.html.twig', [
         //return $this->render('default/maintenance.html.twig');
 
-<<<<<<< HEAD
+
        return $this->render('default/index.html.twig', [
             'sliders'   => $sliders,
             'nationales' => $nationales,
@@ -73,17 +73,8 @@ class DefaultController extends Controller
 
 
         //return $this->render('default/maintenance.html.twig');
-
-       return $this->render('default/index.html.twig', [
-            'sliders'   => $sliders,
-            'nationales' => $nationales,
-            'regionales' => $regionales,
-            'internationales' => $internationales,
-            'messages'  => $messages,
-            'publicites' => $publicites,
-        ]);
 		
-=======
+
         $bloc = $em->getRepository('AppBundle:BlockCamp')->findBy(array('enabled'=>1), array('id'=>'DESC'), 1, 0);
 
         if ($bloc) {
@@ -112,7 +103,7 @@ class DefaultController extends Controller
             ]);
         }
         
->>>>>>> 9203086caa26c1b53860dd90589bf9f1f9a69169
+
     }
 
 
