@@ -22,12 +22,14 @@ class SliderRepository extends \Doctrine\ORM\EntityRepository
         $qb = $em->createQuery('
                     SELECT s
                     FROM AppBundle:Slider s
-                    WHERE s.statut = :actif
-                    ORDER BY s.id ASC
+                    WHERE s.statut = 1
+                    AND s.datedebut < :date
+                    AND s.datefin >= :date
+                    ORDER BY s.id DESC
                 ')
                 ->setFirstResult($offset)
                 ->setMaxResults($limit)
-                ->setParameter('actif', 1)
+                ->setParameter('date', date('Y-m-d', time()))
                 ->getResult();
                 ;
         return $qb;
@@ -55,5 +57,15 @@ class SliderRepository extends \Doctrine\ORM\EntityRepository
                     ))
                     ->getQuery()->getResult();
         return $qb;
+    }
+
+    /**
+     * Liste des sliders decroissants
+     */
+    public function findListSliderDESC(){
+        return $this->createQueryBuilder('s')
+                    ->orderBy('s.id', 'DESC')
+                    ->getQuery()->getResult()
+        ;
     }
 }

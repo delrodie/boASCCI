@@ -24,7 +24,7 @@ class SliderController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $sliders = $em->getRepository('AppBundle:Slider')->findAll();
+        $sliders = $em->getRepository('AppBundle:Slider')->findListSliderDESC();
 
         return $this->render('slider/index.html.twig', array(
             'sliders' => $sliders,

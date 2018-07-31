@@ -24,13 +24,15 @@ class SliderType extends AbstractType
                 'attr'  => array(
                     'class' => 'form-control',
                     'autocomplete'  => 'off',
-                )
+                ),
+                'required' => false
           ))
             ->add('type2', TextType::class, array(
                 'attr'  => array(
                     'class' => 'form-control',
                     'autocomplete'  => 'off',
-                )
+                ),
+                'required' => false
           ))
             ->add('legende', TextType::class, array(
                 'attr'  => array(

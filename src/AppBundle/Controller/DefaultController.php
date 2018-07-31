@@ -15,7 +15,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $sliders = $em->getRepository('AppBundle:Slider')->findSlideStandard(0, 6);
+        $sliders = $em->getRepository('AppBundle:Slider')->findSlideStandard(0, 6); //dump($sliders);die();
         $nationales = $em->getRepository('AppBundle:Actualite')->findLastActualite(0, 3);
         
         $internationales = $em->getRepository('AppBundle:Internationale')->findLastInternationale(0, 3);

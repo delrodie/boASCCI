@@ -126,12 +126,19 @@
                   <div class="panel-footer">
                     <div class="row">
                       <div class="col-sm-7 col-sm-offset-3 text-right">
-                        <a href="{{ path('admin_slider_index')}} class="btn btn-default">Annuler</a>
+                        <a href="{{ path('admin_slider_index')}}" class="btn btn-default">Annuler</a>
                         <button class="btn btn-primary" type="submit">Modifier</button>
                       </div>
                     </div>
                   </div>
                 {{ form_end(edit_form)}}
+                {{ form_start(delete_form, {'attr': {'onsubmit': 'return confirm("Êtes-vous sur de vouloie supprimer cet slide?");'}}) }}
+                <div class="row">
+                  <div class="col-sm-3 col-sm-offset-8 text-right">
+                    <input type="submit" value="Supprimer" class="btn btn-danger">
+                  </div>
+                </div>
+            {{ form_end(delete_form) }}
               </div>
             </div>
           </div>

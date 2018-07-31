@@ -59,24 +59,21 @@
           <h3 class="panel-title"></h3>
         </div>
         <div class="panel-body">
+            
             {% for slider in sliders %}
-            <div class="row" style="margin-bottom: 20px; padding-bottom: 25px; border-bottom: solid 1px #ccc;">
-              <div class="col-md-3">
-                <div class="view-mail text-justify">
-                  <a href="{{ path('admin_slider_edit', {'slug': slider.slug})}}">
-                    <img src="{{ vich_uploader_asset(slider, 'imageFile') }}" alt="{{ slider.legende }}" class="img-thumbnail img-page" />
-                  </a>
+            <div class="col-md-4" style="height: 300px;">
+              <div class="view-mail text-justify">
+                <a href="{{ path('admin_slider_edit', {'slug': slider.slug})}}">
+                  <img src="{{ vich_uploader_asset(slider, 'imageFile') }}" alt="{{ slider.legende }}" class="img-thumbnail img-page" />
+                  {{ slider.legende }} <br>
+                </a>
+                <div class="text-justify">
+                  {% if (slider.statut) %}
+                    <u>Publication </u> : du <strong>{{ slider.datedebut }}</strong> au <strong>{{ slider.datefin }}</strong> <span class="badge badge-success">Actif</span>
+                  {% else %}
+                    <span class="badge badge-danger">Inactif</span>
+                  {% endif %}
                 </div>
-              </div>
-              <div class="col-md-5">
-                <div class="row">
-                    <div class="col-md-12">{{ slider.legende }} </div>
-                    <div class="col-md-12">{{ slider.type1 }} - {{ slider.type2 }}</div> 
-                </div>
-                
-              </div>
-              <div class="col-md-4">
-                <u>Publication </u> : du <strong>{{ slider.datedebut }}</strong> au <strong>{{ slider.datefin }}</strong>
               </div>
             </div>
             {% endfor %}

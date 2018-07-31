@@ -6,13 +6,9 @@
 					<ul>
 
 						{% for slider in sliders %}
-						<li>
-							<a href="#"><img src="{{ vich_uploader_asset(slider, 'imageFile') }}" alt="{{ slider.legende }}"></a>
+<li>
+							<a href="#"><img src="{{ asset('uploads/sliders/'~ slider.imageName) | imagine_filter('sliders') }}" alt="{{ slider.legende }}"></a>
 							<div class="slider_caption">
-								<div class="thumb_meta">
-									<!--<span class="category" style="background-color: #2ECC71"><a href="#">{{ slider.type1 }} </a></span>
-									<span class="category"><a href="#">{{ slider.type2 }}</a></span>-->
-								</div>
 								<div class="thumb_link">
 									<h3><a href="#">{{ slider.legende }}</a></h3>
 								</div>
