@@ -1,0 +1,65 @@
+/* Medium Layout: 1280px. */
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {}
+
+
+/* Tablet Layout: 768px. */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {}
+
+
+/* Mobile Layout: 320px. */
+
+@media only screen and (max-width: 767px) {
+    .mainmenu-area {
+        background-color: rgba(0, 0, 0, 0.4);
+        text-align: center;
+    }
+    .mainmenu-area .navbar-toggle {
+        border: none;
+        background: none;
+        margin: 5px 10px 0 0;
+    }
+    .mainmenu-area .navbar-toggle:hover,
+    .mainmenu-area .navbar-toggle:focus {
+        background: none;
+    }
+    .mainmenu-area .navbar-toggle .icon-bar {
+        background-color: #ffffff;
+        margin: 5px 0;
+    }
+    #countdown ul li {
+        font-size: 20px;
+        padding: 0 10px;
+    }
+    .social li a {
+        width: 26px;
+        height: 26px;
+        line-height: 2;
+        font-size: 12px;
+        border: none;
+    }
+    .fullbox {
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+    .vcenter {
+        position: absolute;
+        top: 0;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+
+/* Wide Mobile Layout: 480px. */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    
+    .vcenter {
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%)
+    }
+}

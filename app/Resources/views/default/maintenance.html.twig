@@ -1,10 +1,93 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="no-js" lang="fr">
+
 <head>
-    <title>ASCCI::ASSOCIATION DES SCOUTS CATHOLIQUES DE COTE D'IVOIRE</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('backoffice/css/bootstrap.min.css') }}">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ASCCI :: Association des Scouts Catholiques de Côte d'Ivoire</title>
+    <meta name="description" content="">
+    <meta name="keysword" content="">
+    <meta name="author" content="Delrodie AMOIKON">
+
+    <link rel="shortcut icon" type="image/ico" href="images/favicon.ico" />
+    <link rel="stylesheet" href="{{ absolute_url(asset('maintenance/css/bootstrap.min.css')) }}">
+    <link rel="stylesheet" href="{{ absolute_url(asset('maintenance/css/font-awesome.min.css')) }}">
+    <link rel="stylesheet" href="{{ absolute_url(asset('maintenance/css/animate.css')) }}">
+    <link rel="stylesheet" href="{{ absolute_url(asset('maintenance/css/normalize.css')) }}">
+    <link rel="stylesheet" href="{{ absolute_url(asset('maintenance/css/space.css')) }}">
+    <link rel="stylesheet" href="{{ absolute_url(asset('maintenance/css/overright.css')) }}">
+    <link rel="stylesheet" href="{{ absolute_url(asset('maintenance/style.css')) }}">
+    <link rel="stylesheet" href="{{ absolute_url(asset('maintenance/css/responsive.css')) }}">
+    <script src="{{ absolute_url(asset('maintenance/js/vendor/modernizr-2.8.3.min.js')) }}"></script>
 </head>
-<body>
-<img src="{{ asset('ressources/images/intro.png') }}" class="img-responsive">
+
+<body data-spy="scroll" data-target=".mainmenu-area">
+<!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+<div class="preloader">
+    <div class="sk-wave">
+        <div class="sk-rect sk-rect1"></div>
+        <div class="sk-rect sk-rect2"></div>
+        <div class="sk-rect sk-rect3"></div>
+        <div class="sk-rect sk-rect4"></div>
+        <div class="sk-rect sk-rect5"></div>
+    </div>
+</div>
+<div class="section-bg color">
+    <div class="section-bg bg-1"></div>
+</div>
+<!--Mainmenu-Area-->
+<nav class="mainmenu-area navbar navbar-default navbar-fixed-top">
+    <div class="container">
+
+</nav>
+<!--Mainmenu-Area / -->
+<div class="tab-content fullbox">
+    <!--Header-Area-->
+    <div class="relative fullbox header-area text-white tab-pane active fade in" id="home">
+        <div class="section-bg color">
+            <div class="section-bg bg-1"></div>
+        </div>
+        <div class="vcenter">
+            <div class="container">
+                <div class="space-120 hidden visible-xs"></div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-10 col-md-offset-1 text-center">
+                        <div id="countdown"></div>
+                        <div class="space-10"></div>
+                        <div class="bubbles">
+                            <h1>Oups!! En maintenance</h1>
+                        </div>
+                        <div class="space-10"></div>
+                        <div class="subscribe-form">
+
+                        </div>
+                        <div class="space-40"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Header-Area / -->
+
+</div>
+
+<script src="{{ absolute_url(asset('maintenance/js/vendor/jquery-1.12.4.min.js')) }}"></script>
+<script src="{{ absolute_url(asset('maintenance/js/vendor/bootstrap.min.js')) }}"></script>
+<script src="{{ absolute_url(asset('maintenance/js/contact-form.js')) }}"></script>
+<script src="{{ absolute_url(asset('maintenance/js/countdown.js')) }}"></script>
+<script src="{{ absolute_url(asset('maintenance/js/ajaxchimp.js')) }}"></script>
+<script src="{{ absolute_url(asset('maintenance/js/plugins.js')) }}"></script>
+<script src="{{ absolute_url(asset('maintenance/js/main.js')) }}"></script>
+{% for maintenance in maintenances %}
+    <script type="text/javascript">
+        $('#countdown').countdown('{{ maintenance.datefin }}', function (event) {
+            $(this).html(event.strftime('<ul class="list-unstyled list-inline"><li>%D <span>jours</span></li><li>%H <span>Heure</span></li><li>%M <span>min</span></li><li>%S <Span>sec</Span></li></ul>'));
+        });
+    </script>
+{% endfor %}
 </body>
 </html>

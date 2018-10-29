@@ -1,0 +1,94 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}Maintenance{% endblock %}
+
+{% block body %}
+    <div class="pageheader">
+        <h3><i class="fa fa-home"></i>  Rubriques</h3>
+        <div class="breadcrumb-wrapper">
+            <span class="label"></span>
+            <ol class="breadcrumb">
+                <li><a href="#">Accueil</a></li>
+                <li class="active">Maintenance</li>
+            </ol>
+        </div>
+    </div>
+
+    <div id="page-content">
+
+        <br>
+        <!-- Message -->
+        {% for flash_message in app.session.flashBag.get('notice') %}
+            {% if flash_message %}
+                <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2">
+                        <div class="alert alert-info media fade in">
+                            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                            <div class="media-left">
+                <span class="icon-wrap icon-wrap-xs icon-circle alert-icon">
+                  <i class="fa fa-check fa-lg"></i>
+                </span>
+                            </div>
+                            <div class="media-body">
+                                <p></p>
+                                <h4 class="alert-title" style="color: green">
+                                    {{ flash_message }}
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        <!-- \Message -->
+        <br>
+
+        <div class="row">
+            <div class="col-sm-12 col-sm-offset-0">
+                <div class="panel">
+                    <div class="btn-toolbar pad-all">
+                        {% for maintenance in maintenances %}
+                            <div class="btn-group">Modifier le statut</div>
+                        {% else %}
+                            <div class="btn-group">
+                                <a href="{{ path('admin_maintenance_new')}}">
+                                    <button class="btn btn-sm btn-default" type="button">
+                                        <i class="fa fa-plus"></i> Definissez le statut de la page
+                                    </button>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="panel-heading">
+                        <h3 class="panel-title"></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                {% for maintenance in maintenances %}
+                                    <div class="row">
+                                        <div class="col-sm-8 text-right">
+                                            {% if (maintenance.statut) %}
+                                                <span style="color: green; font-weight:bold; font-size: 20px">Maintenance activée</span>
+                                            {% else %}
+                                                <span style="color: red; font-weight:bold; font-size: 20px">maintenace desactivée</span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-sm-4 text-left">
+                                            <a href="{{ path('admin_maintenance_edit', {'id': maintenance.id})}}" title="Modifier le statut"><i class="fa fa-edit fa-2x"></i></a>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <span style="font-weight:bold; font-size: 20px; text-align: center">Veuillez definir le statut de la page de maintenance. <br>
+                    Par defaut il est désactivé par conséquent il ne sera pas afficher</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

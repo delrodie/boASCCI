@@ -15,6 +15,15 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        $maintenances = $em->getRepository('AppBundle:Maintenance')->findBy(array('statut'=>1), array('id'=>'DESC'),1,0);
+
+        if ($maintenances){
+
+            return $this->render('default/maintenance.html.twig',[
+                'maintenances' => $maintenances
+            ]);
+        }
+
         $sliders = $em->getRepository('AppBundle:Slider')->findSlideStandard(0, 6); //dump($sliders);die();
         $nationales = $em->getRepository('AppBundle:Actualite')->findLastActualite(0, 3);
         
