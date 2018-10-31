@@ -17,12 +17,12 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class CenacomController
- * @Route("cenacom", name="cenacom")
+ * @Route("cenacom")
  */
 class CenacomController extends  Controller
 {
     /**
-     * @Route("/", name="maintenance_index")
+     * @Route("/", name="cenacom_index")
      */
     public function indexAction()
     {
@@ -80,7 +80,7 @@ class CenacomController extends  Controller
     }
 
     /**
-     * @Route("/vert", name="maintenance_vert")
+     * @Route("/vert", name="cenacom_vert")
      */
     public function vertAction()
     {

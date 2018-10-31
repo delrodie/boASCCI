@@ -19,6 +19,8 @@ class DefaultController extends Controller
 
         if ($maintenances){
 
+            return $this->redirectToRoute('cenacom_index');
+
             return $this->render('default/maintenance.html.twig',[
                 'maintenances' => $maintenances
             ]);
