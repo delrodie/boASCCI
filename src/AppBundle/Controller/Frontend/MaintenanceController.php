@@ -15,5 +15,11 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class MaintenanceController extends Controller
 {
-
+    /**
+     * @Route("/", name="maintenance_index")
+     */
+    public function indexAction()
+    {
+        die('ici');
+    }
 }
