@@ -15,14 +15,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 
-/**
- * Class CenacomController
- * @Route("cenacom")
- */
+
 class CenacomController extends  Controller
 {
     /**
-     * @Route("/", name="cenacom_index")
+     * @Route("/maintenances/", name="cenacom_index")
      */
     public function indexAction()
     {
@@ -67,7 +64,7 @@ class CenacomController extends  Controller
         } else {
             $regionales = $em->getRepository('AppBundle:Regionale')->findLastRegionale(0, 4);
 
-            return $this->render('default/index_orange1.html.twig', [
+            return $this->render('frontend/maintenance_orange.html.twig', [
                 'sliders'   => $sliders,
                 'nationales' => $nationales,
                 'regionales' => $regionales,
@@ -80,7 +77,7 @@ class CenacomController extends  Controller
     }
 
     /**
-     * @Route("/vert", name="cenacom_vert")
+     * @Route("/maintenances/vert", name="cenacom_vert")
      */
     public function vertAction()
     {
@@ -125,7 +122,7 @@ class CenacomController extends  Controller
         } else {
             $regionales = $em->getRepository('AppBundle:Regionale')->findLastRegionale(0, 4);
 
-            return $this->render('default/index_vert.html.twig', [
+            return $this->render('frontend/maintenance_orange.html.twig', [
                 'sliders'   => $sliders,
                 'nationales' => $nationales,
                 'regionales' => $regionales,

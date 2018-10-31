@@ -1,0 +1,201 @@
+{% extends 'base_orange.html.twig' %}
+
+{% block body %}
+    
+<div class="content_slider">
+					<ul>
+
+						{% for slider in sliders %}
+<li>
+							<a href="#"><img src="{{ asset('uploads/sliders/'~ slider.imageName) | imagine_filter('sliders') }}" alt="{{ slider.legende }}"></a>
+							<div class="slider_caption">
+								<div class="thumb_link">
+									<h3><a href="#">{{ slider.legende }}</a></h3>
+								</div>
+							</div>
+						</li>
+						{% endfor %}
+
+
+
+					</ul>
+				</div>
+
+				<div class="panel_title">
+					<div>
+						<h4><a href="#">Pour l'envol de l'ASCCI</a></h4>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col_12_of_12">
+						<div class="multipack clearfix">
+
+
+							<div class="layout_post_1">
+								{% for message in messages %}
+								<div class="item_thumb">
+									<div class="thumb_icon">
+										<a href="{{ path('fo_messageNational', {'slug': message.slug})}}" style="background-color: #446CB3"><i class="fa fa-copy"></i></a>
+									</div>
+									<div class="thumb_hover">
+										<a href="{{ path('fo_messageNational', {'slug': message.slug})}}"><img src="{{ asset('uploads/messages/'~ message.imageName) | imagine_filter('envolIntro') }}" alt="{{ message.titre }}"></a>
+									</div>
+								</div>
+								<div class="item_content">
+									<h4><a href="{{ path('fo_messageNational', {'slug': message.slug})}}">{{ message.titre }}</a></h4>
+									<p>{{ message.resume|raw }}</p>
+								 </div>	
+								{% endfor %}
+								<br>
+
+							</div>
+
+
+							<div class="list_posts">
+                                {% for publicite in publicites %}
+									<div class="post clearfix">
+										<img src="{{ asset('uploads/publicites/'~ publicite.imageName) | imagine_filter('publicite') }}" alt="{{ publicite.titre }}" title="{{ publicite.titre }}">
+									</div>
+                                {% endfor %}
+							</div>
+						</div>
+					</div>
+				</div> <br> <br><br>
+
+				<div class="row">
+					<div class="panel_title" style="padding: 0 15px">
+						<div>
+							<h4><a href="#">La Nationale</a></h4>
+						</div>
+					</div>
+					{% for nationale in nationales %}
+					<div class="col col_4_of_12">
+
+						<div class="layout_post_1">
+							<div class="item_thumb">
+								<div class="thumb_icon">
+									<a href="{{  path('fo_nationale', {'slug': nationale.slug}) }}" style="background-color: #{{ nationale.typactualite.couleur }}"><i class="fa fa-copy"></i></a>
+								</div>
+								<div class="thumb_hover">
+									<a href="{{  path('fo_nationale', {'slug': nationale.slug}) }}"><img src="{{ asset('uploads/actualites/'~ nationale.imageName) | imagine_filter('actualite') }}" alt="{{ nationale.titre }}"></a>
+								</div>
+								<div class="thumb_meta">
+									<span class="category" style="background-color: #{{ nationale.typactualite.couleur }}"><a href="#">{{ nationale.typactualite.libelle }}</a></span>
+								</div>
+							</div>
+							<div class="item_content">
+								<h4><a href="{{  path('fo_nationale', {'slug': nationale.slug}) }}">{{ nationale.titre }}</a></h4>
+								<div class="item_meta clearfix">
+									<span class="meta_date">{{ nationale.publieLe|date('d-m-Y')}}</span>
+								</div>
+								<p>{{ nationale.resume|raw }}[...]</p>
+							</div>
+						</div>
+					</div>	
+					{% endfor %}
+					<br><br><br>
+					<div class="autres-articles"><a href="{{ path('fo_archives_actualites', {'slug': "nationales"}) }}">&raquo; Voir les autres articles</a></div>
+
+				</div> <br><br><br>
+{% endblock %}
+
+{% block accueil %}
+<div class="panel_title clearfix">
+			<div>
+				<h4><a href="#">La régionale </a></h4>
+			</div>
+		</div>
+		<div class="row">
+			{% for regionale in regionales %}
+			<div class="col col_3_of_12">
+				<div class="layout_post_1">
+					<div class="item_thumb">
+						<div class="thumb_icon">
+							<a href="{{  path('fo_regionale', {'slug': regionale.slug}) }}" style="background-color: #{{ regionale.region.couleur}}"><i class="fa fa-copy"></i></a>
+						</div>
+						<div class="thumb_hover">
+							<a href="{{  path('fo_regionale', {'slug': regionale.slug}) }}"><img src="{{ asset('uploads/regionales/'~ regionale.imageName) | imagine_filter('actualite') }}" alt="{{ regionale.titre}}"></a>
+						</div>
+						<div class="thumb_meta">
+							<span class="category" style="background-color: #{{regionale.region.couleur}}"><a href="#">{{ regionale.region.libelle }}</a></span>
+						</div>
+					</div>
+					<div class="item_content">
+						<h4><a href="{{  path('fo_regionale', {'slug': regionale.slug}) }}">{{ regionale.titre }}</a></h4>
+						<div class="item_meta clearfix">
+							<span class="meta_date">{{ regionale.publieLe|date('d-m-Y')}}</span>
+						</div>
+						<p>{{ regionale.resume|raw }} [...]</p>
+					</div>
+				</div>
+			</div>	
+			{% endfor %}
+			<br><br><br>
+			<div class="autres-articles"><a href="{{ path('fo_archives_actualites', {'slug': "regionales"}) }}">&raquo; Voir les autres articles</a></div>
+			
+		</div><br>
+
+
+
+		<div class="panel_title clearfix" style="margin-top: 75px">
+			<div>
+				<h4><a href="#">L'international </a></h4>
+			</div>
+		</div>
+		<div class="row">
+			{% for internationale in internationales %}
+			<div class="col col_4_of_12">
+				<div class="layout_post_1">
+					<div class="item_thumb">
+						<div class="thumb_icon">
+							<a href="{{ path('fo_internationale', {'slug': internationale.slug}) }}" style="background-color: #F89406"><i class="fa fa-copy"></i></a>
+						</div>
+						<div class="thumb_hover">
+							<a href="{{ path('fo_internationale', {'slug': internationale.slug}) }}"><img src="{{ asset('uploads/internationales/'~ internationale.imageName) | imagine_filter('actualite') }}" alt="{{ internationale.titre}}"></a>
+						</div>
+						<div class="thumb_meta">
+							<span class="category" style="background-color: #F89406"><a href="#">{{ internationale.domaine }}</a></span>
+						</div>
+					</div>
+					<div class="item_content">
+						<h4><a href="{{ path('fo_internationale', {'slug': internationale.slug}) }}">{{ internationale.titre }}</a></h4>
+						<div class="item_meta clearfix">
+							<span class="meta_date">{{ internationale.publieLe|date('d-m-Y')}}</span>
+						</div>
+						<p>{{ internationale.resume|raw }} [...]</p>
+					</div>
+				</div>
+			</div>	
+			{% endfor %}
+			<br><br><br>
+			<div class="autres-articles"><a href="{{ path('fo_archives_actualites', {'slug': "internationales"}) }}">&raquo; Voir les autres articles</a></div>
+		</div><br><br><br>
+{% endblock %}
+
+{% block facebook %}
+	{% for facebook in facebooks if facebook.taille %}
+		<div class="widget">
+					<div class="widget_title"><h3>Actu facebook</h3></div>
+					<div class="tb_widget_top_rated clearfix">
+
+						<div class="facebook">
+
+				                <div class="fb-page" data-href="https://www.facebook.com/scoutascci/" data-height="{{ facebook.taille }}" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true">
+				                    <div class="fb-xfbml-parse-ignore">
+				                        <blockquote cite="https://www.facebook.com/scoutascci/">
+				                            <a href="https://www.facebook.com/scoutascci/">ASCCI</a>
+				                        </blockquote>
+				                    </div>
+				                </div>
+
+				            </div>
+
+					</div>
+				</div>
+	{% else %}
+		<div class="widget">
+					
+				</div>
+	{% endfor %}
+{% endblock %}
+
