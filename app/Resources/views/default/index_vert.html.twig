@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_vert.html.twig' %}
 
 {% block body %}
     
@@ -199,32 +199,3 @@
 	{% endfor %}
 {% endblock %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	<style>
-		#header .header_meta {
-			/*background-color: #222*/
-			background-color: #056d2f
-		}
-		#footer {
-			color: #FFFFFF;
-			padding-top: 30px;
-			margin-top: 30px;
-			background-color: #056d2f
-		}
-		#footer .widget .widget_title {
-			background-color: #095E09
-		}
-		#footer .widget .widget_title h3 {
-			background-color: #094709;
-			color: #fff
-		}
-		#copyright {
-			 text-align: center;
-			 font-size: 12px;
-			 padding: 7px 0;
-			 background-color: #082E08
-		 }
-
-	</style>
-{% endblock %}
