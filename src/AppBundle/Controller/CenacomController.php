@@ -122,7 +122,7 @@ class CenacomController extends  Controller
         } else {
             $regionales = $em->getRepository('AppBundle:Regionale')->findLastRegionale(0, 4);
 
-            return $this->render('frontend/maintenance_orange.html.twig', [
+            return $this->render('frontend/maintenance_vert.html.twig', [
                 'sliders'   => $sliders,
                 'nationales' => $nationales,
                 'regionales' => $regionales,
