@@ -1,0 +1,99 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{ produit.libelle }}
+{% endblock %}
+
+{% block body %}
+    <div class="col col_12_of_12">
+        <div class="product">
+            <div class="images">
+                <a href="{{ absolute_url(asset('uploads/boutique/'~ produit.imageName) | imagine_filter('boutique')) }}" class="popup_link"><img src="{{ absolute_url(asset('uploads/boutique/'~ produit.imageName) | imagine_filter('boutique')) }}" alt="Product"></a>
+                <div class="thumbnails">
+                    {% if (produit.imageName2) %}
+                        <a href="{{ absolute_url(asset('uploads/boutique/'~ produit.imageName2) | imagine_filter('boutique')) }}" class="popup_link"><img src="{{ absolute_url(asset('uploads/boutique/'~ produit.imageName2) | imagine_filter('boutique')) }}" alt="Thumb"></a>
+                    {% endif %}
+                    {% if (produit.imageName3) %}
+                        <a href="{{ absolute_url(asset('uploads/boutique/'~ produit.imageName3) | imagine_filter('boutique')) }}" class="popup_link"><img src="{{ absolute_url(asset('uploads/boutique/'~ produit.imageName3) | imagine_filter('boutique')) }}" alt="Thumb"></a>
+                    {% endif %}
+                    {% if (produit.imageName4) %}
+                        <a href="{{ absolute_url(asset('uploads/boutique/'~ produit.imageName4) | imagine_filter('boutique')) }}" class="popup_link"><img src="{{ absolute_url(asset('uploads/boutique/'~ produit.imageName4) | imagine_filter('boutique')) }}" alt="Thumb"></a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="summary">
+                <h1 class="product_title">{{ produit.libelle }}</h1>
+
+                <div class="price">
+                    <p class="price">
+                        <ins><span class="amount">{{ produit.prix }} FCFA</span></ins>
+                    </p>
+                </div>
+                <div class="description">
+                    <p>{{ produit.description }}</p>
+                </div>
+                <!--<form class="cart">
+                    <div class="quantity buttons_added">
+                        <input id="spinner" type="number" name="quantity" value="1" title="Qty" class="input-text qty text">
+                    </div>
+                    <input type="hidden" name="add-to-cart" value="70">
+                    <button type="submit" class="single_add_to_cart_button button btn btn_red alt">Commandez</button>
+                </form>-->
+            </div>
+            <br><br><br>
+            <div class="woocommerce-tabs">
+                <div class="tab_content">
+
+                    <div id="tabs_1">
+                        <h4>Article similaires</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="related products">
+                <ul class="products clearfix">
+                    {% for produit in similaires %}
+                        {% if loop.index % 4 %}
+                            <li class="product">
+                                <div class="item_thumb">
+                                    <div class="thumb_icon">
+                                        <a href="#"><i class="fa fa-copy"></i></a>
+                                    </div>
+                                    <div class="thumb_hover">
+                                        <a href="{{ absolute_url(path('boutique_article', {'categorie': produit.categorie.slug, 'slug': produit.slug})) }}"><img src="{{ absolute_url(asset('uploads/boutique/'~ produit.imageName) | imagine_filter('boutique')) }}" alt="Post"></a>
+                                    </div>
+                                </div>
+                                <div class="info">
+
+                    <span class="price">
+                    <ins><span class="amount">1000 FCFA</span></ins>
+                </span>
+                                </div>
+                                <a href="{{ absolute_url(path('boutique_article', {'categorie': produit.categorie.slug, 'slug': produit.slug})) }}" class="btn">{{ produit.libelle }}</a>
+                            </li>
+                        {% else %}
+                            <li class="product last">
+                                <div class="item_thumb">
+                                    <div class="thumb_icon">
+                                        <a href="#"><i class="fa fa-copy"></i></a>
+                                    </div>
+                                    <div class="thumb_hover">
+                                        <a href="{{ absolute_url(path('boutique_article', {'categorie': produit.categorie.slug, 'slug': produit.slug})) }}"><img src="{{ absolute_url(asset('uploads/boutique/'~ produit.imageName) | imagine_filter('boutique')) }}" alt="Post"></a>
+                                    </div>
+                                </div>
+                                <div class="info">
+
+                    <span class="price">
+                    <ins><span class="amount">500 FCFA</span></ins>
+                </span>
+                                </div>
+                                <a href="{{ absolute_url(path('boutique_article', {'categorie': produit.categorie.slug, 'slug': produit.slug})) }}" class="btn">{{ produit.libelle }}</a>
+                            </li>
+                        {% endif %}
+
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

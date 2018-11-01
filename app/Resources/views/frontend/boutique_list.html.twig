@@ -1,0 +1,69 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Notre boutique
+{% endblock %}
+
+{% block body %}
+    <div class="col col_12_of_12">
+
+        <h1 class="page_title">Boutique scoute</h1>
+        <!--<form class="woocommerce-ordering" method="get">
+            <select name="categorie" class="orderby" onsubmit="submit()">
+                <option value="menu_order" selected="selected">Tous les articles</option>
+                {% for categorie in categories %}
+                    <option value="popularity">{{ categorie.libelle }}</option>
+                {% endfor %}
+            </select>
+        </form>-->
+        <ul class="products clearfix">
+            {% for produit in produits %}
+                {% if loop.index % 4 %}
+                    <li class="product">
+                        <div class="item_thumb">
+                            <div class="thumb_icon">
+                                <a href="{{ absolute_url(path('boutique_article', {'categorie': produit.categorie.slug, 'slug': produit.slug})) }}"><i class="fa fa-copy"></i></a>
+                            </div>
+                            <div class="thumb_hover">
+                                <a href="{{ absolute_url(path('boutique_article', {'categorie': produit.categorie.slug, 'slug': produit.slug})) }}"><img src="{{ absolute_url(asset('uploads/boutique/'~ produit.imageName) | imagine_filter('boutique')) }}" alt="Post"></a>
+                            </div>
+                        </div>
+                        <div class="info">
+
+                    <span class="price">
+                    <ins><span class="amount">{{ produit.prix }} FCFA</span></ins>
+                </span>
+                        </div>
+                        <a href="{{ absolute_url(path('boutique_article', {'categorie': produit.categorie.slug, 'slug': produit.slug})) }}" class="btn">{{ produit.libelle }}</a>
+                    </li>
+                {% else %}
+                    <li class="product last">
+                        <div class="item_thumb">
+                            <div class="thumb_icon">
+                                <a href="{{ absolute_url(path('boutique_article', {'categorie': produit.categorie.slug, 'slug': produit.slug})) }}"><i class="fa fa-copy"></i></a>
+                            </div>
+                            <div class="thumb_hover">
+                                <a href="{{ absolute_url(path('boutique_article', {'categorie': produit.categorie.slug, 'slug': produit.slug})) }}"><img src="{{ absolute_url(asset('uploads/boutique/'~ produit.imageName) | imagine_filter('boutique')) }}" alt="Post"></a>
+                            </div>
+                        </div>
+                        <div class="info">
+
+                    <span class="price">
+                    <ins><span class="amount">{{ produit.prix }} FCFA</span></ins>
+                </span>
+                        </div>
+                        <a href="{{ absolute_url(path('boutique_article', {'categorie': produit.categorie.slug, 'slug': produit.slug})) }}" class="btn">{{ produit.libelle }}</a>
+                    </li>
+                {% endif %}
+
+            {% endfor %}
+        </ul>
+        <!--<ul class="page-numbers">
+            <li><span class="page-numbers current">1</span></li>
+            <li><a class="page-numbers" href="#">2</a></li>
+            <li><a class="page-numbers" href="#">3</a></li>
+            <li><a class="page-numbers" href="#">4</a></li>
+        </ul>-->
+    </div>
+
+{% endblock %}

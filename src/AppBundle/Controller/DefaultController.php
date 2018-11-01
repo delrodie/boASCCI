@@ -15,7 +15,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $maintenances = $em->getRepository('AppBundle:Maintenance')->findBy(array('statut'=>1), array('id'=>'DESC'),1,0);
+        $maintenances = $em->getRepository('AppBundle:Maintenance')->existMaintenance(); //dump($maintenances);die();
 
         if ($maintenances){
 
