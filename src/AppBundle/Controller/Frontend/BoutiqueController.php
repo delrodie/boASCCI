@@ -24,6 +24,10 @@ class BoutiqueController extends Controller
         $produits = $em->getRepository('AppBundle:Produit')->findBy(array('statut'=>1));
         $categories = $em->getRepository('AppBundle:Categorie')->findBy(array('statut'=>1));
 
+        if (!$produits){ //dump('error500.html');die();
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }
+
         return $this->render('frontend/boutique_list.html.twig',[
             'produits' => $produits,
             'categories' => $categories
@@ -35,11 +39,15 @@ class BoutiqueController extends Controller
      *
      * @Route("/{categorie}/{slug}", name="boutique_article")
      */
-    public function produitAction($slug)
+    public function produitAction($categorie, $slug)
     {
         $em = $this->getDoctrine()->getManager();
         $produit = $em->getRepository('AppBundle:Produit')->findOneBy(array('slug'=>$slug));
-        $similaires = $em->getRepository('AppBundle:Produit')->findAll();
+        $similaires = $em->getRepository('AppBundle:Produit')->findSimilaire($categorie, $slug, 4, 0);
+
+        if (!$produit){ //dump('error500.html');die();
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }
 
         return $this->render('frontend/boutique_article.html.twig',[
             'produit' => $produit,
