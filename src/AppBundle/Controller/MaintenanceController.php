@@ -88,7 +88,7 @@ class MaintenanceController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_maintenance_edit', array('id' => $maintenance->getId()));
+            return $this->redirectToRoute('admin_maintenance_index');
         }
 
         return $this->render('maintenance/edit.html.twig', array(
