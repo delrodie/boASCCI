@@ -7,20 +7,13 @@
       {% block title %}BACKOFFICE: ASCCI{% endblock %}
     </title>
     <link rel="shortcut icon" href="{{ asset('backoffice/img/favicon.ico')}}">
-    <!--STYLESHEET-->
-    <!--=================================================-->
     {% block stylesheets %}
-      <!--Roboto Slab Font [ OPTIONAL ] -->
       <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700|Roboto:300,400,700" rel="stylesheet">
       <link href="{{ asset('backoffice/css/bootstrap.min.css')}}" rel="stylesheet">
       <link href="{{ asset('backoffice/css/style.css')}}" rel="stylesheet">
       <link href="{{ asset('backoffice/plugins/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
       <link href="{{ asset('backoffice/plugins/switchery/switchery.min.css')}}" rel="stylesheet">
       <link href="{{ asset('backoffice/plugins/bootstrap-select/bootstrap-select.min.css')}}" rel="stylesheet">
-
-      <!--SCRIPT-->
-      <!--=================================================-->
-      <!--Page Load Progress Bar [ OPTIONAL ]-->
       <link href="{{ asset('backoffice/plugins/pace/pace.min.css')}}" rel="stylesheet">
       <script src="{{ asset('backoffice/plugins/pace/pace.min.js')}}"></script>
       <style media="screen">
@@ -35,8 +28,6 @@
   </head>
   <body>
     <div id="container" class="effect mainnav-lg navbar-fixed mainnav-fixed">
-      <!--NAVBAR-->
-      <!--===================================================-->
       <header id="navbar">
         <div id="navbar-container" class="boxed">
           <!--Brand logo & name-->
@@ -155,417 +146,389 @@
                         </span>
                       </a>
                     </li>
-                    <!--Category name-->
-                    <li class="list-header">Evenementiels</li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_information_index')}}">
-                        <i class="fa fa-newspaper-o"></i>
-                        <span class="menu-title">
+                    <!-- Block Evenementiel-->
+                    {% if is_granted("ROLE_ADMIN") %}
+                      <li class="list-header">Evenementiels</li>
+                      <li>
+                        <a href="{{ path('admin_information_index')}}">
+                          <i class="fa fa-newspaper-o"></i>
+                          <span class="menu-title">
                           Informations
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_message_index')}}">
-                        <i class="fa fa-newspaper-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_message_index')}}">
+                          <i class="fa fa-newspaper-o"></i>
+                          <span class="menu-title">
                           Message du national
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_actualite_index')}}">
-                        <i class="fa fa-newspaper-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_actualite_index')}}">
+                          <i class="fa fa-newspaper-o"></i>
+                          <span class="menu-title">
                           La nationale
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_regionale_index')}}">
-                        <i class="fa fa-newspaper-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_regionale_index')}}">
+                          <i class="fa fa-newspaper-o"></i>
+                          <span class="menu-title">
                           La regionale
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_internationale_index')}}">
-                        <i class="fa fa-newspaper-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_internationale_index')}}">
+                          <i class="fa fa-newspaper-o"></i>
+                          <span class="menu-title">
                           L'internationale
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_actucamp_index')}}">
-                        <i class="fa fa-newspaper-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_actucamp_index')}}">
+                          <i class="fa fa-newspaper-o"></i>
+                          <span class="menu-title">
                           Actu camp <span class="badge badge-danger" style="font-size: 7px;"></span>
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_slider_index')}}">
-                        <i class="fa fa-file-picture-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_slider_index')}}">
+                          <i class="fa fa-file-picture-o"></i>
+                          <span class="menu-title">
                           Sliders
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_publicite_index')}}">
-                        <i class="fa fa-file-picture-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_publicite_index')}}">
+                          <i class="fa fa-file-picture-o"></i>
+                          <span class="menu-title">
                           Publicite
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_video_index')}}">
-                        <i class="fa fa-file-video-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_video_index')}}">
+                          <i class="fa fa-file-video-o"></i>
+                          <span class="menu-title">
                           Vidéo
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_radio_index')}}">
-                        <i class="fa fa-microphone"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_radio_index')}}">
+                          <i class="fa fa-microphone"></i>
+                          <span class="menu-title">
                           Radio <span class="badge badge-danger" style="font-size: 7px;"></span>
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_galerie_index')}}">
-                        <i class="fa fa-file-video-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_galerie_index')}}">
+                          <i class="fa fa-file-video-o"></i>
+                          <span class="menu-title">
                           Galerie photos
                         </span>
-                      </a>
-                    </li>
-                    <!--Category name-->
-                    <li class="list-header">Rubriques</li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_presentation_index')}}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li class="list-divider"></li>
+                    {% endif %}
+                    <!-- Block Evenemetiel -->
+
+
+                    <!-- Block rubrique -->
+                    {% if is_granted("ROLE_ADMIN") %}
+                      <li class="list-header">Rubriques</li>
+                      <li>
+                        <a href="{{ path('admin_presentation_index')}}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Qui sommes-nous?
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_pedagogie_index')}}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_pedagogie_index')}}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Pédagogie
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_adulte_index')}}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_adulte_index')}}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Ressources adultes
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_departement2_index')}}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_departement2_index')}}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Département
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_equipe_index')}}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_equipe_index')}}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Equipe nationale
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_couverture_index')}}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_couverture_index')}}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Couverture
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_contact_index')}}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_contact_index')}}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Contact  <!--<span class="badge badge-danger" style="font-size: 7px;">Nveau</span>-->
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <!--<li>
-                      <a href="{{ path('admin_envol_index')}}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
-                          L'envol
-                        </span>
-                      </a>
-                    </li>-->
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_rassemblement_index')}}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_rassemblement_index')}}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Rassemblement
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_partenaire_index')}}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_partenaire_index')}}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Partenaires
                         </span>
-                      </a>
-                    </li>
-                    <li class="list-header">Régions</li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_regionpresentation_index') }}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
-                          Présentation
-                        </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
-                          Equipe régionale
-                        </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
-                          District
-                        </span>
-                      </a>
-                    </li>
-                    <li class="list-header">Boutique</li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_categorie_index') }}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li class="list-divider"></li>
+                    {% endif %}
+                    <!-- \Block Rubrique -->
+
+
+                    <!-- Block region -->
+                    {% if is_granted("ROLE_ADMIN") %}
+                      <li class="list-header">Régions</li>
+                      <li>
+                        <a href="{{ path('admin_regionpresentation_index') }}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
+                            Présentation
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
+                            Equipe régionale
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
+                            District
+                          </span>
+                        </a>
+                      </li>
+                      <li class="list-divider"></li>
+                    {% endif %}
+                    <!-- \Block region -->
+
+
+                      {% if is_granted("ROLE_BOUTIQUE") %}
+                        <li class="list-header">Boutique</li>
+                        <li>
+                          <a href="{{ path('admin_categorie_index') }}">
+                            <i class="fa fa-file-o"></i>
+                            <span class="menu-title">
                           Categorie <span class="badge badge-danger" style="font-size: 7px;">MAJ</span>
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_produit_index') }}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                          </a>
+                        </li>
+                        <li>
+                          <a href="{{ path('admin_produit_index') }}">
+                            <i class="fa fa-file-o"></i>
+                            <span class="menu-title">
                           Produit <span class="badge badge-danger" style="font-size: 7px;">MAJ</span>
                         </span>
-                      </a>
-                    </li>
-                    <li class="list-divider"></li>
-                    <li class="list-header">Parametrage</li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_maintenance_index') }}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                          </a>
+                        </li>
+                        <li class="list-divider"></li>
+                      {% endif %}
+
+                    <!-- Block Parametrage -->
+                    {% if is_granted("ROLE_ADMIN") %}
+                      <li class="list-header">Parametrage</li>
+                      <li>
+                        <a href="{{ path('admin_maintenance_index') }}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Maintenance <span class="badge badge-danger" style="font-size: 7px;">MAJ</span>
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_blockcamp_index') }}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_blockcamp_index') }}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Bloc Camps <span class="badge badge-danger" style="font-size: 7px;"></span>
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_facebook_index') }}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_facebook_index') }}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Accueil facebook <span class="badge badge-danger" style="font-size: 7px;"></span>
                         </span>
-                      </a>
-                    </li>
-                    <li class="list-divider"></li>
-                    <!--Category name-->
-                    <li class="list-header">Administrateur</li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_typresentation_index') }}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li class="list-divider"></li>
+                    {% endif %}
+                    <!-- \Block Parametrage -->
+
+                    <!--Block administrateur-->
+                    {% if is_granted("ROLE_ADMIN") %}
+                      <li class="list-header">Administrateur</li>
+                      <li>
+                        <a href="{{ path('admin_typresentation_index') }}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Types présentation
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_typactualite_index') }}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_typactualite_index') }}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Type national
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_typinfos_index') }}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_typinfos_index') }}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Types infos
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_branche_index') }}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_branche_index') }}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Branches
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_chef_index') }}">
-                        <i class="fa fa-users"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_chef_index') }}">
+                          <i class="fa fa-users"></i>
+                          <span class="menu-title">
                           Chefs
                         </span>
-                      </a>
-                    </li>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_departement_index') }}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_departement_index') }}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Type de departement
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_typefonction_index') }}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_typefonction_index') }}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Type fonction
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_typenvol_index') }}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_typenvol_index') }}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Type d'envol
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_typerassemblement_index') }}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_typerassemblement_index') }}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Type de rassemblement
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="{{ path('admin_region_index') }}">
-                        <i class="fa fa-file-o"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ path('admin_region_index') }}">
+                          <i class="fa fa-file-o"></i>
+                          <span class="menu-title">
                           Regions
                         </span>
-                      </a>
-                    </li>
-                    <!--Menu list item-->
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-lock"></i>
-                        <span class="menu-title">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="fa fa-lock"></i>
+                          <span class="menu-title">
                           Sécurité
                         </span>
-                      </a>
-                      <!--Submenu-->
-                      <ul class="collapse">
-                        <li>
-                          <a href="#">
-                            <i class="fa fa-caret-right"></i>Utilisateurs</a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i class="fa fa-caret-right"></i>Gestionnaires</a>
-                        </li>
-                      </ul>
-                    </li>
+                        </a>
+                        <!--Submenu-->
+                        <ul class="collapse">
+                          <li>
+                            <a href="{{ absolute_url(path('admin_user_index')) }}">
+                              <i class="fa fa-caret-right"></i>Utilisateurs</a>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <i class="fa fa-caret-right"></i>Gestionnaires</a>
+                          </li>
+                        </ul>
+                      </li>
+                    {% endif %}
+                    <!-- Block administrateur -->
                   </ul>
                   <!--Widget-->
-                  <!--================================-->
                   <div class="mainnav-widget">
-                    <!-- Show the button on collapsed navigation -->
                     <div class="show-small">
                       <a href="#" data-toggle="menu-widget" data-target="#demo-wg-server">
                         <i class="fa fa-desktop"></i>
                       </a>
                     </div>
-                    <!-- Hide the content on collapsed navigation -->
                   </div>
-                  <!--================================-->
                   <!--End widget-->
                 </div>
               </div>
             </div>
-            <!--================================-->
             <!--End menu-->
           </div>
         </nav>
-        <!--===================================================-->
         <!--END MAIN NAVIGATION-->
-        <!--ASIDE-->
-        <!--===================================================-->
       </div>
       <!-- FOOTER -->
-      <!--===================================================-->
       <footer id="footer">
 
         <p class="pad-lft">&#0169; 2017
@@ -573,24 +536,14 @@
             <a href="http://scoutascci.org/departement/communication" title="" style="padding-left: 5px;" target="_blank">CENACOM</a>
           </span>
           <span class="hidden-sm hidden-md hidden-lg">
-            <a href="http://ahouzof.com/" title="" style="font-size: 0.8em; padding-left: 25px;" target="_blank">AHOUZ'OF</a>
+            <a href="http://www;esthetelab.com/" title="" style="font-size: 0.8em; padding-left: 25px;" target="_blank">ESTHETE</a>
           </span>
         </p>
       </footer>
-      <!--===================================================-->
-      <!-- END FOOTER -->
-      <!-- SCROLL TOP BUTTON -->
-      <!--===================================================-->
       <button id="scroll-top" class="btn">
         <i class="fa fa-chevron-up"></i>
       </button>
-      <!--===================================================-->
     </div>
-    <!--===================================================-->
-    <!-- END OF CONTAINER -->
-    <!--JAVASCRIPT-->
-    <!--=================================================-->
-    <!--jQuery [ REQUIRED ]-->
     {% block javascripts %}
       <script src="{{ asset('backoffice/js/jquery-2.1.1.min.js')}}"></script>
       <script src="{{ asset('backoffice/js/bootstrap.min.js')}}"></script>

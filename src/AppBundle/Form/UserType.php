@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -24,18 +25,23 @@ class UserType extends AbstractType
             ->add('username', TextType::class, array(
               'attr'  => array(
                   'class' => 'form-control',
-                  'autocomplete'  => 'off'
-              )
+                  'autocomplete'  => 'off',
+              ),
+                'label' => 'Nom utilisateur'
         ))
             //->add('usernameCanonical')
             ->add('email', EmailType::class, array(
               'attr'  => array(
                   'class' => 'form-control',
                   'autocomplete'  => 'off'
-              )
+              ),
+                'label' => 'Adresse email'
         ))
             //->add('emailCanonical')
-            ->add('enabled')
+            ->add('enabled', CheckboxType::class,[
+                'label' => 'Statut',
+                'required' => false
+            ])
             //->add('salt')
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
@@ -48,6 +54,7 @@ class UserType extends AbstractType
             ->add('roles', ChoiceType::class, array(
               'choices' => array(
                 'UTILISATEUR '  => 'ROLE_USER',
+                'GERANT DE LA BOUTIQUE '  => 'ROLE_BOUTIQUE',
                 'ADMINISTRATEUR '  => 'ROLE_ADMIN',
               ),
               'attr'  => array(
@@ -55,7 +62,8 @@ class UserType extends AbstractType
                   'autocomplete'  => 'off'
               ),
               'multiple'  => true,
-              'expanded'  => true
+              'expanded'  => true,
+
         ))
             //->add('loginCount')->add('firstLogin')
             ;

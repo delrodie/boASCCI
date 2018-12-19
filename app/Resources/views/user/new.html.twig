@@ -1,16 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>User creation</h1>
+    <div class="panel_title" style="padding: 0 15px">
+        <div>
+            <h4><a href="#">Creation d'utilisateur</a></h4>
+        </div>
+    </div>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+
+    <div class="row mt-40">
+        <div class="col col_6_of_12">.</div>
+        <div class="col col_2_of_12 text_right">
+            <input type="submit" value="Enregistrer" class="btn btn-signup" />
+        </div>
+        <div class="col col_3_of_12 text_left">
+            <a href="{{ path('admin_user_index') }}" class="btn btn-success">Retour à la liste des utilisateurs</a>
+        </div>
+    </div>
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_user_index') }}">Back to the list</a>
-        </li>
-    </ul>
 {% endblock %}
