@@ -357,6 +357,14 @@
                       {% if is_granted("ROLE_BOUTIQUE") %}
                         <li class="list-header">Boutique</li>
                         <li>
+                          <a href="{{ path('admin_brandboutique_index') }}">
+                            <i class="fa fa-file-o"></i>
+                            <span class="menu-title">
+                          Bannière <span class="badge badge-danger" style="font-size: 7px;">MAZJ</span>
+                        </span>
+                          </a>
+                        </li>
+                        <li>
                           <a href="{{ path('admin_categorie_index') }}">
                             <i class="fa fa-file-o"></i>
                             <span class="menu-title">

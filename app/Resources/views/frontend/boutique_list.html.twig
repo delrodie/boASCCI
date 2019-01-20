@@ -7,15 +7,25 @@
 {% block body %}
     <div class="col col_12_of_12">
 
-        <h1 class="page_title">Boutique scoute</h1>
-        <!--<form class="woocommerce-ordering" method="get">
-            <select name="categorie" class="orderby" onsubmit="submit()">
-                <option value="menu_order" selected="selected">Tous les articles</option>
+        <!--<h1 class="page_title">Boutique scoute</h1>-->
+        <div class="row" style="margin-bottom: 100px;">
+            <div class="col">
+                {% if (brand) %}
+                    <img src="{{ absolute_url(asset('uploads/boutique/'~ brand.imageName) | imagine_filter('boutique_brand')) }}" alt="Boutique scoute">
+                {% else %}
+                    <img src="{{ absolute_url(asset('ressources/images/brand.jpg')) }}" alt="boutique scoute">
+                {% endif %}
+            </div>
+        </div>
+        <form class="woocommerce-ordering" method="get" action="{{ absolute_url(path('boutique_categorie')) }}">
+            <select name="categorie" class="orderby" onchange='this.form.submit()'>
+                <option value="0">-- Selectionez la categorie --</option>
+                <option value="0"> Tous les produits </option>
                 {% for categorie in categories %}
-                    <option value="popularity">{{ categorie.libelle }}</option>
+                    <option value="{{ categorie.slug }}">{{ categorie.libelle }}</option>
                 {% endfor %}
             </select>
-        </form>-->
+        </form>
         <ul class="products clearfix">
             {% for produit in produits %}
                 {% if loop.index % 4 %}
@@ -55,7 +65,8 @@
                         <a href="{{ absolute_url(path('boutique_article', {'categorie': produit.categorie.slug, 'slug': produit.slug})) }}" class="btn">{{ produit.libelle }}</a>
                     </li>
                 {% endif %}
-
+            {% else %}
+                <h3 style="font-style:italic; text-align: center; color: #bb0000">Il n'y a aucun produit enregistré dans cette catégorie</h3>
             {% endfor %}
         </ul>
         <!--<ul class="page-numbers">

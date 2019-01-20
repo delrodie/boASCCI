@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Brandboutique</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ brandboutique.id }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{% if brandboutique.statut %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Imagename</th>
+                <td>{{ brandboutique.imageName }}</td>
+            </tr>
+            <tr>
+                <th>Imagesize</th>
+                <td>{{ brandboutique.imageSize }}</td>
+            </tr>
+            <tr>
+                <th>Publiepar</th>
+                <td>{{ brandboutique.publiePar }}</td>
+            </tr>
+            <tr>
+                <th>Modifiepar</th>
+                <td>{{ brandboutique.modifiePar }}</td>
+            </tr>
+            <tr>
+                <th>Publiele</th>
+                <td>{{ brandboutique.publieLe }}</td>
+            </tr>
+            <tr>
+                <th>Modifiele</th>
+                <td>{{ brandboutique.modifieLe }}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if brandboutique.updatedAt %}{{ brandboutique.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_brandboutique_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_brandboutique_edit', { 'id': brandboutique.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
