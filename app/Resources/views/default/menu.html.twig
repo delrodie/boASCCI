@@ -2,6 +2,7 @@
 						{% for menu in menus %}
                             {% if (menu.slug == 'nos-departements' ) %}
                                 <li><a href="{{ path('fo_presentation_departement') }}">{{ menu.libelle }}</a></li>
+								<li><a href="{{ path('fo_couverture_nationale') }}">Notre couverture</a></li>
                             {% else %}
                                 <li><a href="{{ path('fo_presentation', {'slug': menu.slug})}}">{{ menu.libelle }}</a></li>
                             {% endif %}

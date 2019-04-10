@@ -46,9 +46,10 @@ class DefaultController extends Controller
 
         if ($bloc) {
 
-            $actucamps = $em->getRepository('AppBundle:Actucamp')->findBy(array('statut'=>1), array('id'=>'DESC'), 4, 0);
+            $actucamps = $em->getRepository('AppBundle:Actucamp')->findBy(array('statut'=>1), array('id'=>'DESC'), 2, 0);
+            $jeux = $em->getRepository('AppBundle:Jeu')->findBy(array('statut'=>1), array('id'=>'DESC'), 2, 0);
 
-            return $this->render('default/index_campbranche.html.twig', [
+            return $this->render('default/index_jamboree.html.twig', [
                 'sliders'   => $sliders,
                 'nationales' => $nationales,
                 'actucamps' => $actucamps,
@@ -56,6 +57,7 @@ class DefaultController extends Controller
                 'messages'  => $messages,
                 'publicites' => $publicites,
                 'facebooks' => $facebooks,
+                'jeux' => $jeux,
             ]);
 
         } else {

@@ -104,7 +104,7 @@ class FrontendController extends Controller
     }
 
     /**
-     * @Route("/actualite-camps-de-branches/{slug}", name="fo_actucamp")
+     * @Route("/actualite-du-jamboree-2019/{slug}", name="fo_actucamp")
      */
     public function actucampAction(Request $request, $slug)
     {
@@ -112,6 +112,27 @@ class FrontendController extends Controller
 
         $actucamp = $em->getRepository('AppBundle:Actucamp')->findOneBy(array('slug' => $slug, 'statut' => 1)); //dump($nationale);die();
         $similaires = $em->getRepository('AppBundle:Actucamp')->findThreeLastActucamp($slug, 0, 3); //dump($nationale);die();
+
+        // Si le message n'exite pas alors renvoie à la page de maintenance
+        if(!$actucamp){
+            return $this->render('frontend/pageMaintenance.html.twig');
+        }
+
+        return $this->render('frontend/pageActucamp.html.twig',[
+            'actucamp' => $actucamp,
+            'similaires' => $similaires,
+        ]);
+    }
+
+    /**
+     * @Route("/jeux-du-jamboree-2019/{slug}", name="fo_jambjeu")
+     */
+    public function jamjeuAction($slug)
+    {
+        $em = $this->getDoctrine()->getmanager();
+
+        $actucamp = $em->getRepository('AppBundle:Jeu')->findOneBy(array('slug' => $slug, 'statut' => 1)); //dump($nationale);die();
+        $similaires = $em->getRepository('AppBundle:Jeu')->findThreeLastActucamp($slug, 0, 3); //dump($nationale);die();
 
         // Si le message n'exite pas alors renvoie à la page de maintenance
         if(!$actucamp){
