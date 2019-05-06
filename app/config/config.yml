@@ -101,8 +101,8 @@ vich_uploader:
 
     mappings:
         base_image:
-            uri_prefix:         /uploads
-            upload_destination: '%kernel.root_dir%/../web/uploads'
+            uri_prefix:         /uploads/fonds
+            upload_destination: '%kernel.root_dir%/../web/uploads/fonds'
             namer: vich_uploader.namer_uniqid
 
             inject_on_load:     false

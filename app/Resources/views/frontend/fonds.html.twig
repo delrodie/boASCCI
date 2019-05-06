@@ -1,0 +1,5 @@
+{% if fonds %}
+    <a href="{{ asset('uploads/fonds/'~ fonds.imageName) }}" target="_blank">Fonds ASCCI <div class="subtitle">Fonds National</div></a>
+{% else %}
+    <a href="#">Fonds ASCCI <div class="subtitle">Fonds National</div></a>
+{% endif %}
