@@ -5,7 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Vich\UploaderBundle\Form\Type\VichImageType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class FondsType extends AbstractType
 {
@@ -15,7 +15,7 @@ class FondsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('imageFile', VichImageType::class,[
+            ->add('imageFile', VichFileType::class,[
                 'required' => false,
                 'allow_delete' => true,
                 'label' => 'Telechargez le document'

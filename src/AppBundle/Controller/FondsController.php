@@ -45,6 +45,7 @@ class FondsController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            //ini_set('memory_limit', '1024M');
             $em->persist($fond);
             $em->flush();
 
