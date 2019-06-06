@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -31,7 +32,9 @@ class JeuType extends AbstractType
                     'rows' => '5'
                 )
             ))
-            ->add('contenu', CKEditorType::class)
+            ->add('contenu', TextareaType::class,[
+                'attr'=> ['class'=>'form-control']
+            ])
             ->add('tag', null, array(
                 'attr'  => array(
                     'class' => 'form-control tag-input',

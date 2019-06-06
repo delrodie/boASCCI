@@ -98,6 +98,7 @@
     		</script>
 
 {% block stylesheets %}
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="{{ absolute_url(asset('ressources/css/normalize.css'))}}">
 <link rel="stylesheet" href="{{ absolute_url(asset('ressources/css/fontawesome.css'))}}">
 <link rel="stylesheet" href="{{ absolute_url(asset('ressources/css/weather.css'))}}">
@@ -117,6 +118,48 @@
 	.autres-articles a{ color: red; }
 	.autres-articles a:hover{ color: #666;}
 </style>
+    <style type="text/css">
+        /* Customization Style of SyoTimer */
+        .syotimer{
+            text-align: center;
+
+            margin: 30px auto 0;
+            padding: 0 0 10px;
+        }
+        .syotimer-cell{
+            display: inline-block;
+            margin: 0 5px;
+
+            width: 79px;
+            background: url({{ asset('ressources/countdown/images/timer.png') }}) no-repeat 0 0;
+        }
+        .syotimer-cell__value{
+            font-size: 55px;
+            color: #0703ca;
+            font-weight: bold;
+            height: 81px;
+            line-height: 81px;
+            margin: 0 0 5px;
+        }
+        .syotimer-cell__unit{
+            font-family: Arial, serif;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        #simple-timer .syotimer-cell_type_day,
+        #periodic-timer_period_days .syotimer-cell_type_hour,
+        #layout-timer_only-seconds .syotimer-cell_type_second,
+        #layout-timer_mixed-units .syotimer-cell_type_minute{
+            width: 120px;
+            background-image: url({{ asset('ressources/countdown/images/timer_long.png') }});
+        }
+        .compteur{
+            margin-top: 350px;
+            color: #ff4000;
+            font-weight: bold;
+        }
+    </style>
 {% endblock %}
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -499,7 +542,26 @@
 		</div>
 	</div>
 </div>
+<!-- Compte a rebours Jamboree -->
 
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"  id="onload">
+
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body" style="background-image: url({{ asset('ressources/images/jamboree/jamboree.jpg') }}); background-size: contain; background-repeat: no-repeat;">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <div class="compteur">
+                    <div id="simple-timer"></div>
+                </div>
+                <!--<div class="text-center" style="color: red; font-size: 4em; margin-top: 50px;"><p id="jamboree"></p>-->
+                <button type="button" class="btn btn-primary pull-right" data-dismiss="modal">Fermer</button></div>
+        </div>
+    </div>
+
+</div>
+</div>
 {% block javascripts %}
 <script type="text/javascript" src="{{ absolute_url(asset('ressources/js/jqueryscript.min.js'))}}"></script>
 <script type="text/javascript" src="{{ absolute_url(asset('ressources/js/jqueryuiscript.min.js'))}}"></script>
@@ -514,6 +576,44 @@
 <script type="text/javascript" src="{{ absolute_url(asset('ressources/js/jquery.min.js'))}}"></script>
 <script type="text/javascript" src="{{ absolute_url(asset('ressources/js/owl.carousel.min.js'))}}"></script>
 <script type="text/javascript" src="{{ absolute_url(asset('ressources/js/script.js'))}}"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="{{ asset('ressources/countdown/js/jquery.syotimer.js') }}"></script>
+    <script src="{{ asset('ressources/countdown/js/syotimer.examples.js') }}"></script>
+    <script>
+        $(window).load(function(){
+            $('#onload').modal('show');
+        });
+    </script>
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Jun 30, 2019 23:59:59").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="demo"
+            document.getElementById("jamboree").innerHTML = days + ". " + hours + ": "
+                + minutes + ": " + seconds + ": ";
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("jamboree").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
 {% endblock %}
 </body>
 
