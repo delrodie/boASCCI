@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -40,7 +41,9 @@ class InformationType extends AbstractType
                     'data-role' => "tagsinput",
                 )
           ))
-            ->add('contenu', CKEditorType::class)
+            ->add('contenu', TextareaType::class,[
+                'attr' => ['class' => 'form-control']
+            ])
             ->add('datedeb', TextType::class, array(
                 'attr'  => array(
                     'class' => 'form-control',

@@ -104,10 +104,19 @@
     {{ parent() }}
     <script src="{{ asset('backoffice/plugins/bootstrap-validator/bootstrapValidator.min.js')}}"></script>
     <script src="{{ asset('backoffice/js/sygesca-form-validation.js')}}"></script>
-    <script src="{{ asset('backoffice/vendor/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+    <script src="//cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
     <script src="{{ asset('backoffice/vendor/tagsinput/js/bootstrap-tagsinput.js') }}" type="text/javascript">
     </script>
     <script>
         $("tag-input").tagsinput();
+    </script>
+    <script>
+        // Enable local "abbr" plugin from /myplugins/abbr/ folder.
+        CKEDITOR.plugins.addExternal( 'youtube', '/backoffice/plugins/youtube/', 'plugin.js' );
+
+        // extraPlugins needs to be set too.
+        CKEDITOR.replace( 'appbundle_couverture_contenu', {
+            extraPlugins: 'youtube'
+        } );
     </script>
 {% endblock %}

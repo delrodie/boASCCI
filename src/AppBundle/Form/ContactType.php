@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,7 +17,9 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('contenu', CKEditorType::class)
+            ->add('contenu', TextareaType::class,[
+                'attr' => ['class' => 'form-control']
+            ])
             ->add('statut')
             //->add('publiePar')->add('modifiePar')
             //->add('publieLe')->add('modifieLe')
