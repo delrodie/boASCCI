@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Documents à télécharger
+{% endblock %}
+
+{% block body %}
+    <div class="col col_12_of_12">
+        <div class="panel_title">
+            <div>
+                <h4><a href="blog.html">Documents</a></h4>
+            </div>
+            <span>Documents à télécharger</span>
+        </div>
+        <div class="list_posts_1">
+            <div class="item clearfix">
+                <div class="item_content">
+                    <h4><a href="{{ absolute_url(asset('documents/formulaire-agr-jamboree-2019.pdf')) }}" target="_blank"><span class="format">Jamboree 2019</span>Formulaire de demande de place sur le marché denommé "ADJEGOH" au Jamboree 2019</a></h4>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

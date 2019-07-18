@@ -233,7 +233,7 @@
 		<nav class="site_navigation" role="navigation">
 			<span class="site_navigation_toggle"><i class="fa fa-reorder"></i></span>
 			<ul class="menu">
-				<li><a href="{{ path('homepage')}}">Accueil<div class="subtitle">Actualités</div></a></li>
+				<li><a href="{{ absolute_url(path('homepage'))}}">Accueil<div class="subtitle">Actualités</div></a></li>
 				<li class="menu-item-has-children"><a href="#">Qui sommes-nous?<div class="subtitle">Présentation</div></a>
 					<span class="site_sub_menu_toggle"></span>
 					{{ render(url('menu_presentation'))}}
@@ -241,16 +241,16 @@
 				<li class="menu-item-has-children"><a href="#">Notre pédagogie<div class="subtitle">Nos jeunes</div></a>
 					<span class="site_sub_menu_toggle"></span>
 					<ul class="sub-menu" style="border-top-color: #F89406">
-						<li><a href="{{ path('fo_pedagogie', {'slug': 'projet'})}}">Projet Éducatif</a></li>
-						<li><a href="{{ path('fo_pedagogie', {'slug': 'louveteau'})}}">Louvetaux (8-11 ans)</a></li>
-						<li><a href="{{ path('fo_pedagogie', {'slug': 'eclaireur'})}}">Eclaireurs (12-14 ans)</a></li>
-						<li><a href="{{ path('fo_pedagogie', {'slug': 'chemino'})}}">Cheminots (15-17 ans)</a></li>
-						<li><a href="{{ path('fo_pedagogie', {'slug': 'route'})}}">Routiers (18-21 ans)</a></li>
+						<li><a href="{{ absolute_url(path('fo_pedagogie', {'slug': 'projet'}))}}">Projet Éducatif</a></li>
+						<li><a href="{{ absolute_url(path('fo_pedagogie', {'slug': 'louveteau'}))}}">Louvetaux (8-11 ans)</a></li>
+						<li><a href="{{ absolute_url(path('fo_pedagogie', {'slug': 'eclaireur'}))}}">Eclaireurs (12-14 ans)</a></li>
+						<li><a href="{{ absolute_url(path('fo_pedagogie', {'slug': 'chemino'}))}}">Cheminots (15-17 ans)</a></li>
+						<li><a href="{{ absolute_url(path('fo_pedagogie', {'slug': 'route'}))}}">Routiers (18-21 ans)</a></li>
 						<li><a href="#">Propositions de scoutisme</a>
 							<ul class="sub-menu" style="border-top-color: #F89406">
-								<li><a href="{{ path('fo_pedagogie', {'slug': 'enfance'})}}">Petite Enfance</a></li>
-								<li><a href="{{ path('fo_pedagogie', {'slug': 'handi'})}}">Handi-Scout</a></li>
-								<li><a href="{{ path('fo_pedagogie', {'slug': 'ecole'})}}">Scout-École</a></li>
+								<li><a href="{{ absolute_url(path('fo_pedagogie', {'slug': 'enfance'}))}}">Petite Enfance</a></li>
+								<li><a href="{{ absolute_url(path('fo_pedagogie', {'slug': 'handi'}))}}">Handi-Scout</a></li>
+								<li><a href="{{ absolute_url(path('fo_pedagogie', {'slug': 'ecole'}))}}">Scout-École</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -260,13 +260,13 @@
 					{{ render(url('menu_chef'))}}
 				</li>
 				<li >{{ render(url('fonds_national')) }}</li>
-				<li><a href="{{ path('boutique_index') }}">Boutique<div class="subtitle">Nos articles</div></a></li>
-				<li><a href="{{ path('fo_nous_contacter') }}">Contact<div class="subtitle">Nous joindre</div></a></li>
+				<li><a href="{{ absolute_url(path('boutique_index')) }}">Boutique<div class="subtitle">Nos articles</div></a></li>
+				<li><a href="{{ absolute_url(path('fo_nous_contacter')) }}">Contact<div class="subtitle">Nous joindre</div></a></li>
 				<li class="menu-item-has-children"><a href="#">Autres liens<div class="subtitle"></div></a>
 					<span class="site_sub_menu_toggle"></span>
 					<ul class="sub-menu" style="border-top-color: #F89406">
 						<li><a href="https://www.flickr.com/photos/scout_ascci/albums">Photothèque</a></li>
-						<li><a href="#">Documents à télécharger</a></li>
+						<li><a href="{{ absolute_url(path('frontend_document_index')) }}">Documents à télécharger</a></li>
 						<li><a href="#">Identification</a></li>
 					</ul>
 				</li>
